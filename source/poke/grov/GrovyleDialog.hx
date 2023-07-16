@@ -1971,247 +1971,247 @@ class GrovyleDialog
 
 	public static function boyOrGirlIntro(tree:Array<Array<Object>>)
 	{
-		// tree[0] = ["#grov06#Testing Testing."];
-		// tree[1] = ["#grov05#Do you want the game to be sfw or nsfw?"];
-		// tree[2] = [10,20];
+		tree[0] = ["#grov06#Testing Testing."];
+		tree[1] = ["#grov05#Do you want the game to be sfw or nsfw?"];
+		tree[2] = [10,20];
 
-		// tree[10] = ["SFW\nplease"];
-		// tree[11] = ["%game-sfw%"];
-		// tree[12] = ["#grov02#Done"];
+		tree[10] = ["SFW\nplease"];
+		tree[11] = ["%game-sfw%"];
+		tree[12] = ["#grov02#Done"];
 
-		// tree[20] = ["NSFW\nplease"];
-		// tree[21] = ["%game-nsfw%"];
-		// tree[22] = ["#grov02#Done"];
-	
-	
-		tree[0] = ["%disable-skip%"];
-		tree[1] = ["%intro-lights-off%"];
-		tree[2] = ["#grov04#Hello! Before we get started, I should ask... Are you a boy or a girl?"];
-		tree[3] = [10, 20, 30, 40];
+		tree[20] = ["NSFW\nplease"];
+		tree[21] = ["%game-nsfw%"];
+		tree[22] = ["#grov02#Done"];
 
-		tree[10] = ["I'm a\nboy"];
-		tree[11] = ["%gender-boy%"];
-		tree[12] = [100];
+		
+		// tree[0] = ["%disable-skip%"];
+		// tree[1] = ["%intro-lights-off%"];
+		// tree[2] = ["#grov04#Hello! Before we get started, I should ask... Are you a boy or a girl?"];
+		// tree[3] = [10, 20, 30, 40];
 
-		tree[20] = ["I'm a\ngirl"];
-		tree[21] = ["%gender-girl%"];
-		tree[22] = [100];
+		// tree[10] = ["I'm a\nboy"];
+		// tree[11] = ["%gender-boy%"];
+		// tree[12] = [100];
 
-		tree[30] = ["I'm not\nsure"];
-		tree[31] = ["%gender-complicated%"];
-		tree[32] = ["#grov10#Ah, you're not... you're not sure whether you're a boy or a girl?"];
-		tree[33] = ["#grov02#...Err, well, I suppose I'll give you a moment to check. Go on, take a good look down there."];
-		tree[34] = [50, 60, 70, 80];
+		// tree[20] = ["I'm a\ngirl"];
+		// tree[21] = ["%gender-girl%"];
+		// tree[22] = [100];
 
-		tree[40] = ["It's\ncomplicated"];
-		tree[41] = ["%gender-complicated%"];
-		tree[42] = ["#grov06#Ah, I understand. Gender can be a complicated issue sometimes. Come to think of it, I'm struggling to remember... Am I a boy or a girl!?!"];
-		tree[43] = [110, 120, 130, 140];
+		// tree[30] = ["I'm not\nsure"];
+		// tree[31] = ["%gender-complicated%"];
+		// tree[32] = ["#grov10#Ah, you're not... you're not sure whether you're a boy or a girl?"];
+		// tree[33] = ["#grov02#...Err, well, I suppose I'll give you a moment to check. Go on, take a good look down there."];
+		// tree[34] = [50, 60, 70, 80];
 
-		tree[50] = ["Okay I'm a\nboy"];
-		tree[51] = ["%gender-boy%"];
-		tree[52] = [100];
+		// tree[40] = ["It's\ncomplicated"];
+		// tree[41] = ["%gender-complicated%"];
+		// tree[42] = ["#grov06#Ah, I understand. Gender can be a complicated issue sometimes. Come to think of it, I'm struggling to remember... Am I a boy or a girl!?!"];
+		// tree[43] = [110, 120, 130, 140];
 
-		tree[60] = ["Okay I'm a\ngirl"];
-		tree[61] = ["%gender-girl%"];
-		tree[62] = [100];
+		// tree[50] = ["Okay I'm a\nboy"];
+		// tree[51] = ["%gender-boy%"];
+		// tree[52] = [100];
 
-		tree[70] = ["Okay I'm still\nnot sure"];
-		tree[71] = ["%gender-complicated%"];
-		tree[72] = ["#grov10#Ah, so you didn't find any, um... that is to say... err... well then. Did you look in the right place!?"];
-		tree[73] = ["#grov06#Although come to think of it, I'm struggling to remember... Am I a boy or a girl!?!"];
-		tree[74] = [110, 120, 130, 140];
+		// tree[60] = ["Okay I'm a\ngirl"];
+		// tree[61] = ["%gender-girl%"];
+		// tree[62] = [100];
 
-		tree[80] = ["Okay it's\ncomplicated"];
-		tree[81] = ["%gender-complicated%"];
-		tree[82] = ["#grov11#Com... Complicated!?! Dear goodness, what on earth did you FIND???"];
-		tree[83] = ["#grov10#Nevermind, nevermind, I'd rather not know. Gender can be a complicated issue sometimes."];
-		tree[84] = ["#grov06#Come to think of it, I'm struggling to remember... Am I a boy or a girl!?!"];
-		tree[85] = [110, 120, 130, 140];
+		// tree[70] = ["Okay I'm still\nnot sure"];
+		// tree[71] = ["%gender-complicated%"];
+		// tree[72] = ["#grov10#Ah, so you didn't find any, um... that is to say... err... well then. Did you look in the right place!?"];
+		// tree[73] = ["#grov06#Although come to think of it, I'm struggling to remember... Am I a boy or a girl!?!"];
+		// tree[74] = [110, 120, 130, 140];
 
-		tree[100] = ["#grov06#Ah, splendid! Although come to think of it, I'm struggling to remember.... Am I a boy or a girl!?!"];
-		tree[101] = [110, 120, 130, 140];
+		// tree[80] = ["Okay it's\ncomplicated"];
+		// tree[81] = ["%gender-complicated%"];
+		// tree[82] = ["#grov11#Com... Complicated!?! Dear goodness, what on earth did you FIND???"];
+		// tree[83] = ["#grov10#Nevermind, nevermind, I'd rather not know. Gender can be a complicated issue sometimes."];
+		// tree[84] = ["#grov06#Come to think of it, I'm struggling to remember... Am I a boy or a girl!?!"];
+		// tree[85] = [110, 120, 130, 140];
 
-		tree[110] = ["I hope you're\na boy"];
-		tree[111] = ["%sexualpref-boys%"];
-		tree[112] = [200];
+		// tree[100] = ["#grov06#Ah, splendid! Although come to think of it, I'm struggling to remember.... Am I a boy or a girl!?!"];
+		// tree[101] = [110, 120, 130, 140];
 
-		tree[120] = ["I hope you're\na girl"];
-		tree[121] = ["%sexualpref-girls%"];
-		tree[122] = [200];
+		// tree[110] = ["I hope you're\na boy"];
+		// tree[111] = ["%sexualpref-boys%"];
+		// tree[112] = [200];
 
-		tree[130] = ["I don't mind\neither way"];
-		tree[131] = ["%sexualpref-both%"];
-		tree[132] = [200];
+		// tree[120] = ["I hope you're\na girl"];
+		// tree[121] = ["%sexualpref-girls%"];
+		// tree[122] = [200];
 
-		tree[140] = ["I hope you're\ncomplicated"];
-		tree[141] = ["%sexualpref-idiot%"];
-		tree[142] = ["#grov02#Well... I assure you I'm not complicated in that regard! My genitals are most definitely that of a girl... or maybe a boy!!"];
-		tree[143] = ["#grov03#That is, it's slipped my mind at the moment but I'm quite certain I have ONE of those two, err, pieces of equipment... down there..."];
-		tree[144] = [150, 160, 170, 180];
+		// tree[130] = ["I don't mind\neither way"];
+		// tree[131] = ["%sexualpref-both%"];
+		// tree[132] = [200];
 
-		var randomStuff:Array<String> = ["a\ntrampoline", "a\ndishwasher", "a\ncalculator", "a\nsaxophone", "a\nplunger", "a\nchainsaw", "a\nrabid wombat", "an\nextra kidney"];
-		FlxG.random.shuffle(randomStuff);
+		// tree[140] = ["I hope you're\ncomplicated"];
+		// tree[141] = ["%sexualpref-idiot%"];
+		// tree[142] = ["#grov02#Well... I assure you I'm not complicated in that regard! My genitals are most definitely that of a girl... or maybe a boy!!"];
+		// tree[143] = ["#grov03#That is, it's slipped my mind at the moment but I'm quite certain I have ONE of those two, err, pieces of equipment... down there..."];
+		// tree[144] = [150, 160, 170, 180];
 
-		tree[150] = ["You have a\npenis\ndown there"];
-		tree[151] = [111];
+		// var randomStuff:Array<String> = ["a\ntrampoline", "a\ndishwasher", "a\ncalculator", "a\nsaxophone", "a\nplunger", "a\nchainsaw", "a\nrabid wombat", "an\nextra kidney"];
+		// FlxG.random.shuffle(randomStuff);
 
-		tree[160] = ["You have a\nvagina\ndown there"];
-		tree[161] = [121];
+		// tree[150] = ["You have a\npenis\ndown there"];
+		// tree[151] = [111];
 
-		tree[170] = ["I don't mind\neither way"];
-		tree[171] = [131];
+		// tree[160] = ["You have a\nvagina\ndown there"];
+		// tree[161] = [121];
 
-		tree[180] = ["You have " + randomStuff[0] + "\ndown there"];
-		tree[181] = ["%sexualpref-idiot%"];
-		tree[182] = [200];
+		// tree[170] = ["I don't mind\neither way"];
+		// tree[171] = [131];
 
-		tree[200] = ["%sexualsummary0%"];
-		tree[201] = ["%sexualsummary1%"];
-		tree[202] = [210, 220, 230, 240];
+		// tree[180] = ["You have " + randomStuff[0] + "\ndown there"];
+		// tree[181] = ["%sexualpref-idiot%"];
+		// tree[182] = [200];
 
-		tree[210] = ["Yes, that's\nright"];
-		tree[211] = ["#grov02#Excellent! Now let's see if I can get these lights on..."];
-		tree[212] = ["%intro-lights-on%"];
-		tree[213] = ["%enable-skip%"];
+		// tree[200] = ["%sexualsummary0%"];
+		// tree[201] = ["%sexualsummary1%"];
+		// tree[202] = [210, 220, 230, 240];
 
-		tree[220] = ["Hmm... that's\nnot right"];
-		tree[221] = ["#grov04#Oops very well, let's go through this again! ...So first off, are you a boy or a girl?"];
-		tree[222] = [10, 20, 30, 40];
+		// tree[210] = ["Yes, that's\nright"];
+		// tree[211] = ["#grov02#Excellent! Now let's see if I can get these lights on..."];
+		// tree[212] = ["%intro-lights-on%"];
+		// tree[213] = ["%enable-skip%"];
 
-		tree[230] = ["Do you\nremember\nwho I am?"];
-		tree[231] = [300];
+		// tree[220] = ["Hmm... that's\nnot right"];
+		// tree[221] = ["#grov04#Oops very well, let's go through this again! ...So first off, are you a boy or a girl?"];
+		// tree[222] = [10, 20, 30, 40];
 
-		tree[240] = ["We've\nactually\nmet before..."];
-		tree[241] = [300];
+		// tree[230] = ["Do you\nremember\nwho I am?"];
+		// tree[231] = [300];
 
-		tree[300] = ["#grov10#Ah well, err... Of course I remember! ...I have a remarkable knack for names, you know-- I've literally never forgotten a name."];
-		tree[301] = ["#grov06#Yours is right on the top of my tongue... Hmm, hmm... You must be, err..."];
-		tree[302] = [310, 315, 330];
+		// tree[240] = ["We've\nactually\nmet before..."];
+		// tree[241] = [300];
 
-		tree[310] = ["My name\nis..."];
-		tree[311] = ["%prompt-name%"];
+		// tree[300] = ["#grov10#Ah well, err... Of course I remember! ...I have a remarkable knack for names, you know-- I've literally never forgotten a name."];
+		// tree[301] = ["#grov06#Yours is right on the top of my tongue... Hmm, hmm... You must be, err..."];
+		// tree[302] = [310, 315, 330];
 
-		tree[315] = ["Do you\nwant me to\ntell you?"];
-		tree[316] = ["#grov10#No, no, I remember! I really do. It's just difficult without your face. But your name is definitely mmmm... Let me think... ..."];
-		tree[317] = [310, 320, 330];
+		// tree[310] = ["My name\nis..."];
+		// tree[311] = ["%prompt-name%"];
 
-		tree[320] = ["I can't\nbelieve you\nforgot my\nname, Grovyle"];
-		tree[321] = ["#grov11#Ack! ...No, why, how rude would that be if you remembered my name... but I forgot yours? Of course I remember!"];
-		tree[322] = ["#grov06#It definitely starts with... a letter N... or perhaps an A, was it? Am I getting warmer or colder?"];
-		tree[323] = [310, 325, 330];
+		// tree[315] = ["Do you\nwant me to\ntell you?"];
+		// tree[316] = ["#grov10#No, no, I remember! I really do. It's just difficult without your face. But your name is definitely mmmm... Let me think... ..."];
+		// tree[317] = [310, 320, 330];
 
-		tree[325] = ["You really\nforgot"];
-		tree[326] = ["#grov03#Ahh I had you going! Of course I remembered YOUR name. You're umm... that guy! That guy with the really memorable name."];
-		tree[327] = ["#grov06#That name with all the letters in it... Some pointy letters, and some round ones... All those letters! ... ...Ack, I'll be so embarrassed when I finally remember..."];
-		tree[328] = [310, 315, 330];
+		// tree[320] = ["I can't\nbelieve you\nforgot my\nname, Grovyle"];
+		// tree[321] = ["#grov11#Ack! ...No, why, how rude would that be if you remembered my name... but I forgot yours? Of course I remember!"];
+		// tree[322] = ["#grov06#It definitely starts with... a letter N... or perhaps an A, was it? Am I getting warmer or colder?"];
+		// tree[323] = [310, 325, 330];
 
-		tree[330] = ["Nevermind,\nwe actually\nhaven't met"];
-		tree[331] = ["#grov03#Ah, of course we haven't! ...Was that some sort of a test? ... ...Did I pass?"];
-		tree[332] = ["#grov02#Anyways, let's see about getting these lights on..."];
-		tree[333] = ["%intro-lights-on%"];
-		tree[334] = ["%enable-skip%"];
+		// tree[325] = ["You really\nforgot"];
+		// tree[326] = ["#grov03#Ahh I had you going! Of course I remembered YOUR name. You're umm... that guy! That guy with the really memorable name."];
+		// tree[327] = ["#grov06#That name with all the letters in it... Some pointy letters, and some round ones... All those letters! ... ...Ack, I'll be so embarrassed when I finally remember..."];
+		// tree[328] = [310, 315, 330];
 
-		// no name
-		tree[400] = ["%mark-cdjv0kpk%"];
-		tree[401] = ["#grov05#Err? Why it sounded like you were about to say something... Not that I need any help! Your name is definitely, err..."];
-		tree[402] = [310, 315, 330];
+		// tree[330] = ["Nevermind,\nwe actually\nhaven't met"];
+		// tree[331] = ["#grov03#Ah, of course we haven't! ...Was that some sort of a test? ... ...Did I pass?"];
+		// tree[332] = ["#grov02#Anyways, let's see about getting these lights on..."];
+		// tree[333] = ["%intro-lights-on%"];
+		// tree[334] = ["%enable-skip%"];
 
-		// invalid name
-		tree[410] = ["%mark-5w2p2vmw%"];
-		tree[411] = ["%mark-zs7y5218%"];
-		tree[412] = ["%mark-agdjhera%"];
-		tree[413] = ["%mark-7hoh545f%"];
-		tree[414] = ["#grov04#No, no... THAT definitely wasn't it, I would have never remembered a name like that. Your name was something much more memorable."];
-		if (PlayerData.gender == PlayerData.Gender.Girl)
-		{
-			tree[415] = ["#grov06#I think I remember that it rhymed with a part of the male anatomy... Nicole? ...Doloreskin? Hmmm, hmmm. It's coming to me..."];
-		}
-		else
-		{
-			tree[415] = ["#grov06#I think I remember that it rhymed with a part of the male anatomy... Jacques? ...Ernesticle? Hmmm, hmmm. It's coming to me..."];
-		}
-		tree[416] = [310, 315, 330];
+		// // no name
+		// tree[400] = ["%mark-cdjv0kpk%"];
+		// tree[401] = ["#grov05#Err? Why it sounded like you were about to say something... Not that I need any help! Your name is definitely, err..."];
+		// tree[402] = [310, 315, 330];
 
-		// someone else's name
-		tree[420] = ["%mark-ijrtkh6l%"];
-		tree[421] = ["#grov13#You are NOT... That is NOT your name!! No! ...Bad! That's such a... You are the sneakiest little... Grrrggghhh!!!"];
-		tree[422] = ["#grov12#I'm not sure if if I even want to play with you anymore, you sneaky little rascal. ...Pretending you're <random-name>... Hmph!"];
-		tree[423] = ["#grov06#... ...I'm just going to proceed with the tutorial, and we can pretend this never happened-"];
-		tree[424] = ["#grov12#-and perhaps YOU can stop trying to break this cute little game with your unwelcome shenanigans! Hmph! Hmph!!"];
-		tree[425] = ["#grov03#Aaaanyways, let's see if we can get these lights on and put this whole incident behind us..."];
-		tree[426] = ["%intro-lights-on%"];
-		tree[427] = ["%enable-skip%"];
+		// // invalid name
+		// tree[410] = ["%mark-5w2p2vmw%"];
+		// tree[411] = ["%mark-zs7y5218%"];
+		// tree[412] = ["%mark-agdjhera%"];
+		// tree[413] = ["%mark-7hoh545f%"];
+		// tree[414] = ["#grov04#No, no... THAT definitely wasn't it, I would have never remembered a name like that. Your name was something much more memorable."];
+		// if (PlayerData.gender == PlayerData.Gender.Girl)
+		// {
+		// 	tree[415] = ["#grov06#I think I remember that it rhymed with a part of the male anatomy... Nicole? ...Doloreskin? Hmmm, hmmm. It's coming to me..."];
+		// }
+		// else
+		// {
+		// 	tree[415] = ["#grov06#I think I remember that it rhymed with a part of the male anatomy... Jacques? ...Ernesticle? Hmmm, hmmm. It's coming to me..."];
+		// }
+		// tree[416] = [310, 315, 330];
 
-		// good name
-		tree[450] = ["%mark-79gi267d%"];
-		tree[451] = ["#grov06#<good-name>? <good-name>... Err... ... ...Hmmmmm..."];
-		tree[452] = ["#grov08#Very well, you've caught me. ...I've COMPLETELY forgotten your name. Dreadfully sorry about this, this almost never happens!"];
-		tree[453] = ["#grov05#But errm, I have a remarkable knack for sequences of eighteen alphanumeric characters! ...I never forget a sequence of eighteen alphanumeric characters."];
-		tree[454] = ["#grov04#I don't suppose you have something like that? ...Something reminiscent of a password perhaps? I'm quite certain that will serve to jog my memory."];
-		tree[455] = [460, 470, 480];
+		// // someone else's name
+		// tree[420] = ["%mark-ijrtkh6l%"];
+		// tree[421] = ["#grov13#You are NOT... That is NOT your name!! No! ...Bad! That's such a... You are the sneakiest little... Grrrggghhh!!!"];
+		// tree[422] = ["#grov12#I'm not sure if if I even want to play with you anymore, you sneaky little rascal. ...Pretending you're <random-name>... Hmph!"];
+		// tree[423] = ["#grov06#... ...I'm just going to proceed with the tutorial, and we can pretend this never happened-"];
+		// tree[424] = ["#grov12#-and perhaps YOU can stop trying to break this cute little game with your unwelcome shenanigans! Hmph! Hmph!!"];
+		// tree[425] = ["#grov03#Aaaanyways, let's see if we can get these lights on and put this whole incident behind us..."];
+		// tree[426] = ["%intro-lights-on%"];
+		// tree[427] = ["%enable-skip%"];
 
-		tree[460] = ["My password\nis..."];
-		tree[461] = ["%prompt-password%"];
+		// // good name
+		// tree[450] = ["%mark-79gi267d%"];
+		// tree[451] = ["#grov06#<good-name>? <good-name>... Err... ... ...Hmmmmm..."];
+		// tree[452] = ["#grov08#Very well, you've caught me. ...I've COMPLETELY forgotten your name. Dreadfully sorry about this, this almost never happens!"];
+		// tree[453] = ["#grov05#But errm, I have a remarkable knack for sequences of eighteen alphanumeric characters! ...I never forget a sequence of eighteen alphanumeric characters."];
+		// tree[454] = ["#grov04#I don't suppose you have something like that? ...Something reminiscent of a password perhaps? I'm quite certain that will serve to jog my memory."];
+		// tree[455] = [460, 470, 480];
 
-		tree[465] = ["Oh, I think\nI typed my\npassword\nwrong"];
-		tree[466] = ["%prompt-password%"];
+		// tree[460] = ["My password\nis..."];
+		// tree[461] = ["%prompt-password%"];
 
-		tree[470] = ["Actually,\nI think I\ntyped my\nname wrong"];
-		tree[471] = ["%prompt-name%"];
+		// tree[465] = ["Oh, I think\nI typed my\npassword\nwrong"];
+		// tree[466] = ["%prompt-password%"];
 
-		tree[480] = ["I don't have\nanything\nlike that"];
-		tree[481] = ["#grov02#Ah, well that's fine. We can do this the old-fashioned way! Let me see about getting these lights on..."];
-		tree[482] = ["%intro-lights-on%"];
-		tree[483] = ["%enable-skip%"];
+		// tree[470] = ["Actually,\nI think I\ntyped my\nname wrong"];
+		// tree[471] = ["%prompt-name%"];
 
-		tree[485] = ["Nevermind,\nlet's just do\nthe tutorial"];
-		tree[486] = [481];
+		// tree[480] = ["I don't have\nanything\nlike that"];
+		// tree[481] = ["#grov02#Ah, well that's fine. We can do this the old-fashioned way! Let me see about getting these lights on..."];
+		// tree[482] = ["%intro-lights-on%"];
+		// tree[483] = ["%enable-skip%"];
 
-		tree[500] = ["%mark-664xvle5%"]; // empty password
-		tree[501] = ["#grov08#Coming up empty, hmm? ...Well that's a bit of a disappointment."];
-		tree[502] = ["#grov04#If you could just remember that eighteen character sequence, I'm certain it would jog my memory. ...I never forget a sequence of eighteen alphanumeric characters!"];
-		tree[503] = [460, 470, 480];
+		// tree[485] = ["Nevermind,\nlet's just do\nthe tutorial"];
+		// tree[486] = [481];
 
-		tree[510] = ["%mark-k9hftkyn%"]; // short password
-		tree[511] = ["#grov06#Errm, perhaps my kindergarten counting skills have grown rusty from disuse, but I don't think that was eighteen characters."];
-		tree[512] = ["#grov04#I'm going to need all eighteen characters in your password to help distinguish you from all the other <good-name>s! ...Do you have that written down somewhere?"];
-		tree[513] = [460, 470, 480];
+		// tree[500] = ["%mark-664xvle5%"]; // empty password
+		// tree[501] = ["#grov08#Coming up empty, hmm? ...Well that's a bit of a disappointment."];
+		// tree[502] = ["#grov04#If you could just remember that eighteen character sequence, I'm certain it would jog my memory. ...I never forget a sequence of eighteen alphanumeric characters!"];
+		// tree[503] = [460, 470, 480];
 
-		tree[520] = ["%mark-wab1rky5%"]; // someone else's password
-		tree[521] = ["#grov02#Ah yes, <random-name>! Of course! ...I believe Abra unceremoniously stuffed your belongings in a closet somewhere back here..."];
-		tree[522] = ["#grov06#But... Why did you change your name from <random-name> to <good-name>? Unless.... Hmmm..."];
-		tree[523] = ["#grov12#Say! You're not actually <random-name> at all, are you? Hmph!!"];
-		tree[524] = ["#grov13#Where did you find their eighteen character sequence, hmmmm? Did you randomly guess it, or were you snooping through their things? Hmph! Hmph I say."];
-		tree[525] = ["#grov14#...I need YOUR personal eighteen character sequence, <good-name>. Not <random-name>'s."];
-		tree[526] = [460, 470, 480];
+		// tree[510] = ["%mark-k9hftkyn%"]; // short password
+		// tree[511] = ["#grov06#Errm, perhaps my kindergarten counting skills have grown rusty from disuse, but I don't think that was eighteen characters."];
+		// tree[512] = ["#grov04#I'm going to need all eighteen characters in your password to help distinguish you from all the other <good-name>s! ...Do you have that written down somewhere?"];
+		// tree[513] = [460, 470, 480];
 
-		tree[530] = ["%mark-wab1rky6%"]; // invalid password
-		tree[531] = ["#grov06#Hmm. <password>.... <password>... No, that's not ringing any bells."];
-		tree[532] = ["#grov04#You're <good-name>, and your password is <password>? ...Are you certain you typed all of that correctly?"];
-		tree[533] = ["#grov05#Or hmmm, sometimes if a 5 has too much to drink, it can start looking like an S... Perhaps something like that?"];
-		tree[534] = [465, 470, 485];
+		// tree[520] = ["%mark-wab1rky5%"]; // someone else's password
+		// tree[521] = ["#grov02#Ah yes, <random-name>! Of course! ...I believe Abra unceremoniously stuffed your belongings in a closet somewhere back here..."];
+		// tree[522] = ["#grov06#But... Why did you change your name from <random-name> to <good-name>? Unless.... Hmmm..."];
+		// tree[523] = ["#grov12#Say! You're not actually <random-name> at all, are you? Hmph!!"];
+		// tree[524] = ["#grov13#Where did you find their eighteen character sequence, hmmmm? Did you randomly guess it, or were you snooping through their things? Hmph! Hmph I say."];
+		// tree[525] = ["#grov14#...I need YOUR personal eighteen character sequence, <good-name>. Not <random-name>'s."];
+		// tree[526] = [460, 470, 480];
 
-		tree[550] = ["%mark-10xom4oy%"]; // valid password
-		tree[551] = ["%set-name%"];
-		tree[552] = ["%set-password%"];
-		tree[553] = ["#grov02#Ah yes, <good-name>! Of course! ...I believe Abra unceremoniously stuffed your belongings in a closet somewhere back here..."];
-		tree[554] = ["%intro-lights-on%"];
-		tree[555] = ["%enterabra%"];
-		tree[556] = ["#grov05#Abra! ...Wouldn't you believe it? <good-name>'s returned to play with us!"];
-		tree[557] = ["#abra02#Hmm? ...Oh, <good-name>! I hadn't seen you in awhile."];
-		tree[558] = ["%exitabra%"];
-		tree[559] = ["#abra05#...Give me a moment and I'll get your things back the way you had them, alright?"];
-		tree[560] = ["%enable-skip%"];
-		tree[561] = ["%jumpto-skipwithpassword%"];
+		// tree[530] = ["%mark-wab1rky6%"]; // invalid password
+		// tree[531] = ["#grov06#Hmm. <password>.... <password>... No, that's not ringing any bells."];
+		// tree[532] = ["#grov04#You're <good-name>, and your password is <password>? ...Are you certain you typed all of that correctly?"];
+		// tree[533] = ["#grov05#Or hmmm, sometimes if a 5 has too much to drink, it can start looking like an S... Perhaps something like that?"];
+		// tree[534] = [465, 470, 485];
 
-		tree[10000] = ["%intro-lights-on%"];
-		tree[10001] = ["%enable-skip%"];
+		// tree[550] = ["%mark-10xom4oy%"]; // valid password
+		// tree[551] = ["%set-name%"];
+		// tree[552] = ["%set-password%"];
+		// tree[553] = ["#grov02#Ah yes, <good-name>! Of course! ...I believe Abra unceremoniously stuffed your belongings in a closet somewhere back here..."];
+		// tree[554] = ["%intro-lights-on%"];
+		// tree[555] = ["%enterabra%"];
+		// tree[556] = ["#grov05#Abra! ...Wouldn't you believe it? <good-name>'s returned to play with us!"];
+		// tree[557] = ["#abra02#Hmm? ...Oh, <good-name>! I hadn't seen you in awhile."];
+		// tree[558] = ["%exitabra%"];
+		// tree[559] = ["#abra05#...Give me a moment and I'll get your things back the way you had them, alright?"];
+		// tree[560] = ["%enable-skip%"];
+		// tree[561] = ["%jumpto-skipwithpassword%"];
 
-		if (PlayerData.gender == PlayerData.Gender.Girl)
-		{
-			DialogTree.replace(tree, 326, "that guy! That guy", "that girl! That girl");
-		}
+		// tree[10000] = ["%intro-lights-on%"];
+		// tree[10001] = ["%enable-skip%"];
+
+		// if (PlayerData.gender == PlayerData.Gender.Girl)
+		// {
+		// 	DialogTree.replace(tree, 326, "that guy! That guy", "that girl! That girl");
+		// }
 	}
 
 	public static function sexualSummary(Msg:String):String
