@@ -825,7 +825,7 @@ class PuzzleState extends LevelState
 		{
 			PlayerData.sfw = false;
 		}
-		if (Msg == "%game-sfw")
+		if (Msg == "%game-sfw%")
 		{
 			PlayerData.sfw = true;
 		}
@@ -2366,9 +2366,9 @@ class PuzzleState extends LevelState
 			// hit '%' to skip to the main menu, populating name and stuff
 			if (FlxG.keys.pressed.SHIFT && FlxG.keys.justPressed.FIVE && PlayerData.name == null)
 			{
-				PlayerData.name = "Mr. Handerson"; // ...my name is neo!!!
+				PlayerData.name = "Handerson Jr."; // ...my name is neo!!!
 				PlayerData.gender = PlayerData.Gender.Boy;
-				PlayerData.setSexualPreference(PlayerData.SexualPreference.Boys);
+				PlayerData.setSexualPreference(PlayerData.SexualPreference.Girls);
 				introLightsOn();
 				FlxG.switchState(new MainMenuState());
 			}

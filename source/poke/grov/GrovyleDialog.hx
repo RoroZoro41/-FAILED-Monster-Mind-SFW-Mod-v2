@@ -1,5 +1,6 @@
 package poke.grov;
 
+import flixel.system.debug.watch.Watch;
 import MmStringTools.*;
 import PlayerData.hasMet;
 import flixel.FlxG;
@@ -1971,6 +1972,10 @@ class GrovyleDialog
 
 	public static function boyOrGirlIntro(tree:Array<Array<Object>>)
 	{
+		PlayerData.sfw = false;
+
+		FlxG.watch.add(PlayerData,"sfw");
+
 		tree[0] = ["#grov06#Testing Testing."];
 		tree[1] = ["#grov05#Do you want the game to be sfw or nsfw?"];
 		tree[2] = [10,20];
@@ -1983,7 +1988,9 @@ class GrovyleDialog
 		tree[21] = ["%game-nsfw%"];
 		tree[22] = ["#grov02#Done"];
 
-		trace("Sfw: "+PlayerData.sfw);
+
+
+		
 		// tree[0] = ["%disable-skip%"];
 		// tree[1] = ["%intro-lights-off%"];
 		// tree[2] = ["#grov04#Hello! Before we get started, I should ask... Are you a boy or a girl?"];

@@ -271,7 +271,7 @@ class PlayerData
 	public static var promptDiamondKey:Prompt = Prompt.AlwaysNo;
 	public static var disabledPegColors:Array<String> = [];
 
-	public static var cheatsEnabled:Bool = false;
+	public static var cheatsEnabled:Bool = true;
 	public static var profanity:Bool = true;
 	/**
 	 * If the detail level is lowered, the game tries to conserve memory by
