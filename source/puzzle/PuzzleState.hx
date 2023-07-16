@@ -821,11 +821,11 @@ class PuzzleState extends LevelState
 		{
 			_pokeWindow.doFun(substringBetween(Msg, "%fun-", "%"));
 		}
-		if (Msg == "%game-to-nsfw%")
+		if (Msg == "%game-nsfw%")
 		{
 			PlayerData.sfw = false;
 		}
-		if (Msg == "%game-to-sfw")
+		if (Msg == "%game-sfw")
 		{
 			PlayerData.sfw = true;
 		}

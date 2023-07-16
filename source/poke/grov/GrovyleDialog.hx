@@ -1971,6 +1971,19 @@ class GrovyleDialog
 
 	public static function boyOrGirlIntro(tree:Array<Array<Object>>)
 	{
+		// tree[0] = ["#grov06#Testing Testing."];
+		// tree[1] = ["#grov05#Do you want the game to be sfw or nsfw?"];
+		// tree[2] = [10,20];
+
+		// tree[10] = ["SFW\nplease"];
+		// tree[11] = ["%game-sfw%"];
+		// tree[12] = ["#grov02#Done"];
+
+		// tree[20] = ["NSFW\nplease"];
+		// tree[21] = ["%game-nsfw%"];
+		// tree[22] = ["#grov02#Done"];
+	
+	
 		tree[0] = ["%disable-skip%"];
 		tree[1] = ["%intro-lights-off%"];
 		tree[2] = ["#grov04#Hello! Before we get started, I should ask... Are you a boy or a girl?"];
