@@ -1983,7 +1983,7 @@ class GrovyleDialog
 		tree[21] = ["%game-nsfw%"];
 		tree[22] = ["#grov02#Done"];
 
-		
+		trace("Sfw: "+PlayerData.sfw);
 		// tree[0] = ["%disable-skip%"];
 		// tree[1] = ["%intro-lights-off%"];
 		// tree[2] = ["#grov04#Hello! Before we get started, I should ask... Are you a boy or a girl?"];
