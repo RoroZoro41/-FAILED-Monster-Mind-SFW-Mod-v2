@@ -821,6 +821,14 @@ class PuzzleState extends LevelState
 		{
 			_pokeWindow.doFun(substringBetween(Msg, "%fun-", "%"));
 		}
+		if (Msg == "%game-to-nsfw%")
+		{
+			PlayerData.sfw = false;
+		}
+		if (Msg == "%game-to-sfw")
+		{
+			PlayerData.sfw = true;
+		}
 		if (Msg == "%prompt-password%")
 		{
 			_textWindowGroup = new TextEntryGroup(passwordEntryCallback, KeyConfig.Password);
