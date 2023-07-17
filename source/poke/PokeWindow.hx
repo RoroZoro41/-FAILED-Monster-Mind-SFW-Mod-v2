@@ -253,7 +253,14 @@ class PokeWindow extends MysteryWindow
 		}
 		if (StringTools.startsWith(str, "nude"))
 		{
+			if (!PlayerData.sfw)
+			{
 			setNudity(Std.parseInt(substringAfter(str, "nude")));
+			}
+			else
+			{
+				setNudity(0);
+			}
 		}
 	}
 
