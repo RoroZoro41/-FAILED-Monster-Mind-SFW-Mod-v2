@@ -24,22 +24,31 @@ class RhydonResource
 		head = PlayerData.rhydMale ? AssetPaths.rhydon_head__png : AssetPaths.rhydon_head_f__png;
 		shirt = PlayerData.rhydMale ? AssetPaths.rhydon_shirt__png : AssetPaths.rhydon_shirt_f__png;
 		pants = PlayerData.rhydMale ? AssetPaths.rhydon_pants__png : AssetPaths.rhydon_pants_f__png;
-		//dick = PlayerData.rhydMale ? AssetPaths.rhydon_dick__png : AssetPaths.rhydon_dick_f__png;
-		if (!PlayerData.sfw)
-		{
-			//dick = PlayerData.rhydMale ? AssetPaths.rhydon_dick__png : AssetPaths.rhydon_dick_f__png;
-		}
+		dick = PlayerData.rhydMale ? AssetPaths.rhydon_dick__png : AssetPaths.rhydon_dick_f__png;
+		// if (!PlayerData.sfw)
+		// {
+		// 	dick = PlayerData.rhydMale ? AssetPaths.rhydon_dick__png : AssetPaths.rhydon_dick_f__png;
+		// }
 		button = PlayerData.rhydMale ? AssetPaths.menu_rhyd_head__png : AssetPaths.menu_rhyd_head_f__png;
 		buttonCrotch = PlayerData.rhydMale ? AssetPaths.menu_rhyd_crotch__png : AssetPaths.menu_rhyd_crotch_f__png;
 		if (PlayerData.sfw)
 		{
 			chat = PlayerData.rhydMale ? AssetPaths.rhydon_chat_sfw__png : AssetPaths.rhydon_chat_f_sfw__png;
 		}
-		else {
+		else 
+		{
 			chat = PlayerData.rhydMale ? AssetPaths.rhydon_chat__png : AssetPaths.rhydon_chat_f__png;
 		}
 		interact = PlayerData.rhydMale ? AssetPaths.rhydon_interact__png : AssetPaths.rhydon_interact_f__png;
-		torso0 = PlayerData.rhydMale ? AssetPaths.rhydon_torso0__png : AssetPaths.rhydon_torso0_f__png;
+
+		if (PlayerData.sfw)
+		{
+			torso0 = AssetPaths.rhydon_torso0__png;
+		}
+		else
+		{
+			torso0 = PlayerData.rhydMale ? AssetPaths.rhydon_torso0__png : AssetPaths.rhydon_torso0_f__png;
+		}
 
 		beadHead = PlayerData.rhydMale ? AssetPaths.rhydbeads_head__png : AssetPaths.rhydbeads_head_f__png;
 		beadDick = PlayerData.rhydMale ? AssetPaths.rhydbeads_dick__png : AssetPaths.rhydbeads_dick_f__png;

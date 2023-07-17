@@ -279,6 +279,7 @@ class PlayerData
 	 */
 	public static var detailLevel:DetailLevel = DetailLevel.Max;
 	public static var sfw:Bool = false;
+	
 	public static var supersfw:String = "nsfw";//The three strings should be nsfw sfw supersfw
 
 	#if windows

@@ -96,9 +96,12 @@ class RhydonWindow extends PokeWindow
 		addPart(_torso3);
 
 		_balls = new BouncySprite( -54, MIN_Y - 2, 2, BOUNCE_DURATION, 0.05, _age);
-		// loadTallGraphic(_balls, AssetPaths.rhydon_balls__png);
-		// _balls.animation.add("default", [0]);
-		// _balls.animation.add("rub-balls", [1, 2, 3, 4]);
+		if (!PlayerData.sfw)
+		{
+			loadTallGraphic(_balls, AssetPaths.rhydon_balls__png);
+			_balls.animation.add("default", [0]);
+			_balls.animation.add("rub-balls", [1, 2, 3, 4]);
+		}
 
 		_dick = new BouncySprite( -54, MIN_Y - 3, 3, BOUNCE_DURATION, 0.10, _age);
 		loadTallGraphic(_dick, RhydonResource.dick);
@@ -386,29 +389,42 @@ class RhydonWindow extends PokeWindow
 	override public function setNudity(NudityLevel:Int)
 	{
 		super.setNudity(NudityLevel);
-		if (NudityLevel == 0)
+
+		if(PlayerData.sfw)
+			{
+					_dick.visible = false;
+					_balls.visible = false;
+					_pants.visible = false;
+					_shirt.visible = false;
+					_shirt0.visible = false;
+			}
+		
+		else
 		{
-			_dick.visible = false;
-			_balls.visible = false;
-			_pants.visible = true;
-			_shirt.visible = true;
-			_shirt0.visible = true;
-		}
-		else if (NudityLevel == 1)
-		{
-			_dick.visible = false;
-			_balls.visible = false;
-			_pants.visible = true;
-			_shirt.visible = false;
-			_shirt0.visible = false;
-		}
-		else if (NudityLevel >= 2)
-		{
-			_dick.visible = true;
-			_balls.visible = true;
-			_pants.visible = false;
-			_shirt.visible = false;
-			_shirt0.visible = false;
+			if (NudityLevel == 0)
+			{
+				_dick.visible = false;
+				_balls.visible = false;
+				_pants.visible = true;
+				_shirt.visible = true;
+				_shirt0.visible = true;
+			}
+			else if (NudityLevel == 1)
+			{
+				_dick.visible = false;
+				_balls.visible = false;
+				_pants.visible = true;
+				_shirt.visible = false;
+				_shirt0.visible = false;
+			}
+			else if (NudityLevel >= 2)
+			{
+				_dick.visible = true;
+				_balls.visible = true;
+				_pants.visible = false;
+				_shirt.visible = false;
+				_shirt0.visible = false;
+			}
 		}
 	}
 

@@ -99,7 +99,7 @@ class PokeWindow extends MysteryWindow
 		}
 		else 
 		{
-			this.nudity = 0;
+			this.nudity = 2;
 		}
 	}
 
@@ -262,11 +262,11 @@ class PokeWindow extends MysteryWindow
 		{
 			if (!PlayerData.sfw)
 			{
-			setNudity(Std.parseInt(substringAfter(str, "nude")));
+				setNudity(Std.parseInt(substringAfter(str, "nude")));
 			}
 			else
 			{
-				setNudity(0);
+				setNudity(2);
 			}
 		}
 	}
