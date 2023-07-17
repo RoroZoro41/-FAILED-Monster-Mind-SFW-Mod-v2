@@ -152,6 +152,7 @@ class PuzzleState extends LevelState
 
 	override public function create():Void
 	{
+		FlxG.watch.add(PlayerData,"sfw");
 		super.create();
 		// initialize mousePressedPosition to avoid possible NPE if mouse starts out pressed
 		_mousePressedPosition = FlxG.mouse.getWorldPosition();
@@ -466,12 +467,12 @@ class PuzzleState extends LevelState
 		{
 			// don't add 7-peg pokewindow
 		}
-		else {
-			if (!PlayerData.sfw)
-			{
+		// else {
+		// 	if (!PlayerData.sfw)
+		// 	{
 				_hud.add(_pokeWindow);
-			}
-		}
+		// 	}
+		// }
 		_hud.add(_puzzleLightsManager._spotlights);
 		_hud.add(_buttonGroup);
 
@@ -494,10 +495,10 @@ class PuzzleState extends LevelState
 			_buttonGroup.add(_redoButton);
 		}
 		_buttonGroup.add(_helpButton);
-		if (!PlayerData.sfw)
-		{
+		// if (!PlayerData.sfw)
+		// {
 			addCameraButtons();
-		}
+		// }
 
 		if (LevelIntroDialog.getChatChecksum(this, 4763) % 3 == PlayerData.level
 		|| PlayerData.level == 2 && PlayerData.minigameReward >= 2500)   // guaranteed minigame if the player has 2500 in their minigame bank; it should really happen before then, but you never know
@@ -709,11 +710,11 @@ class PuzzleState extends LevelState
 						// don't cache pokemon; low memory
 						break;
 					}
-					if (PlayerData.sfw)
-					{
-						// don't cache pokemon; not being displayed
-						break;
-					}
+					// if (PlayerData.sfw)
+					// {
+					// 	// don't cache pokemon; not being displayed
+					// 	break;
+					// }
 					PokeWindow.fromString(cast(t[0], String).substring(6, cast(t[0], String).length - 1));
 				}
 			}
@@ -824,10 +825,16 @@ class PuzzleState extends LevelState
 		if (Msg == "%game-nsfw%")
 		{
 			PlayerData.sfw = false;
+			PlayerData.supersfw = "nsfw";
 		}
 		if (Msg == "%game-sfw%")
 		{
 			PlayerData.sfw = true;
+			PlayerData.supersfw = "sfw";
+		}
+		if (Msg == "%game-supersfw%")
+		{
+			PlayerData.supersfw = "supersfw";
 		}
 		if (Msg == "%prompt-password%")
 		{
@@ -1251,10 +1258,10 @@ class PuzzleState extends LevelState
 				{
 					// too many windows... don't enter
 				}
-				else if (PlayerData.sfw)
-				{
-					// sfw; don't show pokewindows
-				}
+				// else if (PlayerData.sfw)
+				// {
+				// 	// sfw; don't show pokewindows
+				// }
 				else
 				{
 					var newWindow:PokeWindow;
@@ -1294,11 +1301,11 @@ class PuzzleState extends LevelState
 			FlxDestroyUtil.destroy(_pokeWindow);
 
 			_pokeWindow = PokeWindow.fromString(substringBetween(Msg, "%swapwindow-", "%"));
-			if (!PlayerData.sfw)
-			{
+			// if (!PlayerData.sfw)
+			// {
 				_hud.insert(0, _pokeWindow);
 				addCameraButtons();
-			}
+			// }
 		}
 		if (StringTools.startsWith(Msg, "%exit"))
 		{
@@ -1899,6 +1906,7 @@ class PuzzleState extends LevelState
 	 */
 	override public function update(elapsed:Float):Void
 	{
+
 		if (_mainRewardCritter._rewardTimer > 0)
 		{
 			_tutorialTime += elapsed;

@@ -1971,11 +1971,11 @@ class GrovyleDialog
 	}
 
 	public static function boyOrGirlIntro(tree:Array<Array<Object>>)
-	{
-		PlayerData.sfw = false;
-
-		FlxG.watch.add(PlayerData,"sfw");
-
+		{
+		// FlxG.watch.add(PlayerData,"sfw");
+		
+		// PlayerData.sfw = false;
+		PlayerData.supersfw = "nsfw";
 		tree[0] = ["#grov06#Testing Testing."];
 		tree[1] = ["#grov05#Do you want the game to be sfw or nsfw?"];
 		tree[2] = [10,20];
@@ -1987,9 +1987,6 @@ class GrovyleDialog
 		tree[20] = ["NSFW\nplease"];
 		tree[21] = ["%game-nsfw%"];
 		tree[22] = ["#grov02#Done"];
-
-
-
 		
 		// tree[0] = ["%disable-skip%"];
 		// tree[1] = ["%intro-lights-off%"];
@@ -2215,10 +2212,10 @@ class GrovyleDialog
 		// tree[10000] = ["%intro-lights-on%"];
 		// tree[10001] = ["%enable-skip%"];
 
-		// if (PlayerData.gender == PlayerData.Gender.Girl)
-		// {
-		// 	DialogTree.replace(tree, 326, "that guy! That guy", "that girl! That girl");
-		// }
+		if (PlayerData.gender == PlayerData.Gender.Girl)
+		{
+			DialogTree.replace(tree, 326, "that guy! That guy", "that girl! That girl");
+		}
 	}
 
 	public static function sexualSummary(Msg:String):String
