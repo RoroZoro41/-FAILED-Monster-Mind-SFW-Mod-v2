@@ -914,18 +914,19 @@ class GrovyleDialog
 
 	public static function random11(tree:Array<Array<Object>>, puzzleState:PuzzleState)
 	{
-		tree[0] = ["#grov05#If you're ever feeling flummoxed by these puzzles, perhaps your penis can have a crack at one."];
-		tree[1] = ["#grov06#Your brain could handle the first puzzle, and your penis can handle the second puzzle-- you can alternate brain, penis, brain, penis and so forth."];
-		tree[2] = ["#grov10#Ah wait but what if your brain gets stuck handling the sexy part at the end!! ...Is that allowed?"];
+		tree[0] = ["%fun-nude0%"];
+		tree[1] = ["#grov05#If you're ever feeling flummoxed by these puzzles, perhaps your penis can have a crack at one."];
+		tree[2] = ["#grov06#Your brain could handle the first puzzle, and your penis can handle the second puzzle-- you can alternate brain, penis, brain, penis and so forth."];
+		tree[3] = ["#grov10#Ah wait but what if your brain gets stuck handling the sexy part at the end!! ...Is that allowed?"];
 		if (PlayerData.gender == PlayerData.Gender.Girl)
 		{
-			DialogTree.replace(tree, 0, "penis", "vagina");
 			DialogTree.replace(tree, 1, "penis", "vagina");
+			DialogTree.replace(tree, 2, "penis", "vagina");
 		}
 		else if (PlayerData.gender == PlayerData.Gender.Complicated)
 		{
-			DialogTree.replace(tree, 0, "penis", "genitals");
 			DialogTree.replace(tree, 1, "penis", "genitals");
+			DialogTree.replace(tree, 2, "penis", "genitals");
 		}
 	}
 

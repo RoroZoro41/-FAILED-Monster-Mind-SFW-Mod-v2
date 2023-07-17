@@ -24,7 +24,11 @@ class RhydonResource
 		head = PlayerData.rhydMale ? AssetPaths.rhydon_head__png : AssetPaths.rhydon_head_f__png;
 		shirt = PlayerData.rhydMale ? AssetPaths.rhydon_shirt__png : AssetPaths.rhydon_shirt_f__png;
 		pants = PlayerData.rhydMale ? AssetPaths.rhydon_pants__png : AssetPaths.rhydon_pants_f__png;
-		dick = PlayerData.rhydMale ? AssetPaths.rhydon_dick__png : AssetPaths.rhydon_dick_f__png;
+		//dick = PlayerData.rhydMale ? AssetPaths.rhydon_dick__png : AssetPaths.rhydon_dick_f__png;
+		if (!PlayerData.sfw)
+		{
+			//dick = PlayerData.rhydMale ? AssetPaths.rhydon_dick__png : AssetPaths.rhydon_dick_f__png;
+		}
 		button = PlayerData.rhydMale ? AssetPaths.menu_rhyd_head__png : AssetPaths.menu_rhyd_head_f__png;
 		buttonCrotch = PlayerData.rhydMale ? AssetPaths.menu_rhyd_crotch__png : AssetPaths.menu_rhyd_crotch_f__png;
 		if (PlayerData.sfw)

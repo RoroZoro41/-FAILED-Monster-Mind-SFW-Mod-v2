@@ -96,9 +96,9 @@ class RhydonWindow extends PokeWindow
 		addPart(_torso3);
 
 		_balls = new BouncySprite( -54, MIN_Y - 2, 2, BOUNCE_DURATION, 0.05, _age);
-		loadTallGraphic(_balls, AssetPaths.rhydon_balls__png);
-		_balls.animation.add("default", [0]);
-		_balls.animation.add("rub-balls", [1, 2, 3, 4]);
+		// loadTallGraphic(_balls, AssetPaths.rhydon_balls__png);
+		// _balls.animation.add("default", [0]);
+		// _balls.animation.add("rub-balls", [1, 2, 3, 4]);
 
 		_dick = new BouncySprite( -54, MIN_Y - 3, 3, BOUNCE_DURATION, 0.10, _age);
 		loadTallGraphic(_dick, RhydonResource.dick);

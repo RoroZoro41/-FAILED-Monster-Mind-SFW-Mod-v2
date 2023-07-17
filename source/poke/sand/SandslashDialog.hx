@@ -99,7 +99,7 @@ class SandslashDialog
 	public static function clueBad(tree:Array<Array<Object>>, puzzleState:PuzzleState) {
 		var clueDialog:ClueDialog = new ClueDialog(tree, puzzleState);
 		var pokeWindow:SandslashWindow = cast puzzleState._pokeWindow;
-		if (pokeWindow.isGagged()) {
+		if (pokeWindow.isGagged() && !PlayerData.sfw) {
 			clueDialog.setGreetings(["#sand16#Whrrmp? Phtrph ffkrrm' rrmb wrph thrp prrzzrl rrmb prr phrm mprmphmmm pr mrr."]);
 			clueDialog.pushExplanation("#sand17#C'mrrm yrr knrr whrmp y'rr drrmb, strrp frrprmm rr-rrmb.");
 			clueDialog.pushExplanation("#sand16#Rr'm hrrmr rrphr hrrr! Whr rph phrph, rr grrmb pr yrr?");
@@ -168,7 +168,7 @@ class SandslashDialog
 	{
 		var helpDialog = newHelpDialog(tree, puzzleState);
 		var pokeWindow:SandslashWindow = cast puzzleState._pokeWindow;
-		if (pokeWindow._partAlpha == 1 && pokeWindow.isGagged()) {
+		if (pokeWindow._partAlpha == 1 && pokeWindow.isGagged() && !PlayerData.sfw) {
 			helpDialog.greetings = [
 				"#sand17#Rr hrr whrr's rrmph, yrr mrrd mrph?"
 			];
@@ -193,7 +193,7 @@ class SandslashDialog
 				tree[index++] = ["#self00#(...Nope, I guess nobody's around...)"];
 			} else {
 				tree[index++] = ["%fun-alpha1%"];
-				if (pokeWindow.isGagged()) {
+				if (pokeWindow.isGagged() && !PlayerData.sfw) {
 					tree[index++] = ["#sand16#...Rr hrph mrr rrdrr whr Rr frrmp thrrmp wrrb wrrph."];
 				} else {
 					tree[index++] = ["#sand07#...I have no idea why I thought that would work."];
@@ -692,7 +692,7 @@ class SandslashDialog
 	
 	public static function abraAbsent(tree:Array<Array<Object>>, puzzleState:PuzzleState)
 	{
-		if (PlayerData.level == 0) {
+		if (PlayerData.level == 0 ) {
 			tree[0] = ["%abra-gone%"];
 			tree[1] = ["#sand02#Hey one sec."];
 			tree[2] = ["#sand14#ABRA!"];
@@ -702,7 +702,7 @@ class SandslashDialog
 			tree[6] = ["%fun-shortbreak%"];
 			tree[10000] = ["%fun-gag%"];
 			tree[10001] = ["%fun-shortbreak%"];
-		} else if (PlayerData.level == 1) {
+		} else if (PlayerData.level == 1 && !PlayerData.sfw) {
 			tree[0] = ["%abra-gone%"];
 			tree[1] = ["%fun-gag%"];
 			tree[2] = ["#sand16#Mm cmwmph m lmph mph mmnm Mbrm'ph bmph stmphpmp dh mthm dmph. Mm nmm mmm, mm pmmbmph phmbm'p mph-"];
@@ -799,7 +799,7 @@ class SandslashDialog
 	
 	public static function needMoreClothes(tree:Array<Array<Object>>, puzzleState:PuzzleState)
 	{
-		if (PlayerData.level == 0) {
+		if (PlayerData.level == 0 && !PlayerData.sfw) {
 			tree[0] = ["%fun-gag%"];
 			tree[1] = ["%fun-plug%"];
 			tree[2] = ["#sand16#Mrrl-rrph!"];

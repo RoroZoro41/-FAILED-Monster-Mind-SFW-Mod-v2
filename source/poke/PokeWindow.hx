@@ -93,7 +93,14 @@ class PokeWindow extends MysteryWindow
 
 	public function setNudity(NudityLevel:Int)
 	{
+		if (!PlayerData.sfw)
+		{
 		this.nudity = NudityLevel;
+		}
+		else 
+		{
+			this.nudity = 0;
+		}
 	}
 
 	/**
