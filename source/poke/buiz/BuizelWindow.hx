@@ -208,32 +208,47 @@ class BuizelWindow extends PokeWindow
 	
 	override public function setNudity(NudityLevel:Int) {
 		super.setNudity(NudityLevel);
-		if (NudityLevel == 0) {
-			_shirt0.visible = true;
-			_shirt1.visible = true;
-			_shorts0.visible = true;
-			_shorts1.visible = true;
-			_balls.visible = false;
-			_dick.visible = false;
-			_ass.visible = false;
+
+		if (!PlayerData.sfw)
+		{
+			if (NudityLevel == 0) {
+				_shirt0.visible = true;
+				_shirt1.visible = true;
+				_shorts0.visible = true;
+				_shorts1.visible = true;
+				_balls.visible = false;
+				_dick.visible = false;
+				_ass.visible = false;
+			}
+			if (NudityLevel == 1) {
+				_shirt0.visible = false;
+				_shirt1.visible = false;
+				_shorts0.visible = true;
+				_shorts1.visible = true;
+				_balls.visible = false;
+				_dick.visible = false;
+				_ass.visible = false;
+			}
+			if (NudityLevel >= 2) {
+				_shirt0.visible = false;
+				_shirt1.visible = false;
+				_shorts0.visible = false;
+				_shorts1.visible = false;
+				_balls.visible = true;
+				_dick.visible = true;
+				_ass.visible = true;
+			}
 		}
-		if (NudityLevel == 1) {
-			_shirt0.visible = false;
-			_shirt1.visible = false;
-			_shorts0.visible = true;
-			_shorts1.visible = true;
-			_balls.visible = false;
-			_dick.visible = false;
-			_ass.visible = false;
-		}
-		if (NudityLevel >= 2) {
+
+		else
+		{
 			_shirt0.visible = false;
 			_shirt1.visible = false;
 			_shorts0.visible = false;
 			_shorts1.visible = false;
-			_balls.visible = true;
-			_dick.visible = true;
-			_ass.visible = true;
+			_balls.visible = false;
+			_dick.visible = false;
+			_ass.visible = false;	
 		}
 	}
 	

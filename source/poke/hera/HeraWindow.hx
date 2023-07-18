@@ -259,50 +259,62 @@ class HeraWindow extends PokeWindow
 	override public function setNudity(NudityLevel:Int)
 	{
 		super.setNudity(NudityLevel);
-		if (NudityLevel == 0)
+		if (!PlayerData.sfw)
 		{
-			_legs.animation.play("pants");
-			_balls.visible = false;
-			_dick.visible = false;
-			_panties.visible = false;
+			if (NudityLevel == 0)
+				{
+					_legs.animation.play("pants");
+					_balls.visible = false;
+					_dick.visible = false;
+					_panties.visible = false;
+				}
+				if (NudityLevel == 1)
+				{
+					_balls.visible = false;
+					if (PlayerData.heraMale)
+					{
+						_legs.animation.play("boxers");
+						_dick.animation.play("boxers");
+					}
+					else
+					{
+						_legs.animation.play("default");
+					}
+					_dick.visible = true;
+					_panties.visible = true;
+				}
+				if (NudityLevel >= 2)
+				{
+					_legs.animation.play("default");
+					_balls.visible = true;
+					_dick.animation.play("default");
+					_dick.visible = true;
+					_panties.visible = false;
+				}
+				if (PlayerData.heraMale)
+				{
+					if (NudityLevel < 2)
+					{
+						// move the dick/balls behind the boxer shorts/pants
+						reposition(_balls, members.indexOf(_legs));
+						reposition(_dick, members.indexOf(_balls) + 1);
+					}
+					else
+					{
+						// move the dick/balls in front of the arms
+						reposition(_balls, members.indexOf(_arms0) + 1);
+						reposition(_dick, members.indexOf(_balls) + 1);
+					}
+				}
 		}
-		if (NudityLevel == 1)
-		{
-			_balls.visible = false;
-			if (PlayerData.heraMale)
-			{
-				_legs.animation.play("boxers");
-				_dick.animation.play("boxers");
-			}
-			else
-			{
-				_legs.animation.play("default");
-			}
-			_dick.visible = true;
-			_panties.visible = true;
-		}
-		if (NudityLevel >= 2)
+
+		else
 		{
 			_legs.animation.play("default");
-			_balls.visible = true;
+			_balls.visible = false;
 			_dick.animation.play("default");
-			_dick.visible = true;
+			_dick.visible = false;
 			_panties.visible = false;
-		}
-		if (PlayerData.heraMale)
-		{
-			if (NudityLevel < 2)
-			{
-				// move the dick/balls behind the boxer shorts/pants
-				reposition(_balls, members.indexOf(_legs));
-				reposition(_dick, members.indexOf(_balls) + 1);
-			}
-			else
-			{
-				// move the dick/balls in front of the arms
-				reposition(_balls, members.indexOf(_arms0) + 1);
-				reposition(_dick, members.indexOf(_balls) + 1);
-			}
 		}
 	}
 

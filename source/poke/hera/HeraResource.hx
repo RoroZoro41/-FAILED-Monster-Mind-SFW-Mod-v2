@@ -26,7 +26,14 @@ class HeraResource
 		dickVibe = PlayerData.heraMale ? AssetPaths.hera_dick_vibe__png : AssetPaths.hera_dick_vibe_f__png;
 		head = PlayerData.heraMale ? AssetPaths.hera_head__png : AssetPaths.hera_head_f__png;
 		legs = PlayerData.heraMale ? AssetPaths.hera_legs__png : AssetPaths.hera_legs_f__png;
-		torso0 = PlayerData.heraMale ? AssetPaths.hera_torso0__png : AssetPaths.hera_torso0_f__png;
+		if (PlayerData.sfw)
+		{
+			torso0 = AssetPaths.hera_torso0__png;
+		}
+		else
+		{
+			torso0 = PlayerData.heraMale ? AssetPaths.hera_torso0__png : AssetPaths.hera_torso0_f__png;
+		}
 		button = PlayerData.heraMale ? AssetPaths.menu_hera__png : AssetPaths.menu_hera_f__png;
 	}
 }

@@ -164,30 +164,46 @@ class LucarioWindow extends PokeWindow
 
 	override public function setNudity(NudityLevel:Int)
 	{
-		if (NudityLevel == 0)
+		if (!PlayerData.sfw)
 		{
-			setHat(true);
+			if (NudityLevel == 0)
+			{
+				setHat(true);
 
-			pants.visible = true;
-			torso1.animation.play("shirt-default");
-			arms.animation.play("shirt-default");
-			neck.animation.play("shirt-default");
-			_dick.visible = false;
-			balls.visible = false;
-			pubicScruff.visible = false;
-		}
-		else if (NudityLevel == 1)
-		{
-			setHat(false);
+				pants.visible = true;
+				torso1.animation.play("shirt-default");
+				arms.animation.play("shirt-default");
+				neck.animation.play("shirt-default");
+				_dick.visible = false;
+				balls.visible = false;
+				pubicScruff.visible = false;
+			}
+			else if (NudityLevel == 1)
+			{
+				setHat(false);
 
-			pants.visible = true;
-			torso1.animation.play("default");
-			arms.animation.play("default");
-			neck.animation.play("default");
-			_dick.visible = false;
-			balls.visible = false;
-			pubicScruff.visible = false;
+				pants.visible = true;
+				torso1.animation.play("default");
+				arms.animation.play("default");
+				neck.animation.play("default");
+				_dick.visible = false;
+				balls.visible = false;
+				pubicScruff.visible = false;
+			}
+			else
+			{
+				setHat(false);
+
+				pants.visible = false;
+				torso1.animation.play("default");
+				arms.animation.play("default");
+				neck.animation.play("default");
+				_dick.visible = true;
+				balls.visible = true;
+				pubicScruff.visible = true;
+			}
 		}
+		
 		else
 		{
 			setHat(false);
@@ -196,9 +212,9 @@ class LucarioWindow extends PokeWindow
 			torso1.animation.play("default");
 			arms.animation.play("default");
 			neck.animation.play("default");
-			_dick.visible = true;
-			balls.visible = true;
-			pubicScruff.visible = true;
+			_dick.visible = false;
+			balls.visible = false;
+			pubicScruff.visible = false;
 		}
 	}
 

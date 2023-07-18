@@ -268,33 +268,45 @@ class AbraWindow extends PokeWindow
 
 	override public function setNudity(NudityLevel:Int)
 	{
-		super.setNudity(NudityLevel);
-		if (NudityLevel == 0)
+		if (!PlayerData.sfw)
 		{
-			_pants.visible = true;
+			super.setNudity(NudityLevel);
+			if (NudityLevel == 0)
+			{
+				_pants.visible = true;
+				_undies.visible = false;
+				_ass.visible = false;
+				_balls.visible = false;
+				_dick.visible = false;
+				_feet.visible = false;
+			}
+			if (NudityLevel == 1)
+			{
+				_pants.visible = false;
+				_undies.visible = true;
+				_ass.visible = false;
+				_balls.visible = false;
+				_dick.visible = false;
+				_feet.visible = false;
+			}
+			if (NudityLevel >= 2)
+			{
+				_pants.visible = false;
+				_undies.visible = false;
+				_ass.visible = true;
+				_balls.visible = true;
+				_dick.visible = true;
+				_feet.visible = true;
+			}
+		}
+		else
+		{
+			_pants.visible = false;
 			_undies.visible = false;
 			_ass.visible = false;
 			_balls.visible = false;
 			_dick.visible = false;
 			_feet.visible = false;
-		}
-		if (NudityLevel == 1)
-		{
-			_pants.visible = false;
-			_undies.visible = true;
-			_ass.visible = false;
-			_balls.visible = false;
-			_dick.visible = false;
-			_feet.visible = false;
-		}
-		if (NudityLevel >= 2)
-		{
-			_pants.visible = false;
-			_undies.visible = false;
-			_ass.visible = true;
-			_balls.visible = true;
-			_dick.visible = true;
-			_feet.visible = true;
 		}
 	}
 

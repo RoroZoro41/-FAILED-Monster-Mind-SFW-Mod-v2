@@ -354,42 +354,54 @@ class SmeargleWindow extends PokeWindow
 	{
 		super.setNudity(NudityLevel);
 		var sweaterAnim:String = "default";
-		if (NudityLevel == 0)
+		
+		if (!PlayerData.sfw)
 		{
-			_underwear.visible = true;
-			sweaterAnim = "sweater";
-			_balls.visible = false;
-			_dick.visible = false;
+			if (NudityLevel == 0)
+			{
+				_underwear.visible = true;
+				sweaterAnim = "sweater";
+				_balls.visible = false;
+				_dick.visible = false;
+			}
+			if (NudityLevel == 1)
+			{
+				_underwear.visible = true;
+				sweaterAnim = "default";
+				_balls.visible = false;
+				_dick.visible = false;
+			}
+			if (NudityLevel >= 2)
+			{
+				_underwear.visible = false;
+				sweaterAnim = "default";
+				_balls.visible = true;
+				_dick.visible = true;
+			}
+	
+			_arms0.animation.play(sweaterAnim);
+			_arms1.animation.play(sweaterAnim);
+			_torso0.animation.play(sweaterAnim);
+			_torso1.animation.play(sweaterAnim);
+	
+			if (sweaterAnim == "sweater")
+			{
+				reposition(_torso1, members.indexOf(_legs1));
+				reposition(_torso0, members.indexOf(_legs1));
+			}
+			else
+			{
+				reposition(_torso1, members.indexOf(_armsBehind));
+				reposition(_torso0, members.indexOf(_armsBehind));
+			}
 		}
-		if (NudityLevel == 1)
-		{
-			_underwear.visible = true;
-			sweaterAnim = "default";
-			_balls.visible = false;
-			_dick.visible = false;
-		}
-		if (NudityLevel >= 2)
+
+		else
 		{
 			_underwear.visible = false;
 			sweaterAnim = "default";
-			_balls.visible = true;
-			_dick.visible = true;
-		}
-
-		_arms0.animation.play(sweaterAnim);
-		_arms1.animation.play(sweaterAnim);
-		_torso0.animation.play(sweaterAnim);
-		_torso1.animation.play(sweaterAnim);
-
-		if (sweaterAnim == "sweater")
-		{
-			reposition(_torso1, members.indexOf(_legs1));
-			reposition(_torso0, members.indexOf(_legs1));
-		}
-		else
-		{
-			reposition(_torso1, members.indexOf(_armsBehind));
-			reposition(_torso0, members.indexOf(_armsBehind));
+			_balls.visible = false;
+			_dick.visible = false;
 		}
 	}
 

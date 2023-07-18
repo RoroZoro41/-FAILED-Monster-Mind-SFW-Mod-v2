@@ -247,29 +247,40 @@ class SandslashWindow extends PokeWindow
 	override public function setNudity(NudityLevel:Int)
 	{
 		super.setNudity(NudityLevel);
-		if (NudityLevel == 0)
+		if (!PlayerData.sfw)
 		{
-			_bowtie.visible = true;
-			_underwear.visible = true;
-			_balls.visible = false;
-			_dick.visible = false;
-			_ass.visible = false;
+			if (NudityLevel == 0)
+			{
+				_bowtie.visible = true;
+				_underwear.visible = true;
+				_balls.visible = false;
+				_dick.visible = false;
+				_ass.visible = false;
+			}
+			if (NudityLevel == 1)
+			{
+				_bowtie.visible = true;
+				_underwear.visible = false;
+				_balls.visible = true;
+				_dick.visible = true;
+				_ass.visible = true;
+			}
+			if (NudityLevel >= 2)
+			{
+				_bowtie.visible = false;
+				_underwear.visible = false;
+				_balls.visible = true;
+				_dick.visible = true;
+				_ass.visible = true;
+			}
 		}
-		if (NudityLevel == 1)
-		{
-			_bowtie.visible = true;
-			_underwear.visible = false;
-			_balls.visible = true;
-			_dick.visible = true;
-			_ass.visible = true;
-		}
-		if (NudityLevel >= 2)
+		else
 		{
 			_bowtie.visible = false;
-			_underwear.visible = false;
-			_balls.visible = true;
-			_dick.visible = true;
-			_ass.visible = true;
+				_underwear.visible = false;
+				_balls.visible = false;
+				_dick.visible = false;
+				_ass.visible = false;
 		}
 	}
 
