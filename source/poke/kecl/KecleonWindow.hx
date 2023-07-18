@@ -64,7 +64,10 @@ class KecleonWindow extends PokeWindow
 
 		_underwear = new BouncySprite( -54, -54, 1, BOUNCE_DURATION, 0.05);
 		_underwear.loadGraphic(KecleonResource.undies);
-		addPart(_underwear);
+		if (!PlayerData.sfw)
+		{
+			addPart(_underwear);
+		}
 	}
 
 	override public function destroy():Void
