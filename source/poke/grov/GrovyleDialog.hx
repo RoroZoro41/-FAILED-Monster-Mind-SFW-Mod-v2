@@ -1975,8 +1975,9 @@ class GrovyleDialog
 		{
 		// FlxG.watch.add(PlayerData,"sfw");
 		
-		// PlayerData.sfw = false;
-		PlayerData.supersfw = "nsfw";
+		PlayerData.sfw = true;
+		
+		
 		tree[0] = ["#grov06#Testing Testing."];
 		tree[1] = ["#grov05#Do you want the game to be sfw or nsfw?"];
 		tree[2] = [10,20];

@@ -267,35 +267,50 @@ class GrovyleWindow extends PokeWindow
 	override public function setNudity(NudityLevel:Int)
 	{
 		super.setNudity(NudityLevel);
-		if (NudityLevel == 0)
+
+		if(!PlayerData.sfw)
 		{
-			_pants.visible = true;
+			if (NudityLevel == 0)
+			{
+				_pants.visible = true;
+				_pantiesWaistband0.visible = false;
+				_pantiesWaistband1.visible = false;
+				_underwear.visible = false;
+				_balls.visible = false;
+				_dick.visible = false;
+				_ass.visible = false;
+			}
+			if (NudityLevel == 1)
+			{
+				_pants.visible = false;
+				_pantiesWaistband0.visible = true;
+				_pantiesWaistband1.visible = true;
+				_underwear.visible = true;
+				_balls.visible = false;
+				_dick.visible = false;
+				_ass.visible = false;
+			}
+			if (NudityLevel >= 2)
+			{
+				_pants.visible = false;
+				_pantiesWaistband0.visible = false;
+				_pantiesWaistband1.visible = false;
+				_underwear.visible = false;
+				_balls.visible = true;
+				_dick.visible = true;
+				_ass.visible = true;
+			}
+		}
+
+		else
+		{
+			_pants.visible = false;
 			_pantiesWaistband0.visible = false;
 			_pantiesWaistband1.visible = false;
 			_underwear.visible = false;
 			_balls.visible = false;
 			_dick.visible = false;
 			_ass.visible = false;
-		}
-		if (NudityLevel == 1)
-		{
-			_pants.visible = false;
-			_pantiesWaistband0.visible = true;
-			_pantiesWaistband1.visible = true;
-			_underwear.visible = true;
-			_balls.visible = false;
-			_dick.visible = false;
-			_ass.visible = false;
-		}
-		if (NudityLevel >= 2)
-		{
-			_pants.visible = false;
-			_pantiesWaistband0.visible = false;
-			_pantiesWaistband1.visible = false;
-			_underwear.visible = false;
-			_balls.visible = true;
-			_dick.visible = true;
-			_ass.visible = true;
 		}
 	}
 
