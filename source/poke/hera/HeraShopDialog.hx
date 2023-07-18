@@ -811,6 +811,7 @@ class HeraShopDialog
 		tree[303] = ["#hera03#...When I turned the lights on I saw a bunch of them dancing wildly around a small container of nail polish remover!"];
 		tree[304] = ["#hera06#I think the chemical in nail polish remover... Is it acetone?"];
 		tree[305] = ["#hera04#I think acetone makes them act a little weird. Not dangerously weird, just like, maybe somewhere between red bull and catnip?"];
+		tree[306] = ["#hera11#Too much will make them puke everwhere though!"];
 		if (ItemDatabase.isMagnezonePresent())
 		{
 			tree[306] = ["#magn13#Administering consumable stimulants without the purview of the FDA is a direct violation of statute 12-373B of the-"];
