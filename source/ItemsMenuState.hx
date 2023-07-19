@@ -94,6 +94,53 @@ class ItemsMenuState extends FlxState
 		add(_midInvisSprites);
 		add(_midSprites);
 
+		if (!PlayerData.sfw)
+		{
+			if (ItemDatabase.playerHasItem(ItemDatabase.ITEM_VIBRATOR))
+				{
+					visualItems.push(new ViSimple(this, AssetPaths.vibe_shop_items__png, 166, 21));
+				}
+				if (ItemDatabase.getPurchasedMysteryBoxCount() >= 8)
+				{
+					visualItems.push(new ViSimple(this, AssetPaths.elecvibe_items__png, 200, 29));
+				}
+				if (ItemDatabase.playerHasItem(ItemDatabase.ITEM_SMALL_GREY_BEADS))
+					{
+						visualItems.push(new ViSimple(this, AssetPaths.small_grey_beads_items__png, 97, -32));
+					}
+					if (ItemDatabase.playerHasItem(ItemDatabase.ITEM_LARGE_GREY_BEADS))
+					{
+						visualItems.push(new ViSimple(this, AssetPaths.xl_grey_beads_items__png, -12, -30));
+					}
+					if (ItemDatabase.playerHasItem(ItemDatabase.ITEM_LARGE_GLASS_BEADS))
+					{
+						visualItems.push(new ViSimple(this, AssetPaths.xl_glass_beads_items__png, 9, 33));
+					}
+					if (ItemDatabase.playerHasUneatenItem(ItemDatabase.ITEM_SMALL_PURPLE_BEADS))
+					{
+						visualItems.push(new ViSimple(this, AssetPaths.small_purple_beads_items__png, -21, 74));
+					}
+					if (ItemDatabase.playerHasItem(ItemDatabase.ITEM_HUGE_DILDO))
+					{
+						visualItems.push(new ViSimple(this, AssetPaths.xl_dildo_items__png, 244, 32));
+					}
+					if (ItemDatabase.playerHasItem(ItemDatabase.ITEM_BLUE_DILDO))
+					{
+						visualItems.push(new ViSimple(this, AssetPaths.blue_dildo_items__png, 271, 76));
+					}
+					if (ItemDatabase.playerHasUneatenItem(ItemDatabase.ITEM_GUMMY_DILDO))
+					{
+						visualItems.push(new ViSimple(this, AssetPaths.gummy_dildo_items__png, 245, 95));
+					}
+					if (ItemDatabase.playerHasItem(ItemDatabase.ITEM_STREAMING_PACKAGE))
+					{
+						visualItems.push(new ViSimple(this, AssetPaths.streaming_package_items__png, 235, 215));
+					}
+					if (ItemDatabase.playerHasItem(ItemDatabase.ITEM_COOKIES) || ItemDatabase.playerHasItem(ItemDatabase.ITEM_INCENSE))
+					{
+						visualItems.push(new ViPokemonLibido(this));
+					}
+		}
 		if (ItemDatabase.playerHasItem(ItemDatabase.ITEM_ASSORTED_GLOVES)
 		|| ItemDatabase.playerHasItem(ItemDatabase.ITEM_INSULATED_GLOVES)
 		|| ItemDatabase.playerHasItem(ItemDatabase.ITEM_GHOST_GLOVES)
@@ -112,62 +159,19 @@ class ItemsMenuState extends FlxState
 		{
 			visualItems.push(new ViPuzzleKeys(this));
 		}
-		if (ItemDatabase.playerHasItem(ItemDatabase.ITEM_VIBRATOR))
-		{
-			visualItems.push(new ViSimple(this, AssetPaths.vibe_shop_items__png, 166, 21));
-		}
-		if (ItemDatabase.getPurchasedMysteryBoxCount() >= 8)
-		{
-			visualItems.push(new ViSimple(this, AssetPaths.elecvibe_items__png, 200, 29));
-		}
 		if (ItemDatabase.playerHasItem(ItemDatabase.ITEM_HAPPY_MEAL))
 		{
 			visualItems.push(new ViSimple(this, AssetPaths.happymeal_items__png, 250, -31));
-		}
-		if (ItemDatabase.playerHasItem(ItemDatabase.ITEM_SMALL_GREY_BEADS))
-		{
-			visualItems.push(new ViSimple(this, AssetPaths.small_grey_beads_items__png, 97, -32));
-		}
-		if (ItemDatabase.playerHasItem(ItemDatabase.ITEM_LARGE_GREY_BEADS))
-		{
-			visualItems.push(new ViSimple(this, AssetPaths.xl_grey_beads_items__png, -12, -30));
-		}
-		if (ItemDatabase.playerHasItem(ItemDatabase.ITEM_LARGE_GLASS_BEADS))
-		{
-			visualItems.push(new ViSimple(this, AssetPaths.xl_glass_beads_items__png, 9, 33));
-		}
-		if (ItemDatabase.playerHasUneatenItem(ItemDatabase.ITEM_SMALL_PURPLE_BEADS))
-		{
-			visualItems.push(new ViSimple(this, AssetPaths.small_purple_beads_items__png, -21, 74));
-		}
-		if (ItemDatabase.playerHasItem(ItemDatabase.ITEM_HUGE_DILDO))
-		{
-			visualItems.push(new ViSimple(this, AssetPaths.xl_dildo_items__png, 244, 32));
-		}
-		if (ItemDatabase.playerHasItem(ItemDatabase.ITEM_BLUE_DILDO))
-		{
-			visualItems.push(new ViSimple(this, AssetPaths.blue_dildo_items__png, 271, 76));
-		}
-		if (ItemDatabase.playerHasUneatenItem(ItemDatabase.ITEM_GUMMY_DILDO))
-		{
-			visualItems.push(new ViSimple(this, AssetPaths.gummy_dildo_items__png, 245, 95));
 		}
 		if (ItemDatabase.playerHasItem(ItemDatabase.ITEM_CALCULATOR))
 		{
 			visualItems.push(new ViSimple(this, AssetPaths.calculator_items__png, 262, 132));
 		}
-		if (ItemDatabase.playerHasItem(ItemDatabase.ITEM_STREAMING_PACKAGE))
-		{
-			visualItems.push(new ViSimple(this, AssetPaths.streaming_package_items__png, 235, 215));
-		}
 		if (ItemDatabase._playerItemIndexes.length == ItemDatabase._itemTypes.length && PlayerData.isAbraNice())
 		{
 			visualItems.push(new ViSimple(this, AssetPaths.trophy_items__png, 126, 98, 160, 200));
 		}
-		if (ItemDatabase.playerHasItem(ItemDatabase.ITEM_COOKIES) || ItemDatabase.playerHasItem(ItemDatabase.ITEM_INCENSE))
-		{
-			visualItems.push(new ViPokemonLibido(this));
-		}
+		
 		if (ItemDatabase.playerHasItem(ItemDatabase.ITEM_ACETONE) || ItemDatabase.playerHasItem(ItemDatabase.ITEM_HYDROGEN_PEROXIDE))
 		{
 			visualItems.push(new ViPegEnergy(this));

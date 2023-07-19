@@ -1,5 +1,6 @@
 package poke.sand;
 
+import flixel.system.debug.watch.Watch;
 import MmStringTools.*;
 import PlayerData.hasMet;
 import critter.Critter;
@@ -72,7 +73,7 @@ class SandslashDialog
 	public static var fixedChats:Array<Dynamic> = [needMoreClothes, stealMoney, abraAbsent, onAgain];
 
 	public static var randomChats:Array<Array<Dynamic>> = [
-		[random00, random01, random02, random03, randomPhone04],
+		[random00, random01, random02, random03, randomPhone04, random05],
 		[random10, random11, random12, random13],
 		[random20, random21, random22, random23]];
 	
@@ -799,144 +800,7 @@ class SandslashDialog
 	
 	public static function needMoreClothes(tree:Array<Array<Object>>, puzzleState:PuzzleState)
 	{
-		if (PlayerData.level == 0 && !PlayerData.sfw) {
-			tree[0] = ["%fun-gag%"];
-			tree[1] = ["%fun-plug%"];
-			tree[2] = ["#sand16#Mrrl-rrph!"];
-			tree[3] = ["#sand17#Lrrph gmph sprmffl mrph lph frphh prpphllt-"];
-			tree[4] = ["%enterabra%"];
-			tree[5] = ["#abra13#No no no no no! What are you doing! I told you TWO articles of clothing! TWO!!!"];
-			tree[6] = ["%fun-gag-out%"];
-			tree[7] = ["#sand12#*sptooey* Aww are you bein' serious right now? C'mon, who's this hurting? Why can't you just let me-"];
-			tree[8] = ["#abra13#A ball gag is NOT an article of clothing! A... a butt plug is NOT an article of clothing!"];
-			tree[9] = ["#sand04#Tsk-- right man, just chill out. I'll be back in a minute."];
-			tree[10] = ["%fun-normal%"];
-			tree[11] = ["%fun-alpha0%"];
-			tree[12] = ["#abra05#Sorry to rain on your, hmmm... naked sandslash parade."];
-			tree[13] = ["#abra04#But if everyone just strolled out here without any clothes, sporting bondage gear and... sexual paraphernalia then... we wouldn't really get any puzzle solving done!"];
-			tree[14] = ["#abra06#And what would this game be like if you removed all of the puzzles?"];
-			tree[15] = [20, 30, 40, 50, 60];
-			
-			tree[20] = ["It would be\nway better"];
-			tree[21] = [100];
-			tree[30] = ["That would\nbe awesome"];
-			tree[31] = [100];
-			tree[40] = ["Fuck these\npuzzles"];
-			tree[41] = [100];
-			tree[50] = ["Are you\nserious"];
-			tree[51] = [100];
-			tree[60] = ["I would\nenjoy that"];
-			tree[61] = [100];
-			
-			tree[100] = ["#abra12#That was a rhetorical question you nitwit!!"];
-			tree[101] = ["#abra08#...You see, in order for-"];
-			tree[102] = ["%fun-alpha1%"];
-			tree[103] = ["#sand05#Alright, this any better?"];
-			tree[104] = ["#abra12#What!! Is that the... are you doing this on purpose!? Don't you own any jeans? Boxer shorts? Footie pajamas? Anything?"];
-			tree[105] = ["#sand06#I dunno man, I think I got like-- this same thong in a transparent mesh..."];
-			tree[106] = ["#abra09#..."];
-			tree[107] = ["#abra08#Just... just start the stupid puzzle..."];
-			tree[10000] = ["%fun-normal%"];
-			tree[10001] = ["%fun-alpha1%"];
-			
-			if (!PlayerData.sandMale) {
-				DialogTree.replace(tree, 104, "jeans? Boxer shorts? Footie pajamas?", "pants? A skirt or a swimsuit...");
-			}
-			if (!PlayerData.abraMale) {
-				DialogTree.replace(tree, 9, "right man", "right girl");
-				DialogTree.replace(tree, 105, "I dunno man", "I dunno girl");
-			}
-		} else if (PlayerData.level == 1) {
-			tree[0] = ["#sand02#Dang you're like, crazy good at these puzzles! Are you-"];
-			tree[1] = ["%enterabra%"];
-			tree[2] = ["#abra13#What...? What are you doing!! Put your underwear back on!"];
-			tree[3] = ["#abra12#I would think YOU of all people would have experience with these types of hentai games!! Underwear comes off last! What's WRONG with you?"];
-			tree[4] = ["#sand03#Wrong with me? ...What's wrong with you! I look outstanding in a bowtie."];
-			tree[5] = ["#sand05#...Besides that, it feels good letting my dick breathe a little."];
-			tree[6] = ["#abra08#*sigh* We're trying to motivate the player here. What's going to motivate the player to solve a second puzzle if you're already naked?"];
-			tree[7] = ["#sand06#Well I dunno man! ...Maybe he's complicated. ...Maybe he's like, y'know, really into necks or something."];
-			tree[8] = ["#abra09#...You're so, so very naive. I can read the player's thoughts, he's already trying to figure out how to quit the game."];
-			tree[9] = ["#sand06#C'mon, what? D'you really think he'd quit?"];
-			tree[10] = ["#abra12#\"Really into necks!\" Tsk. Just you wait, he's going to quit any second now."];
-			if (!PlayerData.sandMale) {
-				DialogTree.replace(tree, 5, "my dick", "my pussy");
-			}
-			if (PlayerData.gender == PlayerData.Gender.Girl) {
-				DialogTree.replace(tree, 7, "he's", "she's");
-				DialogTree.replace(tree, 8, "he's", "she's");
-				DialogTree.replace(tree, 9, "he'd", "she'd");
-				DialogTree.replace(tree, 10, "he's", "she's");
-			} else if (PlayerData.gender == PlayerData.Gender.Complicated) {
-				DialogTree.replace(tree, 7, "he's", "they're");
-				DialogTree.replace(tree, 8, "he's", "they're");
-				DialogTree.replace(tree, 9, "he'd", "they'd");
-				DialogTree.replace(tree, 10, "he's", "they're");
-			}
-			if (!PlayerData.abraMale) {
-				DialogTree.replace(tree, 7, "I dunno man", "I dunno girl");
-			}
-		} else if (PlayerData.level == 2) {
-			tree[0] = ["%enterabra%"];
-			tree[1] = ["#sand03#See, what'd I tell you, Abra! You were all worried about nothing."];
-			tree[2] = ["#sand06#Outta curiosity though <name>, what-- so what kept you motivated to solve that last puzzle?"];
-			tree[3] = [10, 20, 30, 40, 50];
-			
-			tree[10] = ["I'm really\ninto necks"];
-			tree[11] = ["#abra06#Necks? Really? Hmph you got lucky, Sandslash."];
-			tree[12] = ["#abra05#3.2 billion people with internet and we connect with the one guy who's really into necks."];
-			tree[13] = [100];
-			
-			tree[20] = ["I couldn't\nfigure out\nhow to\nquit"];
-			tree[21] = ["#abra06#...Are you actually THAT stupid? Did you even try clicking the button in the co-"];
-			tree[22] = ["#abra08#I mean... errm..."];
-			tree[23] = ["#abra02#Good job! You're still learning, aren't you? There's so many big buttons for you to press."];
-			tree[24] = ["#abra04#I'm glad you stayed with us and solved another puzzle! That puzzle was hard, wasn't it? You're so clever at puzzles."];
-			tree[25] = [100];
-			
-			tree[30] = ["I want\nto fool\naround with\nSandslash\nlater"];
-			tree[31] = ["#abra08#Hmph well, I suppose the nudity is redundant since the player's still motivated by the sexual contact at the end..."];
-			tree[32] = ["#abra12#...But still! No more breaking my rules okay? Three puzzles! Two articles of clothing!"];
-			tree[33] = [200];
-			
-			tree[40] = ["I wanted\nto prove\nAbra wrong"];
-			tree[41] = ["#abra04#Wrong!?! ...I wasn't wrong! I... I said those things to manipulate you."];
-			tree[42] = ["#abra02#I knew you couldn't bear to quit if doing so would give me the satisfaction of being right. Ee-heh-heh."];
-			tree[43] = [200];
-			
-			tree[50] = ["I\njust like\npuzzles"];
-			tree[51] = ["#abra04#Really? You're not motivated by the nudity, the sexual contact? You just like the puzzles?"];
-			tree[52] = ["#abra05#..."];
-			tree[53] = ["#abra00#...Well, I like puzzles too."];
-			tree[54] = [100];
-			
-			tree[100] = ["#sand12#See man, you don't gotta babysit me... Your dress code, your... weird dick rules, none of this shit matters. He's not leavin' or anything. So -"];
-			tree[101] = ["#sand13#So wouldja give us some privacy already? I'm trying' to establish some freakin' ambiance."];
-			tree[102] = ["%exitabra%"];
-			tree[103] = ["#abra13#...Hmph! Rude!"];
-			tree[104] = ["#sand04#So, anyway... ahem-"];
-			tree[105] = ["#sand02#You KNOW you gotta solve this third puzzle or I'll never hear the end of it. Heh! Heh."];
-			
-			tree[200] = ["#sand12#Whatever man, you don't gotta babysit me... Your dress code, your... weird dick rules, none of this shit matters. He's not leavin' or anything. So -"];
-			tree[201] = [101];
-			
-			if (PlayerData.gender == PlayerData.Gender.Girl) {
-				DialogTree.replace(tree, 12, "one guy", "one girl");
-				DialogTree.replace(tree, 100, "He's not", "She's not");
-				DialogTree.replace(tree, 200, "He's not", "She's not");
-			} else if (PlayerData.gender == PlayerData.Gender.Complicated) {
-				DialogTree.replace(tree, 12, "one guy", "one person");
-				DialogTree.replace(tree, 100, "He's not", "They're not");
-				DialogTree.replace(tree, 200, "He's not", "They're not");
-			}
-			if (!PlayerData.sandMale) {
-				DialogTree.replace(tree, 100, "weird dick", "weird pussy");
-				DialogTree.replace(tree, 200, "weird dick", "weird pussy");
-			}
-			if (!PlayerData.abraMale) {
-				DialogTree.replace(tree, 100, "See man", "See Abra");
-				DialogTree.replace(tree, 200, "Whatever man", "Whatever Abra");
-			}
-		}
+		
 	}
 	
 	public static function random00(tree:Array<Array<Object>>, puzzleState:PuzzleState)
@@ -987,17 +851,17 @@ class SandslashDialog
 	}
 	
 	public static function random01(tree:Array<Array<Object>>, puzzleState:PuzzleState){
-		tree[0] = ["#sand02#Oh hey! Ready for some more puzzles? I know I'm-"];
-		tree[1] = ["%enterabra%"];
-		tree[2] = ["#abra04#Just a minute, before you get started- rent's up tomorrow. Don't forget."];
-		tree[3] = ["#sand05#Yeah man! I'm good for it."];
-		tree[4] = ["%exitabra%"];
-		tree[5] = ["#sand02#Abra and I-- We don't got steady jobs like some of the others, but we both got our own ways of makin' a quick buck."];
-		tree[6] = ["#sand03#Heh! Heh. Heh. Tomorrow's gonna be a good day. Alright, first puzzle. Let's do it."];
-		
-		if (!PlayerData.abraMale) {
-			DialogTree.replace(tree, 3, "Yeah man", "Yeah girl");
-		}
+			tree[0] = ["#sand02#Oh hey! Ready for some more puzzles? I know I'm-"];
+			tree[1] = ["%enterabra%"];
+			tree[2] = ["#abra04#Just a minute, before you get started- rent's up tomorrow. Don't forget."];
+			tree[3] = ["#sand05#Yeah man! I'm good for it."];
+			tree[4] = ["%exitabra%"];
+			tree[5] = ["#sand02#Abra and I-- We don't got steady jobs like some of the others, but we both got our own ways of makin' a quick buck."];
+			tree[6] = ["#sand03#Heh! Heh. Heh. Tomorrow's gonna be a good day. Alright, first puzzle. Let's do it."];
+			
+			if (!PlayerData.abraMale) {
+				DialogTree.replace(tree, 3, "Yeah man", "Yeah girl");
+			}
 	}
 	
 	public static function random02(tree:Array<Array<Object>>, puzzleState:PuzzleState){
@@ -1042,7 +906,37 @@ class SandslashDialog
 			tree[2] = ["#sand15#Right, right, I bet you have. Alright why don't you show me what you got~"];
 		}
 	}
-	
+	/**
+	 * in optionMenu:
+-if sfwMode changed
+--toggle = true
+
+in <character>:
+var alreadyHadThisConversation:Bool = false (this is outside the conversation function)
+-if (toggle && PlayerData.sfw && !alreadyHadThisConversation)
+--<Conversation>
+--alreadyHadThisConversation = true
+--toggle = false
+
+-else
+--randomChat
+	 */
+	private static var sandSfwSeen:Bool;
+	public static function random05(tree:Array<Array<Object>>, puzzleState:PuzzleState){
+		trace(PlayerData.sfw,OptionsMenuState.sfwButtonToggle,sandSfwSeen);
+		if ( PlayerData.sfw && OptionsMenuState.sfwButtonToggle && !sandSfwSeen)
+		{
+			tree[0] = ["#sand03#Mode:SFW   Toggle: True   sandSfwSeen:false"];
+			sandSfwSeen = true;
+			OptionsMenuState.sfwButtonToggle = false;
+		}
+		else
+		{
+			tree[0] = ["#sand04#else statement triggered"];
+		}
+		
+	}
+
 	public static function random10(tree:Array<Array<Object>>, puzzleState:PuzzleState)
 	{
 		var count:Int = PlayerData.recentChatCount("sand.randomChats.1.0");

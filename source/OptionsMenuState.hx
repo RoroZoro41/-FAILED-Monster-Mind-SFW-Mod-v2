@@ -28,6 +28,8 @@ class OptionsMenuState extends FlxState
 {
 	private var _handSprite:FlxSprite;
 
+	public static var sfwButtonToggle:Bool;
+
 	public static var DARK_BLUE:FlxColor = 0xFF00647F;
 	public static var MEDIUM_BLUE:FlxColor = 0xFF3FA4BF;
 	public static var LIGHT_BLUE:FlxColor = 0xFF7FE4FF;
@@ -146,7 +148,7 @@ class OptionsMenuState extends FlxState
 		updateDetailButtonText();
 
 		_sfwButton = new FlxText(284, 246, 210, "", 20);
-		_sfwButton.text = PlayerData.sfw ? "SFW MODE: SAFE" : "SFW MODE: PORN";
+		_sfwButton.text = PlayerData.sfw ? "MODE: SAFE" : "MODE: NSFW";
 		_sfwButton.font = AssetPaths.hardpixel__otf;
 		_sfwButton.color = LIGHT_BLUE;
 		add(_sfwButton);
@@ -362,7 +364,15 @@ class OptionsMenuState extends FlxState
 				}
 				availableProgress += 5;
 
-				var percent:Float = FlxMath.bound(Math.round(1000 * progress / availableProgress) / 10, 0, 100);
+				var percent:Float;
+				if (!PlayerData.sfw)
+				{	
+					percent = FlxMath.bound(Math.round(1000 * progress / availableProgress) / 10, 0, 100);
+				}
+				else
+				{
+					percent = FlxMath.bound(Math.round(1000 * progress / availableProgress) / 10, 0, 100);
+				}
 
 				var text:FlxText = new FlxText(rects[i].x + 5, rects[i].y + 26, 190, percent + "%", 20);
 				text.font = AssetPaths.hardpixel__otf;
@@ -484,8 +494,9 @@ class OptionsMenuState extends FlxState
 		if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(_sfwButton))
 		{
 			// clicked sfw button
+			sfwButtonToggle = true;
 			PlayerData.sfw = !PlayerData.sfw;
-			_sfwButton.text = PlayerData.sfw ? "SFW MODE: SAFE" : "SFW MODE: PORN";
+			_sfwButton.text = PlayerData.sfw ? "MODE: SAFE" : "MODE: NSFW";
 			FlxSoundKludge.play(AssetPaths.beep_0065__mp3);
 		}
 

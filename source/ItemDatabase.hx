@@ -65,9 +65,13 @@ class ItemDatabase
 	public static var _itemTypes:Array<ItemType> =
 	{
 		var _tmpItems = [];
+		var _sfwTmpItems = [];
 
 		_tmpItems.push( { name:"Cornstarch Cookies", basePrice:900, shopImage:AssetPaths.cookies_shop__png, dialog:HeraShopDialog.cornstarchCookies, index:ITEM_COOKIES=_tmpItems.length } );
+
 		_tmpItems.push( { name:"Graphing Calculator", basePrice:2200, shopImage:AssetPaths.calculator_shop__png, dialog:HeraShopDialog.calculator, index:ITEM_CALCULATOR=_tmpItems.length } );
+		_sfwTmpItems.push( { name:"Graphing Calculator", basePrice:2200, shopImage:AssetPaths.calculator_shop__png, dialog:HeraShopDialog.calculator, index:ITEM_CALCULATOR=_tmpItems.length } );
+		
 		_tmpItems.push( { name:"Hydrogen Peroxide", basePrice:750, shopImage:AssetPaths.hydrogen_peroxide_shop__png, dialog:HeraShopDialog.hydrogenPeroxide, index:ITEM_HYDROGEN_PEROXIDE=_tmpItems.length } );
 		_tmpItems.push( { name:"Acetone", basePrice:750, shopImage:AssetPaths.acetone_shop__png, dialog:HeraShopDialog.acetone, index:ITEM_ACETONE=_tmpItems.length } );
 		_tmpItems.push( { name:"Romantic Incense", basePrice:3400, shopImage:AssetPaths.incense_shop__png, dialog:HeraShopDialog.romanticIncense, index:ITEM_INCENSE=_tmpItems.length } );
