@@ -73,6 +73,7 @@ class OptionsMenuState extends FlxState
 
 	override public function create():Void
 	{
+		FlxG.watch.add(ItemDatabase,"_playerItemIndexes");
 		Main.overrideFlxGDefaults();
 		super.create();
 
