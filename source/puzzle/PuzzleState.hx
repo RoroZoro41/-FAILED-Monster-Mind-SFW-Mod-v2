@@ -150,10 +150,22 @@ class PuzzleState extends LevelState
 		super(TransIn, TransOut);
 	}
 
+	private var ohCrapButton:FlxButton;
 	override public function create():Void
 	{
-		FlxG.watch.add(PlayerData,"sfw");
+		// FlxG.watch.add(_pokeWindow, "visible");
+		
 		super.create();
+		// trace("Hello World!");
+
+		if (!PlayerData.sfw)
+		{
+			ohCrapButton = newButton(AssetPaths.oh_crap_button__png, FlxG.width - 510, 5, 28, 28, pokewindowVisibilityToggle);
+			_buttonGroup.add(ohCrapButton);
+		}
+
+		
+		FlxG.watch.add(PlayerData,"sfw");
 		// initialize mousePressedPosition to avoid possible NPE if mouse starts out pressed
 		_mousePressedPosition = FlxG.mouse.getWorldPosition();
 		SexyAnims.initialize();
@@ -1489,7 +1501,7 @@ class PuzzleState extends LevelState
 	{
 		for (button in _buttonGroup.members)
 		{
-			if (button == _undoButton || button == _redoButton || button == _helpButton)
+			if (button == _undoButton || button == _redoButton || button == _helpButton || button == ohCrapButton)
 			{
 				// not a camera button...
 				continue;
@@ -1611,6 +1623,14 @@ class PuzzleState extends LevelState
 		}
 	}
 
+	public function pokewindowVisibilityToggle() 
+	{
+		// trace("Pleeeeaassse");
+		// PlayerData.sfw = true;
+		// _pokeWindow.refreshGender();
+		// transOut = MainMenuState.fadeOutSlow();
+		FlxG.switchState(new MainMenuState(MainMenuState.fadeInFast()));
+	}
 	public function clickUndo():Void
 	{
 		if (_undoIndex > 0)
@@ -1763,6 +1783,7 @@ class PuzzleState extends LevelState
 		_rewardCritters = FlxDestroyUtil.destroyArray(_rewardCritters);
 		_buttonGroup = FlxDestroyUtil.destroy(_buttonGroup);
 		_undoButton = FlxDestroyUtil.destroy(_undoButton);
+		ohCrapButton = FlxDestroyUtil.destroy(ohCrapButton);
 		_redoButton = FlxDestroyUtil.destroy(_redoButton);
 		_puzzle = FlxDestroyUtil.destroy(_puzzle);
 		_clueFactory = FlxDestroyUtil.destroy(_clueFactory);

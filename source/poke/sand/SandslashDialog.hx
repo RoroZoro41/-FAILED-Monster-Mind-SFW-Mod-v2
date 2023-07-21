@@ -866,8 +866,8 @@ class SandslashDialog
 	
 	private static var sandSfwSeen:Bool;
 	public static function random02(tree:Array<Array<Object>>, puzzleState:PuzzleState){
-		// if ( PlayerData.sfw && OptionsMenuState.sfwButtonToggle && !sandSfwSeen)
-		// {
+		if ( PlayerData.sfw && OptionsMenuState.sfwButtonToggle && !sandSfwSeen)
+		{
 			
 			tree[0] = ["#sand05#Heh, so you finally show up, things are starting to get interesting around here "];
 		    tree[1] = ["#sand06#So tell me, did you touch some P/V-shapped-disppearer button thingie or something?"];
@@ -883,6 +883,7 @@ class SandslashDialog
 			tree[13] = ["#sand15#You might not be able to enjoy the best side of me but something's something, right? C'mon, just beat the shit out of these easy peasy puzzles so we can get to the se-"];
 			tree[14] = ["#sand12#THE HUG STUFF! Yeah, totally."];
 			tree[15] = ["#sand01#He! You know how much of a fan of hugs I am after all ~"];
+			tree[16] = [44];
 
 			tree[20] = ["Not\nReally"];
 			tree[21] = ["#sand08#Hmmm."];
@@ -890,6 +891,7 @@ class SandslashDialog
 			tree[23] = ["#sand05#Just know that we're still here. We'll be waiting~"];
 			tree[24] = ["#sand15#Now let's plow through these stupid puzzles and get back to the se-"];
 			tree[25] = ["#sand10#Petting! Huh... Petting is fine too."];
+			tree[26] = [44];
 
 			tree[30] = ["I just wanted to\nknow what it did."];
 			tree[31] = ["#sand06#What..."];
@@ -906,25 +908,25 @@ class SandslashDialog
 			tree[42] = ["#sand10#Heracross-provided accesories! Yeah! That was It..."];
 			tree[43] = ["#sand02#Still no idea why the nudity if there's nothing to go for It but let's just solve these simple puzzles and think about that later."];
 
+			OptionsMenuState.sfwButtonToggle = false;
 
-
-		// }
-		// else
-		// {
-		// 	if (PlayerData.difficulty == PlayerData.Difficulty.Easy || PlayerData.difficulty == PlayerData.Difficulty._3Peg) {
-		// 		tree[0] = ["#sand03#Awwwww yeah, let's knock this shit out! Three easy puzzles."];
-		// 		tree[1] = ["#sand01#Three easy puzzles between you and you-know-what."];
-		// 		tree[2] = ["#sand15#Should be no time at all right? Let's get on with it!"];
-		// 	} else {
-		// 		tree[0] = ["#sand06#Awwwww man, you don't like to make this easy for yourself do ya?"];
-		// 		tree[1] = ["#sand05#Three tough puzzles before you and I can-- you know."];
-		// 		tree[2] = ["#sand14#Why'd you hafta pick this difficulty anyway? You tryin' to impress me?"];
+		}
+		else
+		{
+			if (PlayerData.difficulty == PlayerData.Difficulty.Easy || PlayerData.difficulty == PlayerData.Difficulty._3Peg) {
+				tree[0] = ["#sand03#Awwwww yeah, let's knock this shit out! Three easy puzzles."];
+				tree[1] = ["#sand01#Three easy puzzles between you and you-know-what."];
+				tree[2] = ["#sand15#Should be no time at all right? Let's get on with it!"];
+			} else {
+				tree[0] = ["#sand06#Awwwww man, you don't like to make this easy for yourself do ya?"];
+				tree[1] = ["#sand05#Three tough puzzles before you and I can-- you know."];
+				tree[2] = ["#sand14#Why'd you hafta pick this difficulty anyway? You tryin' to impress me?"];
 				
-		// 		if (PlayerData.gender == PlayerData.Gender.Girl) {
-		// 			DialogTree.replace(tree, 0, "man,", "girl,");
-		// 		}
-		// 	}
-		// }
+				if (PlayerData.gender == PlayerData.Gender.Girl) {
+					DialogTree.replace(tree, 0, "man,", "girl,");
+				}
+			}
+		}
 	}
 	
 	public static function random03(tree:Array<Array<Object>>, puzzleState:PuzzleState){
