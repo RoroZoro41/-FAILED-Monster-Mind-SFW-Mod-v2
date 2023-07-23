@@ -158,11 +158,11 @@ class PuzzleState extends LevelState
 		super.create();
 		// trace("Hello World!");
 
-		// if (! PlayerData.sfw)
-		// {
+		if (! PlayerData.sfw)
+		{
 			ohCrapButton = newButton(AssetPaths.oh_crap_button__png, FlxG.width - 510, 5, 28, 28, pokewindowVisibilityToggle);
 			_buttonGroup.add(ohCrapButton);
-		// }
+		}
 
 		
 		FlxG.watch.add(PlayerData,"sfw");
