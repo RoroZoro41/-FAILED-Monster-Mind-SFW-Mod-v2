@@ -80,6 +80,11 @@ class ShopState extends FlxTransitionableState
 	override public function create():Void
 	{
 		super.create();
+
+		ItemDatabase._prevRefillTime = 0;
+		ItemDatabase.refillShop();
+		FlxG.switchState(new ShopState());
+
 		Main.overrideFlxGDefaults();
 		PlayerData.profIndex = -1; // clear profIndex, to avoid hasMet() goofups
 		Critter.initialize(Critter.LOAD_ALL); // load all critters, so player can view them in shop
