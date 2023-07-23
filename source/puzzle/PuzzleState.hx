@@ -158,11 +158,11 @@ class PuzzleState extends LevelState
 		super.create();
 		// trace("Hello World!");
 
-		if (!PlayerData.sfw)
-		{
+		// if (! PlayerData.sfw)
+		// {
 			ohCrapButton = newButton(AssetPaths.oh_crap_button__png, FlxG.width - 510, 5, 28, 28, pokewindowVisibilityToggle);
 			_buttonGroup.add(ohCrapButton);
-		}
+		// }
 
 		
 		FlxG.watch.add(PlayerData,"sfw");
@@ -1623,13 +1623,15 @@ class PuzzleState extends LevelState
 		}
 	}
 
+	var inv:Bool = false;
 	public function pokewindowVisibilityToggle() 
 	{
-		// trace("Pleeeeaassse");
-		// PlayerData.sfw = true;
-		// _pokeWindow.refreshGender();
-		// transOut = MainMenuState.fadeOutSlow();
-		FlxG.switchState(new MainMenuState(MainMenuState.fadeInFast()));
+		if (inv)
+			_pokeWindow.doFun("alpha1");
+		else 
+			_pokeWindow.doFun("alpha0");
+		inv = !inv;
+		
 	}
 	public function clickUndo():Void
 	{
