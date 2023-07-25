@@ -160,7 +160,7 @@ class PuzzleState extends LevelState
 
 		if (! PlayerData.sfw)
 		{
-			ohCrapButton = newButton(AssetPaths.oh_crap_button__png, FlxG.width - 510, 5, 28, 28, pokewindowVisibilityToggle);
+			ohCrapButton = newButton(AssetPaths.oh_crap_button__png, FlxG.width - 510, 5, 28, 28, pokeWindowVisibilityToggle);
 			_buttonGroup.add(ohCrapButton);
 		}
 
@@ -1622,9 +1622,9 @@ class PuzzleState extends LevelState
 			}
 		}
 	}
-
-	var inv:Bool = false;
-	public function pokewindowVisibilityToggle() 
+		
+	private static var inv:Bool = false;
+	public function pokeWindowVisibilityToggle() 
 	{
 		if (inv)
 			_pokeWindow.doFun("alpha1");
@@ -1929,6 +1929,11 @@ class PuzzleState extends LevelState
 	 */
 	override public function update(elapsed:Float):Void
 	{
+
+		if (_helpButton.alpha >= 1.0 && FlxG.keys.justPressed.BACKSPACE)
+			{
+				pokeWindowVisibilityToggle();
+			}
 
 		if (_mainRewardCritter._rewardTimer > 0)
 		{

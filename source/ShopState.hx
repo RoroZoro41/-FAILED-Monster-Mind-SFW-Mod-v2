@@ -81,9 +81,9 @@ class ShopState extends FlxTransitionableState
 	{
 		super.create();
 
-		ItemDatabase._prevRefillTime = 0;
-		ItemDatabase.refillShop();
-		FlxG.switchState(new ShopState());
+		// ItemDatabase._prevRefillTime = 0;
+		// ItemDatabase.refillShop();
+		// FlxG.switchState(new ShopState());
 
 		Main.overrideFlxGDefaults();
 		PlayerData.profIndex = -1; // clear profIndex, to avoid hasMet() goofups
