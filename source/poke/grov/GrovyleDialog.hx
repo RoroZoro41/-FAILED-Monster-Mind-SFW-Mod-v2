@@ -579,35 +579,91 @@ class GrovyleDialog
 		tree[42] = ["#grov01#I wonder if it's hidden somewhere in the back... Yessss..."];
 	}
 
-	public static function random00(tree:Array<Array<Object>>, puzzleState:PuzzleState)
-	{
-		var count:Int = PlayerData.recentChatCount("grov.randomChats.0.0");
 
-		tree[0] = ["#grov05#Ready for another grueling puzzle session eh?"];
-		if (PlayerData.difficulty == PlayerData.Difficulty.Easy)
+	private static var grovSfwNsfwSeen:Bool;
+	public static function random00(tree:Array<Array<Object>>, puzzleState:PuzzleState)
+	{//Use GR004 to access this chat
+
+		// sfw to nsfw dialog
+		if ( !PlayerData.sfw && OptionsMenuState.sfwButtonToggle && !grovSfwNsfwSeen)
 		{
-			if (count == 0)
+			tree[0] = ["#grov06#I wonder how these peg bugs know where to go every time..."];
+			tree[1] = ["#grov05#Ah! Good seeing you <name>, I got distracted with this puzzle for a bit."];
+			tree[2] = ["#grov03#And what an arrival it must be. Abra told us you decided to change things into nsfw mode."];
+			tree[3] = ["#grov06#If It's not something that bothers you, tell me, why did you change It?"];
+			tree[4] = [10,20,30];
+			
+			tree[10] = ["No idea"];
+			tree[11] = ["#grov15#Uh? So you don't know why?"];
+			tree[12] = ["#grov04#Oh well, that's alright."];
+			tree[13] = ["#grov01#I must admit I'm a little bit excited about It myself."];
+			tree[14] = ["#grov03#Can't deny those hugs you gave were nice and all, you're a pretty profesional hugger in fact!"];
+			tree[15] = ["#grov00#I'm just curious about what other stuff you're good at."];
+			tree[16] = ["#grov06#But enough of that, these three mandatory puzzles still stand in the way of that."];
+			tree[18] = ["#grov02#So, come on and let's solve them!"];
+
+			tree[20] = ["I don't want to\nlimit what you\nguys can talk about"];
+			tree[21] = ["#grov04#Oh really?"];
+			tree[22] = ["#grov01#That's really considerate of you."];
+			tree[23] = ["#grov03#You don't have to worry in that regard then."];
+			tree[24] = ["#grov05#I don't really get horny all that often, though having the possibility of always showing It is great."];
+			if (PlayerData.hasMet("sand") && PlayerData.hasMet("rhyd"))
+				tree[25] = ["#grov08#...though I recommend you be careful when tuning on for people like my friends Sandslash and Rhydon."];
+			if (PlayerData.hasMet("sand"))
+				tree[25] = ["#grov08#...though I recommend you be careful when tuning on for people like my friend Sandslash."];
+			if (PlayerData.hasMet("rhyd"))
+				tree[25] = ["#grov08#...though I recommend you be careful when tuning on for people like my friend Rhydon."];
+			tree[26] = ["#grov04#They don't have bad intentions or anything but they're really upfront about their sexual shenanigans."];
+			tree[27] = ["#grov02#So just be prepared for when that happens."];
+			tree[28] = ["#grov03#Speaking of things happening, we still have a handful of puzzles to go through do we?"];
+			
+			tree[30] = ["I finally feel\nprepared for It"];
+			tree[31] = ["#grov04#Mhm I see."];
+			tree[32] = ["#grov05#I can perfectly understand where you're coming from actually."];
+			tree[32] = ["#grov06#At the end of the day we're still people undressing in front of others."];
+			tree[33] = ["#grov15#Even If we aren't physically there, I understand why anyone would like to build up trust first before going full in explicit."];
+			tree[34] = ["#grov05#So with this I'd like to say that It's fine."];
+			tree[35] = ["#grov03#We are all very different people that take things at different paces."];
+			tree[36] = ["#grov05#And that's entirely alright!"];
+			tree[37] = ["#grov00#So now I only hope you have fun discovering this new side of us hehe."];
+			tree[38] = ["#grov03#But before that, you still have to solve the three puzzles."];
+			tree[39] = ["#grov02#No mode that can remove that part though."];
+
+
+			OptionsMenuState.sfwButtonToggle = false;
+			grovSfwNsfwSeen = true;
+		}
+
+		 else 
+		{
+			var count:Int = PlayerData.recentChatCount("grov.randomChats.0.0");
+	
+			tree[0] = ["#grov05#Ready for another grueling puzzle session eh?"];
+			if (PlayerData.difficulty == PlayerData.Difficulty.Easy)
 			{
-				tree[1] = ["#grov04#Don't forget you can summon Abra's help if you get stuck. Best of luck to you!"];
+				if (count == 0)
+				{
+					tree[1] = ["#grov04#Don't forget you can summon Abra's help if you get stuck. Best of luck to you!"];
+				}
+				else
+				{
+					tree[1] = ["#grov02#Oh come now, these should be no problem for you! You've had plenty of practice."];
+				}
 			}
-			else
+			else if (PlayerData.difficulty == PlayerData.Difficulty._3Peg)
 			{
-				tree[1] = ["#grov02#Oh come now, these should be no problem for you! You've had plenty of practice."];
+				tree[1] = ["#grov04#Hmm this one seems to be a little tricky!"];
+				tree[2] = ["#grov02#Let's do our best, shall we."];
 			}
-		}
-		else if (PlayerData.difficulty == PlayerData.Difficulty._3Peg)
-		{
-			tree[1] = ["#grov04#Hmm this one seems to be a little tricky!"];
-			tree[2] = ["#grov02#Let's do our best, shall we."];
-		}
-		else if (PlayerData.difficulty == PlayerData.Difficulty._4Peg)
-		{
-			tree[1] = ["#grov06#Phew, this is where the fun really starts isn't it! Let's see here."];
-		}
-		else if (PlayerData.difficulty == PlayerData.Difficulty._5Peg)
-		{
-			tree[1] = ["#grov07#Gahh just staring at these five peg puzzles melts my brain a little!"];
-			tree[2] = ["#grov02#Okay okay, deep breaths. One clue at a time, we can handle this."];
+			else if (PlayerData.difficulty == PlayerData.Difficulty._4Peg)
+			{
+				tree[1] = ["#grov06#Phew, this is where the fun really starts isn't it! Let's see here."];
+			}
+			else if (PlayerData.difficulty == PlayerData.Difficulty._5Peg)
+			{
+				tree[1] = ["#grov07#Gahh just staring at these five peg puzzles melts my brain a little!"];
+				tree[2] = ["#grov02#Okay okay, deep breaths. One clue at a time, we can handle this."];
+			}
 		}
 	}
 
@@ -771,46 +827,62 @@ class GrovyleDialog
 		tree[10000] = ["%exitbuiz%"];
 	}
 
+	private static var nsfwSfwSeen:Bool;
 	public static function random04(tree:Array<Array<Object>>, puzzleState:PuzzleState)
 	{
-		var count:Int = PlayerData.recentChatCount("grov.randomChats.0.4");
-		if (count % 3 == 0)
+		// Nsfw to sfw Dialog
+		if (PlayerData.sfw && OptionsMenuState.sfwButtonToggle && !nsfwSfwSeen)
 		{
-			tree[0] = ["#grov05#Ah! Fancy seeing-"];
-			tree[1] = ["%entersmea%"];
-			tree[2] = ["#smea02#Oh hey Grovyle! Ummm just wondering..."];
-			tree[3] = ["#smea06#Do you have any advice for these harder puzzles? ...Sometimes I have trouble just getting started..."];
-			tree[4] = ["#grov03#Ah sure, I could offer you some tips! ...Perhaps I can give you one of my tutorials later."];
-			tree[5] = ["%exitsmea%"];
-			tree[6] = ["#smea05#Oh! I forgot you had tutorials for this harder stuff too. Okay! ...I think I saw a button for tutorials on the main menu."];
-			tree[7] = ["#grov02#Anyways <name>, let's see what you can do with this first puzzle!"];
-
-			if (PlayerData.difficulty == PlayerData.Difficulty.Easy)
+			tree[0] = ["#grov05#Oh well, nice seeing you again <name>."];
+			tree[1] = ["#grov04#It seems like you've decided to make our experience less... lewd."];
+			tree[2] = ["#grovI don't really know why you did that, I wouldn't like to pressure you, but let me ask you..."];
+			tree[3] = ["#grov"];
+			
+			OptionsMenuState.sfwButtonToggle = false;
+			nsfwSfwSeen = true;
+		}
+		
+		else
+		{
+			var count:Int = PlayerData.recentChatCount("grov.randomChats.0.4");
+			if (count % 3 == 0)
 			{
-				DialogTree.replace(tree, 3, "harder puzzles", "puzzles");
-				DialogTree.replace(tree, 6, "harder stuff too", "stuff");
+				tree[0] = ["#grov05#Ah! Fancy seeing-"];
+				tree[1] = ["%entersmea%"];
+				tree[2] = ["#smea02#Oh hey Grovyle! Ummm just wondering..."];
+				tree[3] = ["#smea06#Do you have any advice for these harder puzzles? ...Sometimes I have trouble just getting started..."];
+				tree[4] = ["#grov03#Ah sure, I could offer you some tips! ...Perhaps I can give you one of my tutorials later."];
+				tree[5] = ["%exitsmea%"];
+				tree[6] = ["#smea05#Oh! I forgot you had tutorials for this harder stuff too. Okay! ...I think I saw a button for tutorials on the main menu."];
+				tree[7] = ["#grov02#Anyways <name>, let's see what you can do with this first puzzle!"];
+	
+				if (PlayerData.difficulty == PlayerData.Difficulty.Easy)
+				{
+					DialogTree.replace(tree, 3, "harder puzzles", "puzzles");
+					DialogTree.replace(tree, 6, "harder stuff too", "stuff");
+				}
 			}
-		}
-		else if (count % 3 == 1)
-		{
-			tree[0] = ["#grov05#Ah! Fancy seeing you again."];
-			tree[1] = ["#grov04#Let's see what you can do with this first puzzle!"];
-		}
-		else if (count % 3 == 2)
-		{
-			tree[0] = ["#grov05#Ah! Fancy seeing-"];
-			tree[1] = ["%entersmea%"];
-			tree[2] = ["#smea06#Oh hey Grovyle! Do you have any advice for these harder puzzles? ...Sometimes I have trouble just getting started..."];
-			tree[3] = ["#grov06#Ah sure, I... Hmmm, didn't I give you a tutorial on this stuff the other day?"];
-			tree[4] = ["#smea09#Yeah, but I kind of forgot most of it..."];
-			tree[5] = ["#grov03#Ah, well we can always go through the tutorial a second time! It's the same puzzles, but it never hurts to brush up."];
-			tree[6] = ["%exitsmea%"];
-			tree[7] = ["#smea05#Oh! I forgot I could repeat the tutorials. Okay! ...I think I remember seeing the button for tutorials on the main menu."];
-			tree[8] = ["#grov02#Anyways <name>, let's see what you can do with this first puzzle!"];
-
-			if (PlayerData.difficulty == PlayerData.Difficulty.Easy)
+			else if (count % 3 == 1)
 			{
-				DialogTree.replace(tree, 2, "harder puzzles", "puzzles");
+				tree[0] = ["#grov05#Ah! Fancy seeing you again."];
+				tree[1] = ["#grov04#Let's see what you can do with this first puzzle!"];
+			}
+			else if (count % 3 == 2)
+			{
+				tree[0] = ["#grov05#Ah! Fancy seeing-"];
+				tree[1] = ["%entersmea%"];
+				tree[2] = ["#smea06#Oh hey Grovyle! Do you have any advice for these harder puzzles? ...Sometimes I have trouble just getting started..."];
+				tree[3] = ["#grov06#Ah sure, I... Hmmm, didn't I give you a tutorial on this stuff the other day?"];
+				tree[4] = ["#smea09#Yeah, but I kind of forgot most of it..."];
+				tree[5] = ["#grov03#Ah, well we can always go through the tutorial a second time! It's the same puzzles, but it never hurts to brush up."];
+				tree[6] = ["%exitsmea%"];
+				tree[7] = ["#smea05#Oh! I forgot I could repeat the tutorials. Okay! ...I think I remember seeing the button for tutorials on the main menu."];
+				tree[8] = ["#grov02#Anyways <name>, let's see what you can do with this first puzzle!"];
+	
+				if (PlayerData.difficulty == PlayerData.Difficulty.Easy)
+				{
+					DialogTree.replace(tree, 2, "harder puzzles", "puzzles");
+				}
 			}
 		}
 	}

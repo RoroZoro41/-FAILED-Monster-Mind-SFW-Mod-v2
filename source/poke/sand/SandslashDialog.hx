@@ -864,9 +864,11 @@ class SandslashDialog
 			}
 	}
 	
-	private static var sandSfwSeen:Bool;
+	private static var sandNsfwSfwSeen:Bool;
 	public static function random02(tree:Array<Array<Object>>, puzzleState:PuzzleState){
-		if ( PlayerData.sfw && OptionsMenuState.sfwButtonToggle && !sandSfwSeen)
+
+		// nsfw to sfw dialog
+		if ( PlayerData.sfw && OptionsMenuState.sfwButtonToggle && !sandNsfwSfwSeen)
 		{
 			
 			tree[0] = ["#sand05#Heh, so you finally show up, things are starting to get interesting around here "];
@@ -909,7 +911,7 @@ class SandslashDialog
 			tree[43] = ["#sand02#Still no idea why the nudity if there's nothing to go for It but let's just solve these simple puzzles and think about that later."];
 
 			OptionsMenuState.sfwButtonToggle = false;
-
+			sandNsfwSfwSeen = true;
 		}
 		else
 		{
