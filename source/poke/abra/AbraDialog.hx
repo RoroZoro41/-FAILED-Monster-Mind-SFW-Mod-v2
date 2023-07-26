@@ -95,7 +95,7 @@ class AbraDialog
 	public static var sexyAfterChats:Array<Dynamic> = [sexyAfter0, sexyAfter1, sexyAfter2, sexyAfter3];
 	public static var sexyBeforeBad:Array<Dynamic> = [sexyBadHead, sexyBadBelly, sexyBadButt, sexyBadFeet, sexyBadChest, sexyBadShoulders, sexyBadBalls, sexyBadCravesAnal, sexyBeforeJustFinishedGame];
 	public static var sexyAfterGood:Array<Dynamic> = [sexyAfterGood0, sexyAfterGood1];
-	public static var fixedChats:Array<Dynamic> = [vocabulary, iqBrag, story0, story1, story2, story3, epilogue];
+	public static var fixedChats:Array<Dynamic> = [vocabulary, iqBrag, story0, story1, story2, story3, epilogue, nsfwToSfw, sfwToNsfw];
 	public static var random7Peg:Array<Array<Dynamic>> = [[random7Peg0, random7Peg1, random7Peg2, random7Peg3]];
 	public static var randomChats:Array<Array<Dynamic>> = [
 				[random00, random01, random02, random03, random04],
@@ -3825,8 +3825,26 @@ class AbraDialog
 		}
 	}
 
+	public static function nsfwToSfw(tree:Array<Array<Object>>, puzzleState:PuzzleState)
+	{
+
+	}
+
+	public static function sfwToNsfw(tree:Array<Array<Object>>, puzzleState:PuzzleState)
+	{
+
+	}
+	private static var nsfwSfwSeen:Bool;
 	public static function random00(tree:Array<Array<Object>>, puzzleState:PuzzleState)
 	{
+		if (PlayerData.sfw && OptionsMenuState.sfwButtonToggle && !nsfwSfwSeen)
+		{
+
+
+			OptionsMenuState.sfwButtonToggle = false;
+			nsfwSfwSeen = true;
+		}
+		else
 		tree[0] = ["#abra05#Alright <name>, no chit-chat this time. Let's just get started!"];
 	}
 
