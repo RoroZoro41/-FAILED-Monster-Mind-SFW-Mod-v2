@@ -3827,7 +3827,8 @@ class AbraDialog
 
 	public static function nsfwToSfw(tree:Array<Array<Object>>, puzzleState:PuzzleState)
 	{
-
+		if (true)
+			tree[0] = ["#abra05#Testing"];
 	}
 
 	public static function sfwToNsfw(tree:Array<Array<Object>>, puzzleState:PuzzleState)
