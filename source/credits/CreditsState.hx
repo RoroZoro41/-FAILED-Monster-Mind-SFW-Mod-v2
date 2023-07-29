@@ -527,11 +527,11 @@ class CreditsState extends FlxTransitionableState
 		{
 			musicEventStack.addEvent({time:153.22, callback:smeargleButtSqueeze});
 		}
-		else
-		{
-			musicEventStack.addEvent({time:153.22, callback:smeargleButtSqueeze});
+		// else
+		// {
+		// 	musicEventStack.addEvent({time:153.22, callback:smeargleButtSqueeze});
 			// musicEventStack.addEvent({time:153.22, callback:sfwSmeargleButtSqueeze});
-		}
+		// }
 
 		musicEventStack.addEvent({time:157.04, callback:eventChangeBg, args:[bgImageAssets[8]]});
 		musicEventStack.addEvent({time:165.29, callback:eventChangeBg, args:[bgImageAssets[9]]});
