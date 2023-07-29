@@ -281,6 +281,7 @@ class PlayerData
 	public static var sfw:Bool = false;
 	
 	public static var supersfw:String = "nsfw";//The three strings should be nsfw sfw supersfw
+	public static var sfwClothes:Bool = false;
 
 	#if windows
 	// Workaround for Haxe #6630; Reflect.field on public static inline return null.

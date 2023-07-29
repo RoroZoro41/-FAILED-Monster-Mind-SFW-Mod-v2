@@ -941,6 +941,9 @@ class MainMenuState extends FlxTransitionableState
 					}
 					else if (PlayerData.professors[i] == 6)
 					{
+						if (PlayerData.sfw && !PlayerData.sfwClothes)
+							graphic = AssetPaths.menu_smear_sfw__png;
+						else
 						graphic = AssetPaths.menu_smear__png;
 					}
 					else if (PlayerData.professors[i] == 8)

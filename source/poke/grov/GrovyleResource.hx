@@ -74,10 +74,18 @@ class GrovyleResource
 		head1 = PlayerData.grovMale ? AssetPaths.grovyle_head1__png : AssetPaths.grovyle_head1_f__png;
 		pants = PlayerData.grovMale ? AssetPaths.grovyle_pants__png : AssetPaths.grovyle_pants_f__png;
 		underwear = PlayerData.grovMale ? AssetPaths.grovyle_boxers__png : AssetPaths.grovyle_panties__png;
+		
+		if (PlayerData.sfw && !PlayerData.sfwClothes)
+		button = PlayerData.grovMale ? AssetPaths.menu_grovyle_sfw__png : AssetPaths.menu_grovyle_f_sfw__png;
+		else
 		button = PlayerData.grovMale ? AssetPaths.menu_grovyle__png : AssetPaths.menu_grovyle_f__png;
+		
 		chat = PlayerData.grovMale ? AssetPaths.grovyle_chat__png : AssetPaths.grovyle_chat_f__png;
 		wordsSmall = PlayerData.grovMale ? AssetPaths.grovyle_words_small__png : AssetPaths.grovyle_words_small_f__png;
 		tutorialOnButton = PlayerData.grovMale ? AssetPaths.tutorial_on_button__png : AssetPaths.tutorial_on_button_f__png;
+		if (PlayerData.sfw && !PlayerData.sfwClothes)
+		tutorialButton = PlayerData.grovMale ? AssetPaths.menu_grovyle_tut_sfw__png: AssetPaths.menu_grovyle_tut_f_sfw__png;
+		else
 		tutorialButton = PlayerData.grovMale ? AssetPaths.menu_grovyle_tut__png: AssetPaths.menu_grovyle_tut_f__png;
 	}
 

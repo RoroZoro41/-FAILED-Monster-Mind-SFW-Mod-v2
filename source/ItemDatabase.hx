@@ -61,49 +61,60 @@ class ItemDatabase
 	 * When's the last time we last restocked?
 	 */
 	public static var _prevRefillTime:Float = 0;
-
+	
 	public static var _itemTypes:Array<ItemType> =
 	{
 		var _tmpItems = [];
-
-		_tmpItems.push( { name:"Cornstarch Cookies", basePrice:900, shopImage:AssetPaths.cookies_shop__png, dialog:HeraShopDialog.cornstarchCookies, index:ITEM_COOKIES=_tmpItems.length } );//1
-
-		_tmpItems.push( { name:"Graphing Calculator", basePrice:2200, shopImage:AssetPaths.calculator_shop__png, dialog:HeraShopDialog.calculator, index:ITEM_CALCULATOR=_tmpItems.length } );//2
 		
-		_tmpItems.push( { name:"Hydrogen Peroxide", basePrice:750, shopImage:AssetPaths.hydrogen_peroxide_shop__png, dialog:HeraShopDialog.hydrogenPeroxide, index:ITEM_HYDROGEN_PEROXIDE=_tmpItems.length } );//3
+		// if (PlayerData.sfw)
+		// 	{
+				_tmpItems.push( { name:"Cornstarch Cookies", basePrice:900, shopImage:AssetPaths.cookies_shop__png, dialog:HeraShopDialog.cornstarchCookies, index:ITEM_COOKIES=_tmpItems.length } );//1
+				
+				_tmpItems.push( { name:"Romantic Incense", basePrice:3400, shopImage:AssetPaths.incense_shop__png, dialog:HeraShopDialog.romanticIncense, index:ITEM_INCENSE=_tmpItems.length } );//5
+				
+				
+				
+				_tmpItems.push( { name:"Grey Anal Beads", basePrice:1400, shopImage:AssetPaths.small_grey_beads_shop__png, dialog:HeraShopDialog.smallGreyBeads, index:ITEM_SMALL_GREY_BEADS=_tmpItems.length } );//11 // "intro" abra anal beads
+				// _tmpItems.push( { name:"Purple Anal Beads", basePrice:3000, shopImage:AssetPaths.small_purple_beads_shop__png, dialog:HeraShopDialog.smallPurpleBeads, index:ITEM_SMALL_PURPLE_BEADS=_tmpItems.length } );//12 // "expert" abra anal beads
+				// _tmpItems.push( { name:"Huge Glass Anal Beads", basePrice:2400, shopImage:AssetPaths.xl_glass_beads_shop__png, dialog:HeraShopDialog.largeGlassBeads, index:ITEM_LARGE_GLASS_BEADS=_tmpItems.length } );//13 // "intro" rhydon anal beads
+				// _tmpItems.push( { name:"Huge Grey Anal Beads", basePrice:4250, shopImage:AssetPaths.xl_grey_beads_shop__png, dialog:HeraShopDialog.largeGreyBeads, index:ITEM_LARGE_GREY_BEADS=_tmpItems.length } );//14 // "expert" rhydon anal beads
+				
+				// _tmpItems.push( { name:"Streaming Package", basePrice:8500, shopImage:AssetPaths.streaming_package_shop__png, dialog:HeraShopDialog.streamingPackage, index:ITEM_STREAMING_PACKAGE = _tmpItems.length } );//23
+				// _tmpItems.push( { name:"Vibrator", basePrice:3800, shopImage:AssetPaths.vibe_shop__png, dialog:HeraShopDialog.vibrator, index:ITEM_VIBRATOR = _tmpItems.length } );//24
+		
+				// _tmpItems.push( { name:"Blue Dildo", basePrice:1200, shopImage:AssetPaths.blue_dildo_shop__png, dialog:HeraShopDialog.blueDildo, index:ITEM_BLUE_DILDO = _tmpItems.length } );//25
+				// _tmpItems.push( { name:"Gummy Dildo", basePrice:1900, shopImage:AssetPaths.gummy_dildo_shop__png, dialog:HeraShopDialog.gummyDildo, index:ITEM_GUMMY_DILDO = _tmpItems.length } );//26
+				// _tmpItems.push( { name:"Huge Dildo", basePrice:6000, shopImage:AssetPaths.xl_dildo_shop__png, dialog:HeraShopDialog.hugeDildo, index:ITEM_HUGE_DILDO = _tmpItems.length } );//27
+			// }
+
+			// else
+			// {
+				
+				_tmpItems.push( { name:"Hydrogen Peroxide", basePrice:750, shopImage:AssetPaths.hydrogen_peroxide_shop__png, dialog:HeraShopDialog.hydrogenPeroxide, index:ITEM_HYDROGEN_PEROXIDE=_tmpItems.length } );//3
 		_tmpItems.push( { name:"Acetone", basePrice:750, shopImage:AssetPaths.acetone_shop__png, dialog:HeraShopDialog.acetone, index:ITEM_ACETONE=_tmpItems.length } );//4
-		_tmpItems.push( { name:"Romantic Incense", basePrice:3400, shopImage:AssetPaths.incense_shop__png, dialog:HeraShopDialog.romanticIncense, index:ITEM_INCENSE=_tmpItems.length } );//5
 		_tmpItems.push( { name:"Puzzle Keys", basePrice:1400, shopImage:AssetPaths.gold_puzzle_key_shop__png, dialog:HeraShopDialog.goldPuzzleKey, index:ITEM_GOLD_PUZZLE_KEY=_tmpItems.length } );//6
-		_tmpItems.push( { name:"Diamond Puzzle Key", basePrice:4000, shopImage:AssetPaths.diamond_puzzle_key_shop__png, dialog:HeraShopDialog.diamondPuzzleKey, index:ITEM_DIAMOND_PUZZLE_KEY=_tmpItems.length } );//7
-		_tmpItems.push( { name:"Mars Software", basePrice:1100, shopImage:AssetPaths.boy_software_shop__png, dialog:HeraShopDialog.marsSoftware, index:ITEM_MARS_SOFTWARE=_tmpItems.length } );//8
-		_tmpItems.push( { name:"Venus Software", basePrice:1100, shopImage:AssetPaths.girl_software_shop__png, dialog:HeraShopDialog.venusSoftware, index:ITEM_VENUS_SOFTWARE=_tmpItems.length } );//9
-		_tmpItems.push( { name:"Magnetic Desk Toy", basePrice:1600, shopImage:AssetPaths.magnetic_desk_toy_shop__png, dialog:HeraShopDialog.magneticDeskToy, index:ITEM_MAGNETIC_DESK_TOY=_tmpItems.length } );//10
+		// _tmpItems.push( { name:"Diamond Puzzle Key", basePrice:4000, shopImage:AssetPaths.diamond_puzzle_key_shop__png, dialog:HeraShopDialog.diamondPuzzleKey, index:ITEM_DIAMOND_PUZZLE_KEY=_tmpItems.length } );//7
+		// _tmpItems.push( { name:"Mars Software", basePrice:1100, shopImage:AssetPaths.boy_software_shop__png, dialog:HeraShopDialog.marsSoftware, index:ITEM_MARS_SOFTWARE=_tmpItems.length } );//8
+		// _tmpItems.push( { name:"Venus Software", basePrice:1100, shopImage:AssetPaths.girl_software_shop__png, dialog:HeraShopDialog.venusSoftware, index:ITEM_VENUS_SOFTWARE=_tmpItems.length } );//9
+		// _tmpItems.push( { name:"Magnetic Desk Toy", basePrice:1600, shopImage:AssetPaths.magnetic_desk_toy_shop__png, dialog:HeraShopDialog.magneticDeskToy, index:ITEM_MAGNETIC_DESK_TOY=_tmpItems.length } );//10
 
-		_tmpItems.push( { name:"Grey Anal Beads", basePrice:1400, shopImage:AssetPaths.small_grey_beads_shop__png, dialog:HeraShopDialog.smallGreyBeads, index:ITEM_SMALL_GREY_BEADS=_tmpItems.length } );//11 // "intro" abra anal beads
-		_tmpItems.push( { name:"Purple Anal Beads", basePrice:3000, shopImage:AssetPaths.small_purple_beads_shop__png, dialog:HeraShopDialog.smallPurpleBeads, index:ITEM_SMALL_PURPLE_BEADS=_tmpItems.length } );//12 // "expert" abra anal beads
-		_tmpItems.push( { name:"Huge Glass Anal Beads", basePrice:2400, shopImage:AssetPaths.xl_glass_beads_shop__png, dialog:HeraShopDialog.largeGlassBeads, index:ITEM_LARGE_GLASS_BEADS=_tmpItems.length } );//13 // "intro" rhydon anal beads
-		_tmpItems.push( { name:"Huge Grey Anal Beads", basePrice:4250, shopImage:AssetPaths.xl_grey_beads_shop__png, dialog:HeraShopDialog.largeGreyBeads, index:ITEM_LARGE_GREY_BEADS=_tmpItems.length } );//14 // "expert" rhydon anal beads
+		
+		// _tmpItems.push( { name:"Graphing Calculator", basePrice:2200, shopImage:AssetPaths.calculator_shop__png, dialog:HeraShopDialog.calculator, index:ITEM_CALCULATOR=_tmpItems.length } );//2
 
-		_tmpItems.push( { name:"Fruit Bugs", basePrice:300, shopImage:AssetPaths.placeholder_shop__png, dialog:HeraShopDialog.fruitBugs, index:ITEM_FRUIT_BUGS = _tmpItems.length } );//15
-		_tmpItems.push( { name:"Marshmallow Bugs", basePrice:700, shopImage:AssetPaths.placeholder_shop__png, dialog:HeraShopDialog.marshmallowBugs, index:ITEM_MARSHMALLOW_BUGS = _tmpItems.length } );//16
-		_tmpItems.push( { name:"Spooky Bugs", basePrice:2200, shopImage:AssetPaths.placeholder_shop__png, dialog:HeraShopDialog.spookyBugs, index:ITEM_SPOOKY_BUGS = _tmpItems.length } );//17
-		_tmpItems.push( { name:"RetroPie", basePrice:6500, shopImage:AssetPaths.retropie_shop__png, dialog:HeraShopDialog.retroPie, index:ITEM_RETROPIE = _tmpItems.length } );//18
+		// _tmpItems.push( { name:"Fruit Bugs", basePrice:300, shopImage:AssetPaths.placeholder_shop__png, dialog:HeraShopDialog.fruitBugs, index:ITEM_FRUIT_BUGS = _tmpItems.length } );//15
+		// _tmpItems.push( { name:"Marshmallow Bugs", basePrice:700, shopImage:AssetPaths.placeholder_shop__png, dialog:HeraShopDialog.marshmallowBugs, index:ITEM_MARSHMALLOW_BUGS = _tmpItems.length } );//16
+		// _tmpItems.push( { name:"Spooky Bugs", basePrice:2200, shopImage:AssetPaths.placeholder_shop__png, dialog:HeraShopDialog.spookyBugs, index:ITEM_SPOOKY_BUGS = _tmpItems.length } );//17
+		// _tmpItems.push( { name:"RetroPie", basePrice:6500, shopImage:AssetPaths.retropie_shop__png, dialog:HeraShopDialog.retroPie, index:ITEM_RETROPIE = _tmpItems.length } );//18
 
-		_tmpItems.push( { name:"Assorted Gloves", basePrice:240, shopImage:AssetPaths.assorted_gloves_shop__png, dialog:HeraShopDialog.assortedGloves, index:ITEM_ASSORTED_GLOVES = _tmpItems.length } );//19
-		_tmpItems.push( { name:"Insulated Gloves", basePrice:150, shopImage:AssetPaths.insulated_gloves_shop__png, dialog:HeraShopDialog.insulatedGloves, index:ITEM_INSULATED_GLOVES = _tmpItems.length } );//20
-		_tmpItems.push( { name:"Ghost Gloves", basePrice:500, shopImage:AssetPaths.ghost_gloves_shop__png, dialog:HeraShopDialog.ghostGloves, index:ITEM_GHOST_GLOVES = _tmpItems.length } );//21
-		_tmpItems.push( { name:"Vanishing Gloves", basePrice:750, shopImage:AssetPaths.vanishing_gloves_shop__png, dialog:HeraShopDialog.vanishingGloves, index:ITEM_VANISHING_GLOVES = _tmpItems.length } );//22
+		// _tmpItems.push( { name:"Assorted Gloves", basePrice:240, shopImage:AssetPaths.assorted_gloves_shop__png, dialog:HeraShopDialog.assortedGloves, index:ITEM_ASSORTED_GLOVES = _tmpItems.length } );//19
+		// _tmpItems.push( { name:"Insulated Gloves", basePrice:150, shopImage:AssetPaths.insulated_gloves_shop__png, dialog:HeraShopDialog.insulatedGloves, index:ITEM_INSULATED_GLOVES = _tmpItems.length } );//20
+		// _tmpItems.push( { name:"Ghost Gloves", basePrice:500, shopImage:AssetPaths.ghost_gloves_shop__png, dialog:HeraShopDialog.ghostGloves, index:ITEM_GHOST_GLOVES = _tmpItems.length } );//21
+		// _tmpItems.push( { name:"Vanishing Gloves", basePrice:750, shopImage:AssetPaths.vanishing_gloves_shop__png, dialog:HeraShopDialog.vanishingGloves, index:ITEM_VANISHING_GLOVES = _tmpItems.length } );//22
 
-		_tmpItems.push( { name:"Streaming Package", basePrice:8500, shopImage:AssetPaths.streaming_package_shop__png, dialog:HeraShopDialog.streamingPackage, index:ITEM_STREAMING_PACKAGE = _tmpItems.length } );//23
-		_tmpItems.push( { name:"Vibrator", basePrice:3800, shopImage:AssetPaths.vibe_shop__png, dialog:HeraShopDialog.vibrator, index:ITEM_VIBRATOR = _tmpItems.length } );//24
+		// _tmpItems.push( { name:"Happy Meal Toys", basePrice:140, shopImage:AssetPaths.happymeal_shop__png, dialog:HeraShopDialog.happyMeal, index:ITEM_HAPPY_MEAL = _tmpItems.length } );//28
 
-		_tmpItems.push( { name:"Blue Dildo", basePrice:1200, shopImage:AssetPaths.blue_dildo_shop__png, dialog:HeraShopDialog.blueDildo, index:ITEM_BLUE_DILDO = _tmpItems.length } );//25
-		_tmpItems.push( { name:"Gummy Dildo", basePrice:1900, shopImage:AssetPaths.gummy_dildo_shop__png, dialog:HeraShopDialog.gummyDildo, index:ITEM_GUMMY_DILDO = _tmpItems.length } );//26
-		_tmpItems.push( { name:"Huge Dildo", basePrice:6000, shopImage:AssetPaths.xl_dildo_shop__png, dialog:HeraShopDialog.hugeDildo, index:ITEM_HUGE_DILDO = _tmpItems.length } );//27
-		_tmpItems.push( { name:"Happy Meal Toys", basePrice:140, shopImage:AssetPaths.happymeal_shop__png, dialog:HeraShopDialog.happyMeal, index:ITEM_HAPPY_MEAL = _tmpItems.length } );//28
-
-		_tmpItems.push( { name:"Pizza Coupons", basePrice:1200, shopImage:AssetPaths.pizza_coupons_shop__png, dialog:HeraShopDialog.pizzaCoupons, index:ITEM_PIZZA_COUPONS= _tmpItems.length } );//29
-
+		// _tmpItems.push( { name:"Pizza Coupons", basePrice:1200, shopImage:AssetPaths.pizza_coupons_shop__png, dialog:HeraShopDialog.pizzaCoupons, index:ITEM_PIZZA_COUPONS= _tmpItems.length } );//29
+			// }
 		_tmpItems;
 	};
 
@@ -523,9 +534,33 @@ class ShopItem
 		return ItemDatabase.roundUpPrice(getItemType().basePrice, _discount);
 	}
 
+	var nsfwItems:Array<String> = ["Grey Anal Beads", "Romantic Incense", "Cornstarch Cookies"];
 	public function getItemType():ItemType
 	{
-		return ItemDatabase._itemTypes[_itemIndex];
+		// var itemType: ItemType;
+        // var foundNsfw: Bool = false;
+
+        // while (!foundNsfw && _itemIndex < ItemDatabase._itemTypes.length) {
+        //     // Get the item type at the current _itemIndex
+        //     itemType = ItemDatabase._itemTypes[_itemIndex];
+
+        //     // Check if the name is present in the nsfwItems array
+        //     var nsfwItems:Array<String> = ["nsfw_item1", "nsfw_item2", "nsfw_item3"]; // Add your nsfw item names here
+        //     var itemName:String = itemType.name;
+
+        //     if (nsfwItems.indexOf(itemName) >= 0) {
+        //         // The item is NSFW, skip it and move to the next one
+        //         _itemIndex++;
+        //     } else {
+        //         // The item is not NSFW, break out of the loop
+        //         foundNsfw = true;
+        //     }
+        // }
+
+        // return itemType;
+
+        // return itemType;
+				return ItemDatabase._itemTypes[_itemIndex];
 	}
 
 	public function toString():String

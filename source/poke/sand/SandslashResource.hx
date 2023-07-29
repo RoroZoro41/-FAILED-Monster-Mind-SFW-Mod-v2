@@ -22,6 +22,11 @@ class SandslashResource
 
 	public static function initialize():Void
 	{
+		if (PlayerData.sfw && !PlayerData.sfwClothes)
+		{
+			button = PlayerData.sandMale ? AssetPaths.menu_sand_f_sfw__png : AssetPaths.menu_sand_sfw__png;
+		}
+		else
 		button = PlayerData.sandMale ? AssetPaths.menu_sand__png : AssetPaths.menu_sand_f__png;
 		bg = PlayerData.sandMale ? AssetPaths.sand_bg__png : AssetPaths.sand_bg_f__png;
 		bowtie = PlayerData.sandMale ? AssetPaths.sand_bowtie__png : AssetPaths.sand_bowtie_f__png;

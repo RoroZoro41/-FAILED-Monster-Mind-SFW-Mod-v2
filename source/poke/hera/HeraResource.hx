@@ -34,6 +34,9 @@ class HeraResource
 		{
 			torso0 = PlayerData.heraMale ? AssetPaths.hera_torso0__png : AssetPaths.hera_torso0_f__png;
 		}
+		if (PlayerData.sfw && !PlayerData.sfwClothes)
+			button = PlayerData.heraMale ? AssetPaths.menu_hera_sfw__png : AssetPaths.menu_hera_f_sfw__png;
+		else
 		button = PlayerData.heraMale ? AssetPaths.menu_hera__png : AssetPaths.menu_hera_f__png;
 	}
 }

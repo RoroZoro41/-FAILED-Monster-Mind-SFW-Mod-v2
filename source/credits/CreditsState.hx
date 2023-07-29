@@ -108,6 +108,51 @@ class CreditsState extends FlxTransitionableState
 				AssetPaths.credits_luca1__png
 			];
 
+	private var sfwOtherCreditsImageAssets:Array<FlxGraphicAsset> = [
+				AssetPaths.credits09_sfw__png,
+
+				// rhydon
+				AssetPaths.credits_rhyd0_sfw__png,
+				AssetPaths.credits_rhyd1_sfw__png,
+				AssetPaths.credits_rhyd2_sfw__png,
+
+				// buizel
+				AssetPaths.credits_buiz0__png,
+				AssetPaths.credits_buiz1__png,
+
+				// grimer
+				AssetPaths.credits_grim0_sfw__png,
+				AssetPaths.credits_grim1_sfw__png,
+
+				// sandslash
+				AssetPaths.credits_sand0_sfw__png,
+				AssetPaths.credits_sand1_sfw__png,
+
+				// heracross
+				AssetPaths.credits_hera0__png,
+				AssetPaths.credits_hera1__png,
+
+				// grovyle
+				AssetPaths.credits_grov0__png,
+				AssetPaths.credits_grov1__png,
+
+				// magnezone
+				AssetPaths.credits_magn0_sfw__png,
+				AssetPaths.credits_magn1_sfw__png,
+
+				// smeargle
+				AssetPaths.credits_smea0__png,
+				AssetPaths.credits_smea1_sfw__png,
+
+				// kecleon
+				AssetPaths.credits_kecl0_sfw__png,
+				AssetPaths.credits_kecl1_sfw__png,
+
+				// lucario
+				AssetPaths.credits_luca0__png,
+				AssetPaths.credits_luca1_sfw__png
+			];
+
 	private var wisp:FlxEmitter;
 	private var wispLine:WispLine;
 	private var wispLayer:FlxSprite;
@@ -278,6 +323,9 @@ class CreditsState extends FlxTransitionableState
 		add(zappedAbraImage);
 
 		creditsImageFinal = new FlxSprite(0, 0);
+		if (PlayerData.sfw)
+		creditsImageFinal.loadGraphic(AssetPaths.credits_final_sfw__png);
+		else
 		creditsImageFinal.loadGraphic(AssetPaths.credits_final__png);
 		creditsImageFinal.alpha = 0;
 		add(creditsImageFinal);
@@ -291,6 +339,9 @@ class CreditsState extends FlxTransitionableState
 		add(otherCreditsImages);
 
 		happyGrimerImage = new FlxSprite();
+		if (PlayerData.sfw)
+		happyGrimerImage.loadGraphic(AssetPaths.credits_grim1b_sfw__png);
+		else
 		happyGrimerImage.loadGraphic(AssetPaths.credits_grim1b__png);
 		happyGrimerImage.alpha = 0;
 		add(happyGrimerImage);
@@ -307,34 +358,65 @@ class CreditsState extends FlxTransitionableState
 			otherCreditsImageAssets[0] = AssetPaths.credits08c_abraless__png;
 		}
 
+		// if (PlayerData.sfw)
+		// {
+		// 	otherCreditsImageAssets = [];
+		// }
+
 		if (PlayerData.sfw)
 		{
-			otherCreditsImageAssets = [];
+			for (otherCreditsImageAsset in sfwOtherCreditsImageAssets)
+				{
+					var imageIndex:Int = otherCreditsImages.length;
+					var otherCreditsImage:FlxSprite = new FlxSprite(0, 10);
+					otherCreditsImage.loadGraphic(otherCreditsImageAsset);
+					otherCreditsImage.x = FlxG.width / 2 - otherCreditsImage.width / 2 - 130;
+					otherCreditsImage.x += IMAGE_CRAWL_SPACING * imageIndex;
+					if (imageIndex % 2 == 1)
+					{
+						otherCreditsImage.y += otherCreditsImage.height + 10;
+					}
+					otherCreditsImage.x += FlxG.random.int( -3, 3);
+					otherCreditsImage.y += FlxG.random.int( -4, 4);
+					otherCreditsImage.visible = false;
+					otherCreditsImages.add(otherCreditsImage);
+		
+					if (otherCreditsImageAsset == AssetPaths.credits_smea1__png)
+					{
+						smeargleImage = otherCreditsImage;
+					}
+					if (otherCreditsImageAsset == AssetPaths.credits_grim1__png)
+					{
+						sadGrimerImage = otherCreditsImage;
+					}
+				}
 		}
-
-		for (otherCreditsImageAsset in otherCreditsImageAssets)
+		else
 		{
-			var imageIndex:Int = otherCreditsImages.length;
-			var otherCreditsImage:FlxSprite = new FlxSprite(0, 10);
-			otherCreditsImage.loadGraphic(otherCreditsImageAsset);
-			otherCreditsImage.x = FlxG.width / 2 - otherCreditsImage.width / 2 - 130;
-			otherCreditsImage.x += IMAGE_CRAWL_SPACING * imageIndex;
-			if (imageIndex % 2 == 1)
+			for (otherCreditsImageAsset in otherCreditsImageAssets)
 			{
-				otherCreditsImage.y += otherCreditsImage.height + 10;
-			}
-			otherCreditsImage.x += FlxG.random.int( -3, 3);
-			otherCreditsImage.y += FlxG.random.int( -4, 4);
-			otherCreditsImage.visible = false;
-			otherCreditsImages.add(otherCreditsImage);
-
-			if (otherCreditsImageAsset == AssetPaths.credits_smea1__png)
-			{
-				smeargleImage = otherCreditsImage;
-			}
-			if (otherCreditsImageAsset == AssetPaths.credits_grim1__png)
-			{
-				sadGrimerImage = otherCreditsImage;
+				var imageIndex:Int = otherCreditsImages.length;
+				var otherCreditsImage:FlxSprite = new FlxSprite(0, 10);
+				otherCreditsImage.loadGraphic(otherCreditsImageAsset);
+				otherCreditsImage.x = FlxG.width / 2 - otherCreditsImage.width / 2 - 130;
+				otherCreditsImage.x += IMAGE_CRAWL_SPACING * imageIndex;
+				if (imageIndex % 2 == 1)
+				{
+					otherCreditsImage.y += otherCreditsImage.height + 10;
+				}
+				otherCreditsImage.x += FlxG.random.int( -3, 3);
+				otherCreditsImage.y += FlxG.random.int( -4, 4);
+				otherCreditsImage.visible = false;
+				otherCreditsImages.add(otherCreditsImage);
+	
+				if (otherCreditsImageAsset == AssetPaths.credits_smea1__png)
+				{
+					smeargleImage = otherCreditsImage;
+				}
+				if (otherCreditsImageAsset == AssetPaths.credits_grim1__png)
+				{
+					sadGrimerImage = otherCreditsImage;
+				}
 			}
 		}
 
@@ -377,14 +459,15 @@ class CreditsState extends FlxTransitionableState
 			smallSparkEmitter.add(particle);
 		}
 
-		if (!PlayerData.sfw)
-		{
 			eventStack.addEvent({time:1.4, callback:eventFadeInImage, args:[AssetPaths.credits00__png]});
 			musicEventStack.addEvent({time:12.8 - 0.6, callback:eventCycleImage, args:[AssetPaths.credits01__png]});
 			if (PlayerData.abraStoryInt == 5)
 			{
 				musicEventStack.addEvent({time:16.2, callback:eventZapAbra});
 			}
+			if (PlayerData.sfw)
+			musicEventStack.addEvent({time:19.2 - 0.6, callback:eventCycleImage, args:[AssetPaths.credits03_sfw__png]});
+			else
 			musicEventStack.addEvent({time:19.2 - 0.6, callback:eventCycleImage, args:[AssetPaths.credits03__png]});
 			musicEventStack.addEvent({time:25.6 - 0.6, callback:eventCycleImage, args:[AssetPaths.credits04__png]});
 			if (verySick)
@@ -411,7 +494,6 @@ class CreditsState extends FlxTransitionableState
 				musicEventStack.addEvent({time:79.1 - 0.6, callback:eventCycleImage, args:[AssetPaths.credits08c__png]});
 			}
 			musicEventStack.addEvent({time:83.5, callback:eventFadeOutImage, args:[1.2]});
-		}
 
 		eventStack.addEvent({time:2.8, callback:eventFadeInCredits});
 		eventStack.addEvent({time:5.0, callback:eventStartMusic});
@@ -445,19 +527,24 @@ class CreditsState extends FlxTransitionableState
 		{
 			musicEventStack.addEvent({time:153.22, callback:smeargleButtSqueeze});
 		}
+		else
+		{
+			musicEventStack.addEvent({time:153.22, callback:smeargleButtSqueeze});
+			// musicEventStack.addEvent({time:153.22, callback:sfwSmeargleButtSqueeze});
+		}
 
 		musicEventStack.addEvent({time:157.04, callback:eventChangeBg, args:[bgImageAssets[8]]});
 		musicEventStack.addEvent({time:165.29, callback:eventChangeBg, args:[bgImageAssets[9]]});
 		musicEventStack.addEvent({time:173.45, callback:eventBgAlpha, args:[0, 0.7]});
 
-		if (!PlayerData.sfw)
-		{
 			musicEventStack.addEvent({time:180.6 - 0.4, callback:eventCycleImage, args:[AssetPaths.credits96__png]});
 			musicEventStack.addEvent({time:188.6 - 0.4, callback:eventCycleImage, args:[AssetPaths.credits97__png]});
+			if (PlayerData.sfw)
+			musicEventStack.addEvent({time:196.6 - 0.4, callback:eventCycleImage, args:[AssetPaths.credits98_sfw__png]});
+			else
 			musicEventStack.addEvent({time:196.6 - 0.4, callback:eventCycleImage, args:[AssetPaths.credits98__png]});
 			musicEventStack.addEvent({time:204.4 - 0.6, callback:eventFadeOutImage, args:[0.4]});
 			musicEventStack.addEvent({time:204.4 - 0.2, callback:eventFadeInFinalImage});
-		}
 	}
 
 	/**
@@ -508,6 +595,12 @@ class CreditsState extends FlxTransitionableState
 	function smeargleButtSqueeze(args:Array<Dynamic>)
 	{
 		smeargleImage.loadGraphic(AssetPaths.credits_smea1b__png);
+		emitSmallSpark(smeargleImage.x + 133, smeargleImage.y + 133);
+	}
+
+	function sfwSmeargleButtSqueeze(args:Array<Dynamic>)
+	{
+		smeargleImage.loadGraphic(AssetPaths.credits_smea1b_sfw__png);
 		emitSmallSpark(smeargleImage.x + 133, smeargleImage.y + 133);
 	}
 

@@ -19,7 +19,12 @@ class BuizelResource
 		shirt0 = PlayerData.buizMale ? AssetPaths.buizel_shirt0__png : AssetPaths.buizel_shirt0_f__png;
 		chat = PlayerData.buizMale ? AssetPaths.buizel_chat__png : AssetPaths.buizel_chat_f__png;
 		head = PlayerData.buizMale ? AssetPaths.buizel_head__png : AssetPaths.buizel_head_f__png;
+		
+		if (PlayerData.sfw && !PlayerData.sfwClothes)
+		button = PlayerData.buizMale ? AssetPaths.menu_buizel_sfw__png : AssetPaths.menu_buizel_f_sfw__png;
+		else
 		button = PlayerData.buizMale ? AssetPaths.menu_buizel__png : AssetPaths.menu_buizel_f__png;
+		
 		dildoDick = PlayerData.buizMale ? AssetPaths.buizdildo_dick__png : AssetPaths.buizdildo_dick_f__png;
 	}
 }

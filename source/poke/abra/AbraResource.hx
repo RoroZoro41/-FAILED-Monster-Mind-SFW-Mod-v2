@@ -24,6 +24,9 @@ class AbraResource
 
 	public static function initialize():Void
 	{
+		if (PlayerData.sfw && !PlayerData.sfwClothes)
+		titleScreen = PlayerData.abraMale ? AssetPaths.title_screen_abra0_f_sfw__png : AssetPaths.title_screen_abra0_f_sfw__png;
+		else
 		titleScreen = PlayerData.abraMale ? AssetPaths.title_screen_abra0__png : AssetPaths.title_screen_abra0_f__png;
 		undies = PlayerData.abraMale ? AssetPaths.abra_undies__png : AssetPaths.abra_panties__png;
 		head = PlayerData.abraMale ? AssetPaths.abra_head__png : AssetPaths.abra_head_f__png;
@@ -36,9 +39,17 @@ class AbraResource
 		}
 		dick = PlayerData.abraMale ? AssetPaths.abra_dick__png : AssetPaths.abra_dick_f__png;
 		pants = PlayerData.abraMale ? AssetPaths.abra_pants__png : AssetPaths.abra_pants_f__png;
-		button = PlayerData.abraMale ? AssetPaths.menu_abra__png : AssetPaths.menu_abra_f__png;
-		tutorialOffButton = PlayerData.abraMale ? AssetPaths.tutorial_off_button__png : AssetPaths.tutorial_off_button_f__png;
 
+		if (PlayerData.sfw && !PlayerData.sfwClothes)
+		{
+			button = PlayerData.abraMale ? AssetPaths.menu_abra_sfw__png : AssetPaths.menu_abra_f_sfw__png;
+		tutorialOffButton = PlayerData.abraMale ? AssetPaths.tutorial_off_button__png : AssetPaths.tutorial_off_button_f__png;
+		}
+		else
+		{
+			button = PlayerData.abraMale ? AssetPaths.menu_abra__png : AssetPaths.menu_abra_f__png;
+		tutorialOffButton = PlayerData.abraMale ? AssetPaths.tutorial_off_button__png : AssetPaths.tutorial_off_button_f__png;
+		}
 		shopHead = PlayerData.abraMale ? AssetPaths.shop_abra_head__png : AssetPaths.shop_abra_head_f__png;
 		shopPants = PlayerData.abraMale ? AssetPaths.shop_abra_pants__png : AssetPaths.shop_abra_pants_f__png;
 

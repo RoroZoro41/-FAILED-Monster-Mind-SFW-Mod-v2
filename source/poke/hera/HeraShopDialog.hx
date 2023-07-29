@@ -274,7 +274,7 @@ class HeraShopDialog
 			if (ItemDatabase.playerHasItem(ItemDatabase.ITEM_STREAMING_PACKAGE))
 			{
 				tree[0] = ["#hera05#I got the money for those last " + englishNumber(PlayerData.pokeVideos.length) + " streams on pokepornlive.com."
-						   + " Your cut comes to " + moneyString(PlayerData.getPokeVideoReward()) + "!"];
+						+ " Your cut comes to " + moneyString(PlayerData.getPokeVideoReward()) + "!"];
 				DialogTree.replace(tree, 0, "those last one streams", "that last stream");
 				if (PlayerData.videoStatus == PlayerData.VideoStatus.Clean)
 				{
@@ -284,7 +284,7 @@ class HeraShopDialog
 			else
 			{
 				tree[0] = ["#hera05#I went ahead and uploaded those last " + englishNumber(PlayerData.pokeVideos.length) + " videos to pokepornlive.com."
-						   + " Your cut comes to " + moneyString(PlayerData.getPokeVideoReward()) + "!"];
+						+ " Your cut comes to " + moneyString(PlayerData.getPokeVideoReward()) + "!"];
 				DialogTree.replace(tree, 0, "those last one videos", "that last video");
 				if (PlayerData.videoStatus == PlayerData.VideoStatus.Clean)
 				{

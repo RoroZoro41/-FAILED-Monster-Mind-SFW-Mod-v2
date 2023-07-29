@@ -282,6 +282,7 @@ class SexyState<T:PokeWindow> extends FlxTransitionableState
 
 	override public function create():Void
 	{
+		FlxG.watch.add(_rubHandAnim._flxSprite.animation,"name");
 		if (PlayerData.cursorSmellTimeRemaining > 0)
 		{
 			doCursorSmellPenalty();

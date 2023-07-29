@@ -32,6 +32,9 @@ class LucarioResource
 
 	public static function initialize():Void
 	{
+		if (PlayerData.sfw && !PlayerData.sfwClothes)
+		button = PlayerData.lucaMale ? AssetPaths.menu_luca_sfw__png : AssetPaths.menu_luca_f_sfw__png;
+		else
 		button = PlayerData.lucaMale ? AssetPaths.menu_luca__png : AssetPaths.menu_luca_f__png;
 		chat = AssetPaths.luca_chat_hat__png;
 		pants = PlayerData.lucaMale ? AssetPaths.luca_pants__png : AssetPaths.luca_pants_f__png;
