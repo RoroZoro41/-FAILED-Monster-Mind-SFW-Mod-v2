@@ -1217,7 +1217,7 @@ class MainMenuState extends FlxTransitionableState
 						else if (PlayerData.level >= 3)
 						{
 							// start sexystate?
-							if (PlayerData.sfw)
+							if (false/*PlayerData.sfw*/)
 							{
 								// skip sexystate; sfw mode
 								transOut = MainMenuState.fadeOutSlow();

@@ -282,7 +282,7 @@ class SexyState<T:PokeWindow> extends FlxTransitionableState
 
 	override public function create():Void
 	{
-		FlxG.watch.add(_rubHandAnim._flxSprite.animation,"name");
+//		FlxG.watch.add(_rubHandAnim._flxSprite.animation,"name");
 		if (PlayerData.cursorSmellTimeRemaining > 0)
 		{
 			doCursorSmellPenalty();
@@ -417,7 +417,10 @@ class SexyState<T:PokeWindow> extends FlxTransitionableState
 		{
 			_streamButton = newBackButton(streamButtonEvent, AssetPaths.tablet_button__png, _dialogTree);
 			_streamButton.setPosition(667, 5);
-			_backSprites.add(_streamButton);
+			if (!PlayerData.sfw)
+				{
+					_backSprites.add(_streamButton);
+				}
 
 			_tablet = new Tablet(this);
 			_tablet.visible = false;

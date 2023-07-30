@@ -3062,7 +3062,7 @@ class PuzzleState extends LevelState
 			}
 			else
 			{
-				if (PlayerData.sfw)
+				if (false/*PlayerData.sfw*/)
 				{
 					// skip sexystate; sfw mode
 					transOut = MainMenuState.fadeOutSlow();
