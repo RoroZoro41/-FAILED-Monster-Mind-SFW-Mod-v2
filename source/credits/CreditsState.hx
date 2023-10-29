@@ -190,7 +190,6 @@ class CreditsState extends FlxTransitionableState
 		credits.push([]);
 		credits.push([]);
 		credits.push([]);
-		credits.push([]);
 		credits.push(["#words do not exist to express my feelings toward the monster mind players and the monster"
 				+ " mind community. thank you all so much. making this game was a ton of work and i'm grateful that"
 				+ " you enjoyed it enough to play it and finish it. i'm sorry to everyone whose assets i stole to"
@@ -225,7 +224,6 @@ class CreditsState extends FlxTransitionableState
 		credits.push(["", "#(...i am seriously the biggest asshole. i'm so sorry, it's just a really pretty song)"]);
 		credits.push([]);
 		credits.push([]);
-		credits.push([]);
 		credits.push(["testers:"]);
 		credits.push([]);
 		credits.push(["!blake", "!dreamous"]);
@@ -235,6 +233,8 @@ class CreditsState extends FlxTransitionableState
 		credits.push(["...and everyone else"]);
 		credits.push([]);
 		credits.push([]);
+		credits.push(["Monster Minds SFW mod team:"]);
+		credits.push(["Klase, Roro, Xujints"]);
 		credits.push([]);
 		credits.push([]);
 		credits.push([]);

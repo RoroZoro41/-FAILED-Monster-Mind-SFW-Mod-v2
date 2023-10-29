@@ -174,7 +174,7 @@ class MinigameState extends LevelState
 			}
 			else if (denDestination == "%den-sex%")
 			{
-				if (PlayerData.sfw)
+				if (false/*PlayerData.sfw*/)
 				{
 					// skip sexystate; sfw mode...
 					transOut = MainMenuState.fadeOutSlow();
@@ -194,7 +194,7 @@ class MinigameState extends LevelState
 		}
 		else
 		{
-			if (PlayerData.sfw)
+			if (false/*PlayerData.sfw*/)
 			{
 				// skip sexystate; sfw mode...
 				LevelIntroDialog.rotateChat();

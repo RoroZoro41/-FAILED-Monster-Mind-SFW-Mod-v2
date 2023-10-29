@@ -217,23 +217,26 @@ class GrovyleSexyState extends SexyState<GrovyleWindow>
 		sweatAreas.push({chance:4, sprite:_head, sweatArrayArray:headSweatArray});
 		sweatAreas.push({chance:6, sprite:_pokeWindow._torso, sweatArrayArray:torsoSweatArray});
 		
-		if (ItemDatabase.playerHasItem(ItemDatabase.ITEM_SMALL_GREY_BEADS)) {
-			_beadButton = newToyButton(beadButtonEvent, AssetPaths.smallbeads_grey_button__png, _dialogTree);
-			addToyButton(_beadButton, 0.13);
-		}
-		
-		if (ItemDatabase.playerHasItem(ItemDatabase.ITEM_VIBRATOR)) {
-			_vibeButton = newToyButton(vibeButtonEvent, AssetPaths.vibe_button__png, _dialogTree);
-			addToyButton(_vibeButton);
-		}
-		
-		if (ItemDatabase.getPurchasedMysteryBoxCount() >= 8) {
-			_elecvibeButton = newToyButton(elecvibeButtonEvent, AssetPaths.elecvibe_button__png, _dialogTree);
-			addToyButton(_elecvibeButton);
-		}
-		
-		for (perfectVibeChoice in perfectVibeChoices) {
-			unguessedVibeSettings[vibeString(perfectVibeChoice[0], perfectVibeChoice[1])] = true;
+		if (!PlayerData.sfw)
+		{
+			if (ItemDatabase.playerHasItem(ItemDatabase.ITEM_SMALL_GREY_BEADS)) {
+				_beadButton = newToyButton(beadButtonEvent, AssetPaths.smallbeads_grey_button__png, _dialogTree);
+				addToyButton(_beadButton, 0.13);
+			}
+			
+			if (ItemDatabase.playerHasItem(ItemDatabase.ITEM_VIBRATOR)) {
+				_vibeButton = newToyButton(vibeButtonEvent, AssetPaths.vibe_button__png, _dialogTree);
+				addToyButton(_vibeButton);
+			}
+			
+			if (ItemDatabase.getPurchasedMysteryBoxCount() >= 8) {
+				_elecvibeButton = newToyButton(elecvibeButtonEvent, AssetPaths.elecvibe_button__png, _dialogTree);
+				addToyButton(_elecvibeButton);
+			}
+			
+			for (perfectVibeChoice in perfectVibeChoices) {
+				unguessedVibeSettings[vibeString(perfectVibeChoice[0], perfectVibeChoice[1])] = true;
+			}
 		}
 	}
 	
@@ -605,80 +608,83 @@ class GrovyleSexyState extends SexyState<GrovyleWindow>
 
 	override public function touchPart(touchedPart:FlxSprite):Bool
 	{
-		if (FlxG.mouse.justPressed && (touchedPart == _dick || !_male && touchedPart == _pokeWindow._torso && clickedPolygon(touchedPart, vagPolyArray)))
+		if (!PlayerData.sfw)
 		{
-			if (_selfRubTimer < 1 && _pokeWindow._selfTouchTarget == _dick) {
-				// grovyle just grabbed his dick; don't interrupt
-			} else {
-				if (_pokeWindow._selfTouchTarget == _dick) {
-					takeFromGrovyle();
-				}
-				if (_gameState == 200 && pastBonerThreshold() && (_male || _pokeWindow._selfTouchTarget != _pokeWindow._ass)) {
-					interactOn(_dick, "jack-off");
+			if (FlxG.mouse.justPressed && (touchedPart == _dick || !_male && touchedPart == _pokeWindow._torso && clickedPolygon(touchedPart, vagPolyArray)))
+			{
+				if (_selfRubTimer < 1 && _pokeWindow._selfTouchTarget == _dick) {
+					// grovyle just grabbed his dick; don't interrupt
 				} else {
-					interactOn(_dick, "rub-dick");
+					if (_pokeWindow._selfTouchTarget == _dick) {
+						takeFromGrovyle();
+					}
+					if (_gameState == 200 && pastBonerThreshold() && (_male || _pokeWindow._selfTouchTarget != _pokeWindow._ass)) {
+						interactOn(_dick, "jack-off");
+					} else {
+						interactOn(_dick, "rub-dick");
+					}
+					return true;
+				}
+			}
+			if (FlxG.mouse.justPressed && touchedPart == _pokeWindow._balls)
+			{
+				if (_selfRubTimer < 1 && _pokeWindow._selfTouchTarget == _pokeWindow._balls) {
+					// grovyle just grabbed his balls; don't interrupt
+				} else {
+					if (_pokeWindow._selfTouchTarget == _pokeWindow._balls) {
+						takeFromGrovyle();
+					}
+					interactOn(_pokeWindow._balls, "rub-balls");
+					_pokeWindow.reposition(_pokeWindow._interact, _pokeWindow.members.indexOf(_pokeWindow._balls) + 1);				
+					return true;
+				}
+			}
+			if (FlxG.mouse.justPressed && (touchedPart == _pokeWindow._ass
+				|| touchedPart == _pokeWindow._torso && clickedPolygon(touchedPart, assPolyArray)
+				|| touchedPart == _pokeWindow._tail && clickedPolygon(touchedPart, tailAssPolyArray))) {
+				if (_selfRubTimer < 1 && _pokeWindow._selfTouchTarget == _pokeWindow._ass) {
+					// grovyle just grabbed his ass; don't interrupt
+				} else {
+					if (_pokeWindow._selfTouchTarget == _pokeWindow._ass) {
+						takeFromGrovyle();
+					}
+					updateAssFingeringAnimation();
+					interactOn(_pokeWindow._ass, "finger-ass");
+					if (!_male && _pokeWindow._selfTouchTarget != _pokeWindow._dick) {
+						// vagina stretches when fingering ass
+						_rubBodyAnim2 = new FancyAnim(_dick, "finger-ass");
+						_rubBodyAnim2.setSpeed(0.65 * 2.5, 0.65 * 1.5);
+					}
+					_rubBodyAnim.setSpeed(0.65 * 2.5, 0.65 * 1.5);
+					_rubHandAnim.setSpeed(0.65 * 2.5, 0.65 * 1.5);
+					if (_male) {
+						ballOpacityTween = FlxTweenUtil.retween(ballOpacityTween, _pokeWindow._balls, { alpha:0.65 }, 0.25);
+					}
+					return true;
+				}
+			}
+			if (touchedPart == _pokeWindow._legs && _clickedDuration > 1.5) {
+				if (clickedPolygon(touchedPart, leftCalfPolyArray)) {
+					// raise left leg
+					_pokeWindow._legs.animation.play("raise-left-leg");
+					_pokeWindow._feet.animation.play("raise-left-leg");
+					_armsAndLegsArranger._armsAndLegsTimer = FlxG.random.float(4, 6);
+				}
+				if (clickedPolygon(touchedPart, rightCalfPolyArray)) {
+					// raise right leg
+					_pokeWindow._legs.animation.play("raise-right-leg");
+					_pokeWindow._feet.animation.play("raise-right-leg");
+					_armsAndLegsArranger._armsAndLegsTimer = FlxG.random.float(4, 6);
+				}
+			}
+			if (FlxG.mouse.justPressed && touchedPart == _pokeWindow._feet) {
+				if (_pokeWindow._feet.animation.name == "raise-left-leg") {
+					interactOn(_pokeWindow._feet, "rub-left-foot", "raise-left-leg");
+				} else {
+					interactOn(_pokeWindow._feet, "rub-right-foot", "raise-right-leg");
 				}
 				return true;
 			}
-		}
-		if (FlxG.mouse.justPressed && touchedPart == _pokeWindow._balls)
-		{
-			if (_selfRubTimer < 1 && _pokeWindow._selfTouchTarget == _pokeWindow._balls) {
-				// grovyle just grabbed his balls; don't interrupt
-			} else {
-				if (_pokeWindow._selfTouchTarget == _pokeWindow._balls) {
-					takeFromGrovyle();
-				}
-				interactOn(_pokeWindow._balls, "rub-balls");
-				_pokeWindow.reposition(_pokeWindow._interact, _pokeWindow.members.indexOf(_pokeWindow._balls) + 1);				
-				return true;
-			}
-		}
-		if (FlxG.mouse.justPressed && (touchedPart == _pokeWindow._ass
-			|| touchedPart == _pokeWindow._torso && clickedPolygon(touchedPart, assPolyArray)
-			|| touchedPart == _pokeWindow._tail && clickedPolygon(touchedPart, tailAssPolyArray))) {
-			if (_selfRubTimer < 1 && _pokeWindow._selfTouchTarget == _pokeWindow._ass) {
-				// grovyle just grabbed his ass; don't interrupt
-			} else {
-				if (_pokeWindow._selfTouchTarget == _pokeWindow._ass) {
-					takeFromGrovyle();
-				}
-				updateAssFingeringAnimation();
-				interactOn(_pokeWindow._ass, "finger-ass");
-				if (!_male && _pokeWindow._selfTouchTarget != _pokeWindow._dick) {
-					// vagina stretches when fingering ass
-					_rubBodyAnim2 = new FancyAnim(_dick, "finger-ass");
-					_rubBodyAnim2.setSpeed(0.65 * 2.5, 0.65 * 1.5);
-				}
-				_rubBodyAnim.setSpeed(0.65 * 2.5, 0.65 * 1.5);
-				_rubHandAnim.setSpeed(0.65 * 2.5, 0.65 * 1.5);
-				if (_male) {
-					ballOpacityTween = FlxTweenUtil.retween(ballOpacityTween, _pokeWindow._balls, { alpha:0.65 }, 0.25);
-				}
-				return true;
-			}
-		}
-		if (touchedPart == _pokeWindow._legs && _clickedDuration > 1.5) {
-			if (clickedPolygon(touchedPart, leftCalfPolyArray)) {
-				// raise left leg
-				_pokeWindow._legs.animation.play("raise-left-leg");
-				_pokeWindow._feet.animation.play("raise-left-leg");
-				_armsAndLegsArranger._armsAndLegsTimer = FlxG.random.float(4, 6);
-			}
-			if (clickedPolygon(touchedPart, rightCalfPolyArray)) {
-				// raise right leg
-				_pokeWindow._legs.animation.play("raise-right-leg");
-				_pokeWindow._feet.animation.play("raise-right-leg");
-				_armsAndLegsArranger._armsAndLegsTimer = FlxG.random.float(4, 6);
-			}
-		}
-		if (FlxG.mouse.justPressed && touchedPart == _pokeWindow._feet) {
-			if (_pokeWindow._feet.animation.name == "raise-left-leg") {
-				interactOn(_pokeWindow._feet, "rub-left-foot", "raise-left-leg");
-			} else {
-				interactOn(_pokeWindow._feet, "rub-right-foot", "raise-right-leg");
-			}
-			return true;
 		}
 		return false;
 	}
