@@ -581,7 +581,10 @@ class HeraDialog
 			tree[5] = ["%fun-alpha0%"];
 			tree[6] = ["%fun-nude0%"];
 			tree[7] = ["#hera10#I'm... please don't leave! Gwehh..."];
-			tree[8] = ["#hera11#Ack, fragnazzle! ...Stupid underwear! Why do you have so many holes?"];
+			if (PlayerData.sfw && !PlayerData.sfwClothes)
+				tree[8] = ["#hera11#...Not prepared! Not prepared at all!"];
+			else
+				tree[8] = ["#hera11#Ack, fragnazzle! ...Stupid underwear! Why do you have so many holes?"];
 			tree[9] = ["%fun-alpha1%"];
 			tree[10] = ["#hera03#Gweh! I'm here! ...<name>! Hello! -pant- -pant- ...Hello!"];
 			tree[11] = ["#hera07#Give me... Gweh... Give me a minute to catch my breath... -pant- -pant-"];
@@ -599,7 +602,10 @@ class HeraDialog
 			tree[5] = ["%fun-alpha0%"];
 			tree[6] = ["%fun-nude0%"];
 			tree[7] = ["#hera10#I'm... please don't leave! Gwehh..."];
-			tree[8] = ["#hera11#Ack, what in the...! ...Why doesn't this belt buckle buckle!? This is the... stupidest..."];
+			if (PlayerData.sfw && !PlayerData.sfwClothes)
+				tree[8] = ["#hera11#Ack, what in the...! ...Gwuhh... Err... Come on now Heracross! This is the... stupidest..."];
+			else
+				tree[8] = ["#hera11#Ack, what in the...! ...Why doesn't this belt buckle buckle!? This is the... stupidest..."];
 			tree[9] = ["%fun-alpha1%"];
 			tree[10] = ["#hera03#... ...Gweh! I'm here! ...<name>! Hello! -pant- -pant- ...Hello!"];
 			tree[11] = ["#hera07#Give me... Gweh... Give me a minute to catch my breath... -pant- -pant-"];
@@ -620,7 +626,10 @@ class HeraDialog
 	{
 		tree[0] = ["#hera02#Oh! <name>? ...Wow! No getting around it this time, you picked me on purpose!"];
 		tree[1] = ["#hera00#~Thaaaaat meeeeans you liiike meee~"];
-		tree[2] = ["#hera03#Gweheheheh! Okay, let's get this first puzzle out of the way so I can get out of these pants!"];
+		if (PlayerData.sfw)
+			tree[2] = ["#hera03#Gweheheheh! Okay, let's get this first puzzle out of the way so we can spend some better quality time together!"];
+		else
+			tree[2] = ["#hera03#Gweheheheh! Okay, let's get this first puzzle out of the way so I can get out of these pants!"];
 		if (!PlayerData.heraMale)
 		{
 			DialogTree.replace(tree, 2, "these pants", "this dress");
@@ -645,33 +654,37 @@ class HeraDialog
 
 	public static function random10(tree:Array<Array<Object>>, puzzleState:PuzzleState)
 	{
+
 		var index:Int = PlayerData.recentChatCount("hera.randomChats.1.0");
-		if (index % 4 == 0 && hasMet("magn"))
+		if (!PlayerData.sfw)
 		{
-			tree[0] = ["#hera04#Oh look, here comes Magnezone..."];
-			tree[1] = ["%entermagn%"];
-			tree[2] = ["#hera03#Magnezone! Look, Magnezone! <name>'s here! ...I'm playing with " + stretch(PlayerData.name) + "~"];
-			tree[3] = ["#magn04#..."];
-			tree[4] = ["#magn05#... ..." + MagnDialog.HERA + ", your reproductive unit is visible."];
-			tree[5] = ["#hera02#Well it umm... Yeah! It is! Gweh! Heh! Heh!"];
-			if (PlayerData.heraMale)
+			if (index % 4 == 0 && hasMet("magn"))
 			{
-				tree[6] = ["#magn06#..."];
-				tree[7] = ["%fun-fixboxers%"];
-				tree[8] = ["#hera10#Do you need me to, ohhh... ... ...Is this better?"];
-				tree[9] = ["%exitmagn%"];
-				tree[10] = ["#magn14#-bweeoop-"];
-				tree[11] = ["#hera12#Phooey! What a killjoy..."];
-			}
-			else
-			{
-				tree[6] = ["#magn05#..."];
-				tree[7] = ["#magn10#" + MagnDialog.HERA + " why would you... -fzzt- Do you... require assistance? (Y/N)"];
-				tree[8] = ["#hera04#Errr, I think I'm good, thanks..."];
-				tree[9] = ["#magn04#... ... ..."];
-				tree[10] = ["%exitmagn%"];
-				tree[11] = ["#magn14#-bweeoop-"];
-				tree[12] = ["#hera06#Phooey! That mechanical lunkhead sure knows how to kill a ladyboner."];
+				tree[0] = ["#hera04#Oh look, here comes Magnezone..."];
+				tree[1] = ["%entermagn%"];
+				tree[2] = ["#hera03#Magnezone! Look, Magnezone! <name>'s here! ...I'm playing with " + stretch(PlayerData.name) + "~"];
+				tree[3] = ["#magn04#..."];
+				tree[4] = ["#magn05#... ..." + MagnDialog.HERA + ", your reproductive unit is visible."];
+				tree[5] = ["#hera02#Well it umm... Yeah! It is! Gweh! Heh! Heh!"];
+				if (PlayerData.heraMale)
+				{
+					tree[6] = ["#magn06#..."];
+					tree[7] = ["%fun-fixboxers%"];
+					tree[8] = ["#hera10#Do you need me to, ohhh... ... ...Is this better?"];
+					tree[9] = ["%exitmagn%"];
+					tree[10] = ["#magn14#-bweeoop-"];
+					tree[11] = ["#hera12#Phooey! What a killjoy..."];
+				}
+				else
+				{
+					tree[6] = ["#magn05#..."];
+					tree[7] = ["#magn10#" + MagnDialog.HERA + " why would you... -fzzt- Do you... require assistance? (Y/N)"];
+					tree[8] = ["#hera04#Errr, I think I'm good, thanks..."];
+					tree[9] = ["#magn04#... ... ..."];
+					tree[10] = ["%exitmagn%"];
+					tree[11] = ["#magn14#-bweeoop-"];
+					tree[12] = ["#hera06#Phooey! That mechanical lunkhead sure knows how to kill a ladyboner."];
+				}
 			}
 		}
 		else if (index % 4 == 1 && hasMet("rhyd"))
@@ -752,17 +765,25 @@ class HeraDialog
 
 			tree[20] = ["Spiders"];
 			tree[21] = ["#hera10#Oh, we have spiders here in our universe too! ...You don't like spiders?"];
-			tree[22] = ["#hera04#...They make such pretty webs! And how could you not be turned on by so many sexy little legs~"];
+			if (PlayerData.sfw)
+				tree[22] = ["#hera04#Imagine how much you'd be able to get done with all those legs!T"];
+			else
+				tree[22] = ["#hera04#...They make such pretty webs! And how could you not be turned on by so many sexy little legs~"];
 			tree[23] = ["#hera06#Their legs are actually powered by hydraulic movement! Did you know that? They shoot little... bug liquid into their legs to walk around... Gweh-heheheh!"];
-			tree[24] = ["#hera00#...Don't worry <name>, I'll never shoot my bug liquid at you unless you ask first~"];
+			if (PlayerData.sfw)
+				tree[24] = ["#hera00#...Don't worry <name>, my legs are as fleshy as they get!"];
+			else
+				tree[24] = ["#hera00#...Don't worry <name>, I'll never shoot my bug liquid at you unless you ask first~"];
 
 			tree[30] = ["Ticks"];
 			tree[31] = ["#hera02#Ah! Ticks! ...We have ticks in our universe too."];
 			tree[32] = ["#hera03#Of course, their puny mandibles can't puncture my rigid exoskeleton. So those bugs don't bug me! ...But, other Pokemon complain about them all the time."];
 			tree[33] = ["#hera06#...I don't think their little bites hurt, but they can spread all sorts of icky diseases."];
 			tree[34] = ["#hera09#And after they bite, they can stay attached for up to ten days while they drain your fluid! Hmph! How presumptuous."];
-			tree[35] = ["#hera01#...Don't worry <name>! I don't get attached that easily. And... it won't take me ten days to drain your fluid~"];
-
+			if (PlayerData.sfw)
+				tree[35] = ["#hera02#...Don't worry <name>! I don't get attached that easily. And... the only fluid I like to drink is some freshly served water."];
+			else
+				tree[35] = ["#hera01#...Don't worry <name>! I don't get attached that easily. And... it won't take me ten days to drain your fluid~"];
 			tree[40] = ["Dung\nbeetles"];
 			tree[41] = ["#hera07#...Dung ...DUNG BEETLES!? What the heck is a dung beetle? I've never heard of anything like that..."];
 			tree[42] = ["#hera11#Unless... unless you're talking about that one website? Ewwww! ...<name>!!!"];
@@ -774,8 +795,10 @@ class HeraDialog
 			tree[52] = ["#hera04#They're so hardworking! They're like nature's little garbagemen!"];
 			tree[53] = ["#hera08#I guess, maybe they can be annoying sometimes... Well, if they come into your house without your permission..."];
 			tree[54] = ["#hera06#Oh! Or if you leave a lot of sweets lying around where ants can find them."];
-			tree[55] = ["#hera01#...Don't worry <name>! I'll always ask permission before touching any of your sweets~"];
-
+			if (PlayerData.sfw)
+				tree[55] = ["#hera03#...Don't worry <name>! I'll always ask permission before touching any of your sweets~"];
+			else
+				tree[55] = ["#hera02#I'll always ask permission before getting to your sweetness~"];
 			tree[60] = ["Oh, I like\nthem all"];
 			tree[61] = ["#hera05#Ohhhh don't worry <name>! You won't hurt my feelings. You don't have to like EVERY bug..."];
 			tree[62] = ["#hera01#... ...I just need you to like one particular bug! ...I need you to like him an awful lot! Gweh-heheheheh~"];

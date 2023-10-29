@@ -83,6 +83,7 @@ class GrimerDialog
 
 	public static var sexyBeforeChats:Array<Dynamic> = [sexyBefore0, sexyBefore1, sexyBefore2, sexyBefore3];
 	public static var sexyAfterChats:Array<Dynamic> = [sexyAfter0, sexyAfter1, sexyAfter2];
+	// public static var sexyAfterChats:Array<Dynamic> = [sexyAfter1];
 	public static var sexyBeforeBad:Array<Dynamic> = [sexyBadPolyp, sexyBadBulb, sexyBadArtery, sexyBadMisc0, sexyBadMisc1, sexyBadNoInteract];
 	public static var sexyAfterGood:Array<Dynamic> = [sexyAfterGood0, sexyAfterGood1, sexyAfterGood2];
 	public static var fixedChats:Array<Dynamic> = [charmeleon, stinkBuddies];
@@ -167,7 +168,7 @@ class GrimerDialog
 		tree[3] = ["#grim04#...That's ehh, that's my thiolic artery, and it doesn't really do anything for me when people rub it."];
 		tree[4] = ["#grim06#Oh! No, I don't think it's anything YOU did! ...Did you touch that thing before? I don't remember. Sorry! Not you! I'm just..."];
 		tree[5] = ["#grim00#It's just... don't worry, you're... you're doing amazing! I love our time together. ...It's kind of why I felt comfortable opening up about that."];
-		tree[6] = ["#grim01#... ...And... this clumsy squishy sex is just the icing on my little <name> cake~"];
+		tree[6] = ["#grim01#... ...And... this clumsy squishy "+( (PlayerData.sfw)? "cuddling":"sex" )+" is just the icing on my little <name> cake~"];
 	}
 
 	public static function sexyBadMisc0(tree:Array<Array<Object>>, sexyState:GrimerSexyState)
@@ -299,11 +300,11 @@ class GrimerDialog
 	{
 		if (PlayerData.justFinishedMinigame)
 		{
-			tree[0] = ["#grim08#Mmmmm... wait a minute. No more puzzles... The minigame's over... And we just finished doing our sex..."];
+			tree[0] = ["#grim08#Mmmmm... wait a minute. No more puzzles... The minigame's over... And we just finished doing our "+((PlayerData.sfw)?"cuddling":"sex")+"..."];
 		}
 		else
 		{
-			tree[0] = ["#grim08#Mmmmm... wait a minute. No more puzzles... And we just finished doing our sex..."];
+			tree[0] = ["#grim08#Mmmmm... wait a minute. No more puzzles... And we just finished doing our "+((PlayerData.sfw)?"cuddling":"sex")+"..."];
 		}
 		tree[1] = ["#grim12#Does that mean... are we out of stuff to do!?! Awww! That STINKS!!"];
 		tree[2] = ["#grim06#... ...Well err, I guess there's always next time, right? ...But anyway... Hrrmmm..."];
@@ -313,7 +314,12 @@ class GrimerDialog
 
 	public static function sexyAfter2(tree:Array<Array<Object>>, sexyState:GrimerSexyState)
 	{
+		if(PlayerData.sfw)
+		tree[0] = ["#grim00#Ooogh.... yeah...I think I relaxed too hard. It will be hard to remove my stink from the floor now"];
+		
+		else
 		tree[0] = ["#grim00#Ooogh.... yeah... Well, we're going to want to get that off the floor before it leaves a permanent stain."];
+		
 		tree[1] = ["#grim06#...I think I saw some white vinegar in the kitchen. ...Glurp? If I can just find a spray bottle... Hrrmmm..."];
 		tree[2] = ["%fun-alpha0%"];
 		tree[3] = ["#grim02#Hey don't worry about cleanup, I got it! ...It was nice seeing you again, <name>."];
@@ -516,7 +522,7 @@ class GrimerDialog
 		g.addCloseGame("#grim04#Boy! ...I still feel like this could go either way. What do you think?", ["I think it's\ngoing my way~", "Looks like it\nmight go your way...", "It's really too\nearly to tell"]);
 		g.addCloseGame("#grim01#You're just ONE bad roll away from handing this game over to me on a silver platter! ...No pressure or anything~", ["What? You're\ncrazy", "The same could\nbe said for you", "We'll see,\nwe'll see~"]);
 
-		g.addStairCapturedHuman("#grim01#And another little " + manColor + " guy is consumed by the blob... But in the end, the blob consumes all things! Groh-hohohohohorf~", ["Stop, you're\ncreeping me out", "Stop, you're\nturning me on~", "Stop, just...\njust stop"]);
+		g.addStairCapturedHuman("#grim01#And another little " + manColor + " guy is consumed by the blob... But in the end, the blob consumes all things! Groh-hohohohohorf~", ["Stop, you're\ncreeping me out", ((PlayerData.sfw)? "Stop, you're\nturning me on~" : "Stop you're making me blush~"), "Stop, just...\njust stop"]);
 		g.addStairCapturedHuman("#grim02#...Splat! What was that guy doing on my staircase? Go find your own staircase, little guy!", ["I think it\nwas a girl...?", "Oof, this\nisn't over", "Hey!\n...Rude!"]);
 		g.addStairCapturedHuman("#grim03#What, you didn't think I was brave enough to put out a <computerthrow>? Gwoh-hohoho! Serves you right~", ["Oh, screw\nyou Grimer", "Brave enough? Or\nLUCKY enough", "Aww, man..."]);
 		g.addStairCapturedHuman("#grim06#Oops! Sorry! I'm... I'm really sorry! ...I wanted to win, but I wasn't trying to be nasty. ...Errk! Sorry!!", ["Wahhh!", "Heh heh it's\nall good~", "...Tsk, you're\nnot sorry"]);
@@ -625,7 +631,7 @@ class GrimerDialog
 			tree[200] = ["%fun-alpha0%"];
 			tree[201] = ["#grim01#... ... ..."];
 			tree[202] = ["#grim06#...Okay! Err, don't judge me but... I sort of need some alone time with the Charmeleon cutout. Sorry! I'm sorry!"];
-			tree[203] = ["#grim13#You're judging me aren't you? After I asked you so nicely not to! Hrrrrng!"];
+			tree[203] = ["#grim13#You're judging me aren't you? After I asked you so nicely not to! Please stop it!"];
 
 			tree[10000] = ["%fun-charmeleoff%"];
 			tree[10001] = ["%fun-alpha1%"];
@@ -734,7 +740,7 @@ class GrimerDialog
 			tree[2] = ["#grov08#...Ah yes. Hello... Grimer. One puzzle down already?"];
 			tree[3] = ["#grim02#Yeah! <name> got through that one super quick."];
 			tree[4] = ["#grov04#Ah, excellent. Yes, he's a sharp one isn't he?"];
-			tree[5] = ["#grov03#Hmm, most of us strip in between puzzles but... I suppose you're exempt from Abra's usual \"two articles of clothing\" rule aren't you?"];
+			tree[5] = ["#grov03#"+((PlayerData.sfw)?"":"Hmm, most of us strip in between puzzles but...")+"I suppose you're exempt from Abra's usual \"two articles of clothing\" rule aren't you?"];
 			tree[6] = ["#grim03#Oh! Oh!!! I knew about that rule and I actually threw in a shirt and pants just in case! Should I take them out now??"];
 			tree[7] = ["#grov06#Take them... \"out\"? ...Surely you mean, take them \"off\"..."];
 			tree[8] = ["#grim06#No, no, I stuffed 'em in here for a reason! Just gimme a second to find them okay? Sorry!"];

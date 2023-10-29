@@ -55,8 +55,10 @@ class BuizelDialog
 	private static var _intA:Int = 0;
 	private static var _intB:Int = 0;
 	public static var prefix:String = "buiz";
+	//[BU304-NA-307-305]
 	public static var sexyBeforeChats:Array<Dynamic> = [sexyBefore0, sexyBefore1, sexyBefore2, sexyBefore3];
 	public static var sexyAfterChats:Array<Dynamic> = [sexyAfter0, sexyAfter1, sexyAfter2, sexyAfter3];
+	//BU300-->303
 	public static var sexyBeforeBad:Array<Dynamic> = [sexyBadQuick0, sexyBadQuick1, sexyBadTube, sexyBadForeplay];
 	public static var sexyAfterGood:Array<Dynamic> = [sexyAfterGood0, sexyAfterGood1];
 	public static var fixedChats:Array<Dynamic> = [goFromThere, waterShorts, ruralUpbringing, movingAway];
@@ -317,12 +319,19 @@ class BuizelDialog
 	public static function sexyBadQuick1(tree:Array<Array<Object>>, sexyState:BuizelSexyState)
 	{
 		tree[0] = ["#buiz03#Alright! So I figured out how to deal with my short fuse, really this time! But we both gotta do our part!"];
-		tree[1] = ["#buiz06#I'm gonna warn you right before I cum, okay <name>? And you..."];
-		tree[2] = ["#buiz08#You gotta just find somethin else to rub for a little while okay? Just-- just don't touch my dick,"];
-		if (!PlayerData.buizMale)
-		{
-			DialogTree.replace(tree, 2, "don't touch my dick", "give my cunt some time to cool down");
-		}
+		tree[1] = ["#buiz06#I'm gonna warn you right before "+ ( (PlayerData.sfw)? "my head goes haywire" : "I cum," )+ "okay <name>? And you..."];
+
+		if(PlayerData.sfw)
+			tree[2] = ["#buiz08#You just gotta leave my fur breathe for a little while okay? Just slow down for a bit."];
+
+		else
+			{
+				tree[2] = ["#buiz08#You gotta just find somethin else to rub for a little while okay? Just-- just don't touch my dick,"];
+				if (!PlayerData.buizMale)
+				{
+					DialogTree.replace(tree, 2, "don't touch my dick", "give my cunt some time to cool down");
+				}
+			}
 		tree[3] = ["#buiz11#I can't really control my body when you're touching me there! ...I can't help it."];
 		tree[4] = ["#buiz04#Okay!!! Teamwork! Let's do it!"];
 	}
@@ -397,7 +406,7 @@ class BuizelDialog
 	{
 		if (PlayerData.recentChatCount("buiz.sexyBeforeChats.0") == 0)
 		{
-			tree[0] = ["#buiz06#Wellp, I'm officially outta clothes and you've solved the last of the three puzzles. I guess now we're supposed to, uhh..."];
+			tree[0] = ["#buiz06#Welp, " + ( (PlayerData.sfw && !PlayerData.sfwClothes)? "" : "I'm officially outta clothes and " )+ "you've solved the last of the three puzzles. I guess now we're supposed to, uhh..."];
 			tree[1] = ["#buiz02#...Yeah. This still feels kinda weird to me. Bweh-heh-heh~"];
 			tree[2] = ["#buiz03#Tell you what, why don't you get me warmed up a little. You know, start me on the bunny slopes or whatever."];
 			tree[3] = ["#buiz04#I've got kind of a hair trigger anyway. Trust me... you'll be doin' yourself a favor."];
@@ -424,11 +433,17 @@ class BuizelDialog
 
 	public static function sexyBefore2(tree:Array<Array<Object>>, sexyState:BuizelSexyState)
 	{
-		tree[0] = ["#buiz03#So, not to brag but I've been practicing a little, trying to last a little longer,"];
-		tree[1] = ["#buiz02#And yesterday I jerked off for like... two minutes! Two minutes in a row!"];
-		if (!PlayerData.buizMale)
+		tree[0] = ["#buiz03#So, not to brag but I've been practicing a little, trying to last a little longer."];
+
+		if (PlayerData.sfw)
+			tree[1] = ["#buiz02#And yesterday I gave myself a massage for like... two minutes! Two minutes in a row without my head reaching relaxation station!"]
+		else
 		{
-			tree[1] = ["#buiz02#And yesterday I fingered myself for like... two minutes! Two minutes in a row without finishing!"];
+			tree[1] = ["#buiz02#And yesterday I jerked off for like... two minutes! Two minutes in a row!"];
+			if (!PlayerData.buizMale)
+			{
+				tree[1] = ["#buiz02#And yesterday I fingered myself for like... two minutes! Two minutes in a row without finishing!"];
+			}
 		}
 		tree[2] = [10, 20, 30];
 		tree[10] = ["That's\nnothing"];
@@ -648,41 +663,66 @@ class BuizelDialog
 	{
 		tree[0] = ["#buiz00#Ahh there we go,"];
 
-		if (PlayerData.buizMale)
+		if (PlayerData.sfw)
 		{
-			tree[1] = ["#buiz02#Feels nice to air out the ol' weinermobile. The uhh, mutton pole. The meat magnet."];
-			tree[2] = [10, 20, 30];
-
-			tree[10] = ["Weiner-\nmobile?"];
-			tree[11] = ["#buiz03#Yeah you know!! The big hot dog truck!"];
-			tree[12] = ["#buiz02#Good luck finding a tunnel big enough for this bad boy! Bweh-heheh!"];
-
-			tree[20] = ["Mutton\nPole?"];
-			tree[21] = ["#buiz03#Yeah you know, like a big rod of meat!"];
-			tree[22] = ["#buiz04#How is that one confusing? You know you want my hard meat rod."];
-
-			tree[30] = ["Meat\nMagnet?"];
-			tree[31] = ["#buiz03#Meat magnet!! Like it's... a magnet for your meat! You want meat,"];
-			tree[32] = ["#buiz06#If you want meat then you need to find it with my meat magnet!"];
-			tree[33] = ["#buiz12#...Well okay maybe I made that one up!"];
+			if(PlayerData.sfw)
+				{
+					tree[1] = ["#buiz02#Feels nice to breathe in some fresh air. Specially in my tail, paws and fur."];
+					tree[2] = [10, 20, 30];
+	
+					tree[10] = ["Tail?"];
+					tree[11] = ["#buiz03#Yeah right, I guess those are tails, not just one."];
+					tree[12] = ["#buiz02#They really come in handy in the water! Bweh-heheh!"];
+	
+					tree[20] = ["Paws?"];
+					tree[21] = ["#buiz03#Yeah, just so you know these are really fluffy!"];
+					tree[22] = ["#buiz04#It's a shame you can't feel them, I'm sure you'd love just giving me a handshake."];
+	
+					tree[30] = ["Fur?"];
+					tree[31] = ["#buiz03#Of course!! My fur is essential to myself!"];
+					tree[32] = ["#buiz06#It's so soft and fuzzy and comfortable!"];
+					tree[33] = ["#buiz04#...Well okay, enough fur talk bweh-heh! Let's move on. "];
+				}
 		}
+
 		else
 		{
-			tree[1] = ["#buiz02#Feels nice to air out the ol' fish factory. The uhh, beaver crease. The waffle wobbler."];
-			tree[2] = [10, 20, 30];
-
-			tree[10] = ["Fish\nfactory?"];
-			tree[11] = ["#buiz03#Yeah you know!! The fish factory!! You get it right?"];
-			tree[12] = ["#buiz02#Don't tell me you've never tasted a vagina before?? Bweh-heheh!"];
-
-			tree[20] = ["Beaver\ncrease?"];
-			tree[21] = ["#buiz03#Yeah you know, like it's my beaver... and it's also a crease!"];
-			tree[22] = ["#buiz04#How is that one confusing? You know you want up in this beaver crease."];
-
-			tree[30] = ["Waffle\nwobbler?"];
-			tree[31] = ["#buiz03#Waffle wobbler!! Like it makes things wobble, you know? If you've got a waffle,"];
-			tree[32] = ["#buiz06#If you've got a waffle then watch out, or I'll wobble it!"];
-			tree[33] = ["#buiz12#...Well okay maybe I made that one up!"];
+			if (PlayerData.buizMale)
+			{
+				tree[1] = ["#buiz02#Feels nice to air out the ol' weinermobile. The uhh, mutton pole. The meat magnet."];
+				tree[2] = [10, 20, 30];
+	
+				tree[10] = ["Weiner-\nmobile?"];
+				tree[11] = ["#buiz03#Yeah you know!! The big hot dog truck!"];
+				tree[12] = ["#buiz02#Good luck finding a tunnel big enough for this bad boy! Bweh-heheh!"];
+	
+				tree[20] = ["Mutton\nPole?"];
+				tree[21] = ["#buiz03#Yeah you know, like a big rod of meat!"];
+				tree[22] = ["#buiz04#How is that one confusing? You know you want my hard meat rod."];
+	
+				tree[30] = ["Meat\nMagnet?"];
+				tree[31] = ["#buiz03#Meat magnet!! Like it's... a magnet for your meat! You want meat,"];
+				tree[32] = ["#buiz06#If you want meat then you need to find it with my meat magnet!"];
+				tree[33] = ["#buiz12#...Well okay maybe I made that one up!"];
+			}
+			else
+			{
+				tree[1] = ["#buiz02#Feels nice to air out the ol' fish factory. The uhh, beaver crease. The waffle wobbler."];
+				tree[2] = [10, 20, 30];
+	
+				tree[10] = ["Fish\nfactory?"];
+				tree[11] = ["#buiz03#Yeah you know!! The fish factory!! You get it right?"];
+				tree[12] = ["#buiz02#Don't tell me you've never tasted a vagina before?? Bweh-heheh!"];
+	
+				tree[20] = ["Beaver\ncrease?"];
+				tree[21] = ["#buiz03#Yeah you know, like it's my beaver... and it's also a crease!"];
+				tree[22] = ["#buiz04#How is that one confusing? You know you want up in this beaver crease."];
+	
+				tree[30] = ["Waffle\nwobbler?"];
+				tree[31] = ["#buiz03#Waffle wobbler!! Like it makes things wobble, you know? If you've got a waffle,"];
+				tree[32] = ["#buiz06#If you've got a waffle then watch out, or I'll wobble it!"];
+				tree[33] = ["#buiz12#...Well okay maybe I made that one up!"];
+			}
 		}
 	}
 
@@ -851,35 +891,84 @@ class BuizelDialog
 			tree[10000] = ["%fun-nude1%"];
 		}
 		else if (PlayerData.level == 2)
-		{
-			tree[0] = ["%fun-nude1%"];
-			tree[1] = ["#buiz09#Ohh boy. Well here we go. I guess everybody gets naked on the internet at some point right? ...I mean you've done it haven't you?"];
-			tree[2] = [40, 30, 20, 10];
+		{ 
+			/**
+			 * THERE SHOULD BE 3 OPTIONS HERE
+			 * SFW WITH CLOTHES
+			 * SFW
+			 * NSFW
+			 */
+			if (PlayerData.sfw && PlayerData.sfwClothes)
+				{
+				trace("sfw and sfwClothes ",PlayerData.sfwClothes);
+				tree[0] = ["%fun-nude1%"];
+				tree[1] = ["#buiz09#Hey I'm curious, have you ever been naked too on the internet?"];
+				tree[2] = [40, 30, 20, 10];
+				
+				tree[10] = ["Yeah! Many\ntimes"];
+				tree[11] = ["#buiz04#Wow that often? I guess it's not the same for us though."];
+				tree[12] = [50];
+				
+				tree[20] = ["Yeah, once\nor twice..."];
+				tree[21] = ["#buiz06#Yeah, I mean-- I guess it's gotta be with someone you really trust. Gotta be safe, right?"];
+				tree[22] = ["#buiz04#Well, I feel pretty safe with you here, you're pretty nice"];
+				tree[23] = [50];
+				
+				tree[30] = ["No, I haven't\nhad the chance..."];
+				tree[31] = ["#buiz06#Haven't had the chance? Or... haven't had the courage? Either way just don't force yourself to do anything you dislike"];
+				tree[32] = ["%fun-nude2%"];
+				tree[33] = [52];
+				
+				tree[40] = ["No, I'm not\nsome kind of\nweird person"];
+				tree[41] = ["#buiz13#...HEY!"];
+				tree[42] = ["#buiz12#...Weird people aren't the ones getting naked. ...That doesn't make me weird."];
+				tree[43] = ["#buiz13#You know what's weird? ...sitting at home playing flash games all day! Yeah! C'mon."];
+				tree[44] = ["#buiz12#Freakin'... Weird pot, calling the weird kettle black..."];
+				tree[45] = ["#buiz15#Okay! Okay! Enough stalling. Let's just keep on going."];
+				tree[46] = ["%fun-nude2%"];
+				tree[47] = [52]; 
+			}
 
-			tree[10] = ["Yeah! Many\ntimes"];
-			tree[11] = ["#buiz04#Wow that often? ...I guess like, it just gets a little easier each time huh? Alright, alright, here goes."];
-			tree[12] = [50];
+			
+			
+			
+			if (PlayerData.sfw) {}
+			
+			
+			
+			
+			else
+				{
+				tree[0] = ["%fun-nude1%"];
+				tree[1] = ["#buiz09#Ohh boy. Well here we go. I guess everybody gets naked on the internet at some point right? ...I mean you've done it haven't you?"];
+				tree[2] = [40, 30, 20, 10];
+				
+				tree[10] = ["Yeah! Many\ntimes"];
+				tree[11] = ["#buiz04#Wow that often? ...I guess like, it just gets a little easier each time huh? Alright, alright, here goes."];
+				tree[12] = [50];
+				
+				tree[20] = ["Yeah, once\nor twice..."];
+				tree[21] = ["#buiz06#Yeah, I mean-- I guess it's gotta be with someone you really trust. Gotta be safe, right?"];
+				tree[22] = ["#buiz04#Well... if Grovyle trusts you, I guess I can trust you too, <name>. Here goes..."];
+				tree[23] = [50];
 
-			tree[20] = ["Yeah, once\nor twice..."];
-			tree[21] = ["#buiz06#Yeah, I mean-- I guess it's gotta be with someone you really trust. Gotta be safe, right?"];
-			tree[22] = ["#buiz04#Well... if Grovyle trusts you, I guess I can trust you too, <name>. Here goes..."];
-			tree[23] = [50];
+				tree[30] = ["No, I haven't\nhad the chance..."];
+				tree[31] = ["#buiz06#Haven't had the chance? Or... haven't had the courage? 'Cause like... Kinda feelin the pressure here..."];
+				tree[32] = ["#buiz15#Okay! Okay! Just like a bandaid. One swift motion, I can do this! Bwaaaaaaaaah!!"];
+				tree[33] = ["%fun-nude2%"];
+				tree[34] = ["#buiz11#..."];
+				tree[35] = [52];
 
-			tree[30] = ["No, I haven't\nhad the chance..."];
-			tree[31] = ["#buiz06#Haven't had the chance? Or... haven't had the courage? 'Cause like... Kinda feelin the pressure here..."];
-			tree[32] = ["#buiz15#Okay! Okay! Just like a bandaid. One swift motion, I can do this! Bwaaaaaaaaah!!"];
-			tree[33] = ["%fun-nude2%"];
-			tree[34] = ["#buiz11#..."];
-			tree[35] = [52];
+				tree[40] = ["No, I'm not\nsome kind of\nweird pervert"];
+				tree[41] = ["#buiz13#...HEY!"];
+				tree[42] = ["#buiz12#...Weird perverts aren't the ones getting naked. ...That doesn't make me a pervert."];
+				tree[43] = ["#buiz13#You know what weird perverts do? They like... Sit at home playing erotic flash games, manipulating other people into stripping for them! Yeah! C'mon."];
+				tree[44] = ["#buiz12#Freakin'... Weird pervert pot, calling the weird pervert kettle black..."];
+				tree[45] = ["#buiz15#Okay! Okay! Enough stalling. I can do this! ...Just like a bandaid, one swift motion! Bwaaaaaaaaah!!"];
+				tree[46] = ["%fun-nude2%"];
+				tree[47] = ["#buiz11#..."];
+				}
 
-			tree[40] = ["No, I'm not\nsome kind of\nweird pervert"];
-			tree[41] = ["#buiz13#...HEY!"];
-			tree[42] = ["#buiz12#...Weird perverts aren't the ones getting naked. ...That doesn't make me a pervert."];
-			tree[43] = ["#buiz13#You know what weird perverts do? They like... Sit at home playing erotic flash games, manipulating other people into stripping for them! Yeah! C'mon."];
-			tree[44] = ["#buiz12#Freakin'... Weird pervert pot, calling the weird pervert kettle black..."];
-			tree[45] = ["#buiz15#Okay! Okay! Enough stalling. I can do this! ...Just like a bandaid, one swift motion! Bwaaaaaaaaah!!"];
-			tree[46] = ["%fun-nude2%"];
-			tree[47] = ["#buiz11#..."];
 			tree[48] = [52];
 
 			tree[50] = ["%fun-nude2%"];
@@ -1094,61 +1183,92 @@ class BuizelDialog
 			tree[32] = [101];
 
 			tree[40] = ["Oh, you\nshould have\nintroduced\nme!"];
-			tree[41] = ["#buiz06#Heh well, they may not have been into the whole... naked... internet... disembodied hand... thing."];
+
+			if (PlayerData.sfw)
+				tree[41] = ["#buiz06#Heh well, they may not have been into the whole... internet... disembodied hand... thing."];
+
+			else
+				tree[41] = ["#buiz06#Heh well, they may not have been into the whole... naked... internet... disembodied hand... thing."];
+				
 			tree[42] = ["#buiz04#Besides, I thought I owed 'em some one on one time since I don't get to see them that often. And you know, we were really close back in high school."];
 			tree[43] = [101];
 
 			tree[101] = ["#buiz05#I know we talked briefly about my life growing up, and how the whole gay dating scene didn't really exist out in the country."];
 			tree[102] = ["#buiz08#Don't get me wrong, there were a handful of us out there. But growing up LGBT in that kind of area..."];
 			tree[103] = ["#buiz09#... ...It's a rough time, you know? You need all the support you can get."];
-			tree[104] = ["#buiz06#Back then I didn't wanna cannibalize the short list of gay friends I had just to score a little HGS, if that makes any sense."];
+			tree[104] = ["#buiz06#Back then I didn't wanna cannibalize the short list of gay friends I had just to score a little "+((PlayerData.sfw)?"HNK":"HGS")+", if that makes any sense."];
 			tree[105] = [140, 115, 130, 120, 110];
 
 			if (PlayerData.buizMale)
 			{
 				tree[110] = ["Uhh..."];
-				tree[111] = ["#buiz03#Oh uhhh HGS! Hot gay sex! ...Sorry, was that a local thing? ...I thought that was like... an everywhere thing. My bad."];
+				tree[111] = ["#buiz03#Oh uhhh "+((PlayerData.sfw)?"HNK":"HGS")+"! "+((PlayerData.sfw)?"Hugs 'n kisses":"Hot gay sex")+"! ...Sorry, was that a local thing? ...I thought that was like... an everywhere thing. My bad."];
 				tree[112] = [200];
 
-				tree[115] = ["Hugs?"];
-				tree[116] = ["#buiz03#Bweh! Heh! Yeah, that's it. I missed out on scoring some great hugs. Wow."];
-				tree[117] = [142];
+				if (PlayerData.sfw)
+				{
+					tree[115] = ["Honk?"];
+					tree[116] = ["#buiz03#Bweh! Heh! Yeah, that's it. I missed out on great honks. Wow."];		
+					tree[117] = [142];
+				}
+				else
+				{
+					tree[115] = ["Hugs?"];
+					tree[116] = ["#buiz03#Bweh! Heh! Yeah, that's it. I missed out on scoring some great hugs. Wow."];
+					tree[117] = [142];
+				}
 
-				tree[120] = ["HGS?"];
+				tree[120] = [((PlayerData.sfw)?"HNK":"HGS")+"?"];
 				tree[121] = [111];
 
-				tree[130] = ["...Hot\ngay sex?"];
-				tree[131] = ["#buiz03#Yeah exactly! Like you know, sex is sex, but like when you can count your gay friends on two paws..."];
+				tree[130] = [((PlayerData.sfw)?"Hugs 'n kisses":"...Hot\ngay sex")+"?"];
+				tree[131] = ["#buiz03#Yeah exactly! Like you know, "+((PlayerData.sfw)?"hugs are hugs":"sex is sex")+", but like when you can count your gay friends on two paws..."];
 				tree[132] = ["#buiz06#Getting burned by a bad relationship it's like... it's like losing a finger. I dunno, maybe I was just overly pessimistic. Whatever."];
 				tree[133] = [200];
 
-				tree[140] = ["...Hide the\nguy-sausage?"];
-				tree[141] = ["#buiz02#Hide the... what!? Bweh-heh-heh-heh!! That's not what it means but... I kind of like that one better!"];
-				tree[142] = ["#buiz04#But you get the idea. I don't feel like I missed out on much... Skipping a few nights of sex in exchange for some long term friendships, c'mon that's a no-brainer."];
+				if(PlayerData.sfw)
+					tree[140] = ["...Hotdogs with\nno ketchup?"];
+				else
+					tree[140] = ["...Hide the\nguy-sausage?"];
+
+				tree[141] = ["#buiz02#"+((PlayerData.sfw)?"Hotdogs with...":"Hide the...")+" what!? Bweh-heh-heh-heh!! That's not what it means but... I kind of like that one better!"];
+				tree[142] = ["#buiz04#But you get the idea. I don't feel like I missed out on much... Skipping a few nights of "+( (PlayerData.sfw)? "intimate bonding" : "sex")+" in exchange for some long term friendships, c'mon that's a no-brainer."];
 				tree[143] = [201];
 			}
 			else
 			{
 				tree[110] = ["Uhh..."];
-				tree[111] = ["#buiz03#Oh uhhh HLA! Hot lesbian action! ...Sorry, was that a local thing? ...I thought that was like... an everywhere thing. My bad."];
+				tree[111] = ["#buiz03#Oh uhhh "+((PlayerData.sfw)?"HNK":"HLA")+"! "+((PlayerData.sfw)?"Hugs 'n kisses":"Hot lesbian action")+"! ...Sorry, was that a local thing? ...I thought that was like... an everywhere thing. My bad."];
 				tree[112] = [200];
 
-				tree[115] = ["Cheap plane\ntickets?"];
+				if (PlayerData.sfw)
+					tree[115] = ["Honk?"];
+				else
+					tree[115] = ["Cheap plane\ntickets?"];
 				tree[116] = [111];
 
-				tree[120] = ["HLA?"];
+				if (PlayerData.sfw)
+					tree[120] = ["HNK?"];
+				else
+					tree[120] = ["HLA?"];
 				tree[121] = [111];
 
-				tree[130] = ["...Hot\nlesbian action?"];
-				tree[131] = ["#buiz03#Yeah exactly! Like you know, sex is sex, but like when you can count your lesbian friends on two paws..."];
+				if (PlayerData.sfw)
+					tree[130] = ["Hugs 'n kisses?"];
+				else
+					tree[130] = ["...Hot\nlesbian action?"];
+				tree[131] = ["#buiz03#Yeah exactly! Like you know, "+((PlayerData.sfw)?"hugs are hugs":"sex is sex")+", but like when you can count your lesbian friends on two paws..."];
 				tree[132] = ["#buiz06#Getting burned by a bad relationship it's like... it's like losing a finger. I dunno, maybe I was just overly pessimistic. Whatever."];
 				tree[133] = [200];
 
-				tree[140] = ["...Like, the\nsex position?"];
+				if (PlayerData.sfw)
+					tree[140] = ["...Like, the\nJapanese manga?"];//Fist of the north star, Hokuto no Ken, very popular aparently, like super ultra popular.
+				else
+					tree[140] = ["...Like, the\nsex position?"];
 				tree[141] = [111];
 			}
 
-			tree[200] = ["#buiz04#Anyway I don't feel like I missed out on much. Skipping a few nights of sex in exchange for some long term friendships, c'mon that's a no-brainer."];
+			tree[200] = ["#buiz04#Anyway I don't feel like I missed out on much. Skipping a few nights of "+((PlayerData.sfw)?"one time cuddles":"sex")+" in exchange for some long term friendships, c'mon that's a no-brainer."];
 			tree[201] = ["#buiz00#Even if I fell a little behind on my ehh... gay studies back then... It's nothing I can't make up for by cramming now."];
 			tree[202] = ["#buiz02#Bweh! heh! Anyway I'm all yours for the next hour or so, so let's see. What's going on with this first puzzle..."];
 
