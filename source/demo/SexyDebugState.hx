@@ -22,9 +22,11 @@ import poke.smea.SmeargleSexyState;
  * use the following keys to print diagnostic information which you can paste
  * back into the SexyState code as necessary
  *
+ * You can activate the debug state by pressing F5 in the main menu, change the pokemon my changing the pokemon sexyState in  "classSexyDebugState extends GrovyleSexyState"
+ * 
  * SPACE: select a body part
- * [, ] : toggle body part frame
- * shift+[, ] : toggle body part alpha
+ * [, ] (the brackets) : toggle body part frame
+ * 1,5,0 or shift+[, ]  : toggle body part alpha
  * CLICK: draw points to define an area of that body part
  * ENTER: print the corresponding points to output
  * BKSP:  remove a point
@@ -40,7 +42,7 @@ import poke.smea.SmeargleSexyState;
  * BKSP:  remove a point
  * ESC:   clear points
  */
-class SexyDebugState extends SmeargleSexyState
+class SexyDebugState extends GrovyleSexyState
 {
 	var canvas:BouncySprite;
 	var points:Array<FlxPoint>;
