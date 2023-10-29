@@ -89,6 +89,8 @@ class GrovyleSexyState extends SexyState<GrovyleWindow>
 	private var _selfRubLimit:Float = 0;
 	private var rubbingIt:Bool = false;
 	
+	private var headPolyArray:Array<Array<FlxPoint>>;
+	private var shouldersPolyArray:Array<Array<FlxPoint>>;
 	private var assPolyArray:Array<Array<FlxPoint>>;
 	private var vagPolyArray:Array<Array<FlxPoint>>;
 	private var tailAssPolyArray:Array<Array<FlxPoint>>;
@@ -102,7 +104,11 @@ class GrovyleSexyState extends SexyState<GrovyleWindow>
 	private var selfTouchCount:Int = 0;
 	private var selfTouchSoon:Int = 5;
 	
-	private var desiredRub:String;
+	/**
+	 * Which String of the desiredRubs array is chosen
+	 * The desiredRubs array contains a list of body parts (ass, dick, balls)
+	 */
+	private var desiredRub:String; 
 	private var desiredRubs:Array<Array<String>> = [
 		["dick", "ass", "balls"],
 		["dick", "balls", "ass"],
@@ -175,7 +181,48 @@ class GrovyleSexyState extends SexyState<GrovyleWindow>
 	override public function create():Void
 	{
 		prepare("grov");
+		// trace("Grovyle Mood 0-2 (pre sfw check):");
+		// trace (grovyleMood0);
+		// trace (grovyleMood1);
+		// trace (grovyleMood2);
+
+		if (PlayerData.sfw)
+		{
+			// desiredRubs = 
+			// [
+			// 	["head", "shoulders", "feet"],
+			// 	["head", "feet", "shoulders"],
+			// 	["feet", "head", "shoulders"],
+			// 	["shoulders", "head", "feet"],
+			// ];
+			desiredRubs = 
+			[
+				[ "shoulders", "shoulders",  "shoulders"],
+				[ "shoulders",  "shoulders", "shoulders"],
+				[ "shoulders",  "shoulders", "shoulders"],
+				["shoulders",  "shoulders",  "shoulders"],
+			];
+
+			// grovyleMood0 = FlxG.random.int(0, 2);
+		}
+
+		// FlxG.watch.add(GrovyleSexyState,"desiredRub");
+		// trace("desiredRub = " + desiredRub);
 		
+		// 	"dick", "ass", "balls"],
+		// ["dick", "balls", "ass"],
+		// ["balls", "dick", "ass"],
+		// ["ass", "dick", "balls"]
+		
+		// private var grovyleMood0:Int = FlxG.random.int(0, 3);
+		// private var grovyleMood1:Int = FlxG.random.int(1, 5);
+		// private var grovyleMood2:Int = FlxG.random.int(0, 4);
+
+		// trace("Grovyle Mood 0-2 (post sfw check):");
+		// trace (grovyleMood0);
+		// trace (grovyleMood1);
+		// trace (grovyleMood2);
+
 		// Shift Grovyle down so he's framed in the window better
 		_pokeWindow.shiftVisualItems(40);
 
@@ -608,6 +655,7 @@ class GrovyleSexyState extends SexyState<GrovyleWindow>
 
 	override public function touchPart(touchedPart:FlxSprite):Bool
 	{
+		// trace ("Touched part is " + touchedPart);
 		if (!PlayerData.sfw)
 		{
 			if (FlxG.mouse.justPressed && (touchedPart == _dick || !_male && touchedPart == _pokeWindow._torso && clickedPolygon(touchedPart, vagPolyArray)))
@@ -642,27 +690,81 @@ class GrovyleSexyState extends SexyState<GrovyleWindow>
 			if (FlxG.mouse.justPressed && (touchedPart == _pokeWindow._ass
 				|| touchedPart == _pokeWindow._torso && clickedPolygon(touchedPart, assPolyArray)
 				|| touchedPart == _pokeWindow._tail && clickedPolygon(touchedPart, tailAssPolyArray))) {
-				if (_selfRubTimer < 1 && _pokeWindow._selfTouchTarget == _pokeWindow._ass) {
-					// grovyle just grabbed his ass; don't interrupt
-				} else {
-					if (_pokeWindow._selfTouchTarget == _pokeWindow._ass) {
-						takeFromGrovyle();
+					if (_selfRubTimer < 1 && _pokeWindow._selfTouchTarget == _pokeWindow._ass) {
+						// grovyle just grabbed his ass; don't interrupt
+					} else {
+						if (_pokeWindow._selfTouchTarget == _pokeWindow._ass) {
+							takeFromGrovyle();
+						}
+						updateAssFingeringAnimation();
+						interactOn(_pokeWindow._ass, "finger-ass");
+						if (!_male && _pokeWindow._selfTouchTarget != _pokeWindow._dick) {
+							// vagina stretches when fingering ass
+							_rubBodyAnim2 = new FancyAnim(_dick, "finger-ass");
+							_rubBodyAnim2.setSpeed(0.65 * 2.5, 0.65 * 1.5);
+						}
+						_rubBodyAnim.setSpeed(0.65 * 2.5, 0.65 * 1.5);
+						_rubHandAnim.setSpeed(0.65 * 2.5, 0.65 * 1.5);
+						if (_male) {
+							ballOpacityTween = FlxTweenUtil.retween(ballOpacityTween, _pokeWindow._balls, { alpha:0.65 }, 0.25);
+						}
+						return true;
 					}
-					updateAssFingeringAnimation();
-					interactOn(_pokeWindow._ass, "finger-ass");
-					if (!_male && _pokeWindow._selfTouchTarget != _pokeWindow._dick) {
-						// vagina stretches when fingering ass
-						_rubBodyAnim2 = new FancyAnim(_dick, "finger-ass");
-						_rubBodyAnim2.setSpeed(0.65 * 2.5, 0.65 * 1.5);
-					}
-					_rubBodyAnim.setSpeed(0.65 * 2.5, 0.65 * 1.5);
-					_rubHandAnim.setSpeed(0.65 * 2.5, 0.65 * 1.5);
-					if (_male) {
-						ballOpacityTween = FlxTweenUtil.retween(ballOpacityTween, _pokeWindow._balls, { alpha:0.65 }, 0.25);
-					}
-					return true;
+				}
+		}
+
+			// if (FlxG.mouse.justPressed && (touchedPart == _pokeWindow._head || touchedPart == _pokeWindow._hair))
+			// 	{
+			// 		updateHeadPatAnimation();
+			// 		interactOn(_pokeWindow._head, "head-pat");
+			// 		_pokeWindow.reposition(_pokeWindow._interact, _pokeWindow.members.indexOf(_pokeWindow._head) + 1);				
+			// 		// trace ("TOUCHING HEAD");
+			// 		return true;
+			// 	}
+			
+			// if (specialRub == "shoulders")
+			if (FlxG.mouse.justPressed && (touchedPart == _pokeWindow._head || touchedPart == _pokeWindow._hair))
+			{
+				// reinitializeHandSprites();
+				// updateShoulderRubAnimation();
+
+				// trace ("clicked Shoulder polygon");
+				trace ("clicked head or hair");
+
+				_assTightness *= FlxG.random.float(0.72, 0.82);
+				updateAssFingeringAnimation();
+				if (!_male && _rubBodyAnim2 != null) {
+					_rubBodyAnim2.refreshSoon();
+				}
+				if (_rubBodyAnim != null) {
+					_rubBodyAnim.refreshSoon();
+				}
+				if (_rubHandAnim != null) {
+					_rubHandAnim.refreshSoon();
 				}
 			}
+
+			// if (touchedPart == _pokeWindow._hair)
+			// {
+			// 	trace ("touched hair");
+			// }
+
+			// if (touchedPart == _pokeWindow._head)
+			// {
+			// 	trace ("touched head");
+			// }
+
+			// if (touchedPart == _pokeWindow._ass)
+			// {
+			// 	trace ("touched ass");
+			// }
+
+			if (touchedPart == _pokeWindow._balls)
+			{
+				// trace ("touched balls");
+			}
+
+
 			if (touchedPart == _pokeWindow._legs && _clickedDuration > 1.5) {
 				if (clickedPolygon(touchedPart, leftCalfPolyArray)) {
 					// raise left leg
@@ -685,7 +787,7 @@ class GrovyleSexyState extends SexyState<GrovyleWindow>
 				}
 				return true;
 			}
-		}
+		
 		return false;
 	}
 	
@@ -746,7 +848,10 @@ class GrovyleSexyState extends SexyState<GrovyleWindow>
 	
 	override public function checkSpecialRub(touchedPart:FlxSprite) {
 		if (_fancyRub) {
-			if (_rubHandAnim._flxSprite.animation.name == "finger-ass") {
+			if (_rubHandAnim._flxSprite.animation.name == "head-pat")
+				specialRub = "head";
+			
+			else if (_rubHandAnim._flxSprite.animation.name == "finger-ass") {
 				specialRub = "ass";
 			} else if (_rubHandAnim._flxSprite.animation.name == "jack-off") {
 				specialRub = "jack-off";
@@ -760,6 +865,10 @@ class GrovyleSexyState extends SexyState<GrovyleWindow>
 				specialRub = "right-foot";
 			}
 		} else {
+			
+			if (clickedPolygon(touchedPart, shouldersPolyArray))
+				specialRub = "shoulders";
+
 			if (touchedPart == _pokeWindow._legs) {
 				if (clickedPolygon(touchedPart, leftCalfPolyArray) || clickedPolygon(touchedPart, rightCalfPolyArray)) {
 					specialRub = "calf";
@@ -789,6 +898,14 @@ class GrovyleSexyState extends SexyState<GrovyleWindow>
 	
 	override function initializeHitBoxes():Void
 	{
+		headPolyArray = new Array<Array<FlxPoint>>();
+		headPolyArray[0] = [new FlxPoint(239, 208), new FlxPoint(109, 201), new FlxPoint(106, 71), new FlxPoint(234, 72)];
+		headPolyArray[1] = [new FlxPoint(239, 208), new FlxPoint(109, 201), new FlxPoint(106, 71), new FlxPoint(234, 72)];
+		
+		shouldersPolyArray = new Array<Array<FlxPoint>>();
+		shouldersPolyArray[0] = [new FlxPoint(113, 169), new FlxPoint(246, 192), new FlxPoint(237, 241), new FlxPoint(99, 212)];
+		shouldersPolyArray[1] = [new FlxPoint(113, 169), new FlxPoint(246, 192), new FlxPoint(237, 241), new FlxPoint(99, 212)];
+
 		assPolyArray = new Array<Array<FlxPoint>>();
 		assPolyArray[0] = [new FlxPoint(149, 378), new FlxPoint(160, 359), new FlxPoint(198, 366), new FlxPoint(203, 391)];
 		assPolyArray[1] = [new FlxPoint(149, 378), new FlxPoint(160, 359), new FlxPoint(198, 366), new FlxPoint(203, 391)];
@@ -1389,6 +1506,20 @@ class GrovyleSexyState extends SexyState<GrovyleWindow>
 		rubbingIt = false;
 		if (desiredRub != null) {
 			var nice:Bool = false;
+			trace("Desired rub " + desiredRub);
+			trace("Special rub " + specialRub);
+			
+			if (desiredRub == "head" && (specialRub == "head"))
+				nice = true;
+			else if (desiredRub == "feet" && (specialRub == "left-foot" || specialRub == "right-foot"))
+				nice = true;
+			else if (desiredRub == "shoulders" && (specialRub == "shoulders"))
+				{
+					trace ("shoulders are nice :)");
+					nice = true;
+				}
+			trace ("Everything else....not so much :(");
+
 			if (desiredRub == "dick" && (specialRub == "rub-dick" || specialRub == "jack-off")) {
 				nice = true;
 			} else if (desiredRub == "ass" && specialRub == "ass") {
@@ -1401,6 +1532,10 @@ class GrovyleSexyState extends SexyState<GrovyleWindow>
 					impatientTimer -= 6;
 					_selfRubLimit -= _rubRewardFrequency * FlxG.random.float(0.75, 1.25);
 				}
+				
+				
+				trace("Nice = " + nice);
+				
 			}
 			rubbingIt = nice;
 			if (rubbingIt) {
@@ -1459,6 +1594,20 @@ class GrovyleSexyState extends SexyState<GrovyleWindow>
 		}
 		
 		if (specialRub == "ass") {
+			_assTightness *= FlxG.random.float(0.72, 0.82);
+			updateAssFingeringAnimation();
+			if (!_male && _rubBodyAnim2 != null) {
+				_rubBodyAnim2.refreshSoon();
+			}
+			if (_rubBodyAnim != null) {
+				_rubBodyAnim.refreshSoon();
+			}
+			if (_rubHandAnim != null) {
+				_rubHandAnim.refreshSoon();
+			}
+		}
+
+		if (specialRub == "shoulders") {
 			_assTightness *= FlxG.random.float(0.72, 0.82);
 			updateAssFingeringAnimation();
 			if (!_male && _rubBodyAnim2 != null) {
@@ -1608,17 +1757,44 @@ class GrovyleSexyState extends SexyState<GrovyleWindow>
 	 */
 	function takeFromGrovyle():Void 
 	{
-		stolen.push(_pokeWindow._selfTouchTarget);
-		if (!isEjaculating() && meanThings[1] == true) {
-			meanThings[1] = false;
-			doMeanThing();
-			impatientTimer -= 16;
+		if (!PlayerData.sfw)
+		{
+			stolen.push(_pokeWindow._selfTouchTarget);
+			if (!isEjaculating() && meanThings[1] == true) {
+				meanThings[1] = false;
+				doMeanThing();
+				impatientTimer -= 16;
+			}
+			desiredRub = null;
 		}
-		desiredRub = null;
 		stopTouchingSelf();
 	}	
 	
-	private function updateAssFingeringAnimation():Void {
+	private function updateShoulderRubAnimation():Void 
+		{
+			// _pokeWindow._interact.animation.add("shoulder-rub", [0,1]);
+			
+			// _pokeWindow._ass.animation.add("finger-ass", [0, 1, 2, 3, 4]);
+			// _pokeWindow._interact.animation.add("finger-ass", [0,1]);
+			// _pokeWindow._interact.animation.add("finger-ass", [16, 17, 18, 19, 20]);
+			// _pokeWindow._dick.animation.add("finger-ass", [0, 6, 6, 7, 7]);
+			// updateAssFingeringAnimation();
+		}	
+	
+	private function updateHeadPatAnimation():Void 
+	{
+		_pokeWindow._interact.animation.add("head-pat", [21, 22, 23, 24, 25]);
+		
+		// _handSprite.animation.play("rub-left");     
+		
+		// _pokeWindow._interact.animation.add("head-pat", [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,25,26,27,28,29,30]);
+		
+		// _pokeWindow._interact.animation.add("finger-ass", [16, 17, 18, 19, 20]);
+
+	}
+
+	private function updateAssFingeringAnimation():Void 
+	{
 		var tightness0:Int = 3;
 		
 		if (_assTightness > 2.4) {
@@ -1630,10 +1806,17 @@ class GrovyleSexyState extends SexyState<GrovyleWindow>
 		}
 		
 		if (!_male) {
-			_pokeWindow._dick.animation.add("finger-ass", [0, 6, 6, 7, 7].slice(0, tightness0));
+			// _pokeWindow._dick.animation.add("finger-ass", [0, 6, 6, 7, 7].slice(0, tightness0));
 		}
-		_pokeWindow._ass.animation.add("finger-ass", [0, 1, 2, 3, 4].slice(0, tightness0));
-		_pokeWindow._interact.animation.add("finger-ass", [16, 17, 18, 19, 20].slice(0, tightness0));
+		// _pokeWindow._ass.animation.add("finger-ass", [0, 1, 2, 3, 4].slice(0, tightness0));
+		_pokeWindow._ass.animation.add("finger-ass", [0, 4]);
+		// _pokeWindow._interact.animation.add("finger-ass", [16, 17, 18, 19, 20].slice(0, tightness0));
+
+		// reinitializeHandSprites();
+		_pokeWindow._interact.animation.add("finger-ass", [0,1]);
+		// _pokeWindow._interact.animation.add("f in the a", [0,1]);
+		// updateShoulderRubAnimation();
+		trace("where the holes at?"); 
 	}
 	
 	private function updateVagFingeringAnimation():Void 
@@ -1667,60 +1850,69 @@ class GrovyleSexyState extends SexyState<GrovyleWindow>
 	
 	function selfFingerAss():Void 
 	{
-		if (_heartBank.getForeplayPercent() >= 1.0) {
-			// not aroused; won't finger himself
-			return;
-		}
-		selfRub(_pokeWindow._ass);
-		_pokeWindow._arms1.animation.play("self-ass", true);
-		_pokeWindow._ass.animation.play("self-ass", true);
-		if (!_male) {
-			if (fancyRubbing(_pokeWindow._dick)) {
-				// can't start vagina-squishing animation; player is rubbing our vagina
-				if (_dick.animation.name == "jack-off") {
-					// player is really hammering vagina; these animations don't play together
-					_rubBodyAnim.setAnimName("rub-dick");
-					_rubHandAnim.setAnimName("rub-dick");
-				}
-			} else {
-				_pokeWindow._dick.animation.play("self-ass", true);
+		if (!PlayerData.sfw)
+		{
+			if (_heartBank.getForeplayPercent() >= 1.0) {
+				// not aroused; won't finger himself
+				return;
 			}
-		}
-		if (_assTightness > 3) {
-			_assTightness = 3;
-			updateAssFingeringAnimation();
+			selfRub(_pokeWindow._ass);
+			_pokeWindow._arms1.animation.play("self-ass", true);
+			_pokeWindow._ass.animation.play("self-ass", true);
+			if (!_male) {
+				if (fancyRubbing(_pokeWindow._dick)) {
+					// can't start vagina-squishing animation; player is rubbing our vagina
+					if (_dick.animation.name == "jack-off") {
+						// player is really hammering vagina; these animations don't play together
+						_rubBodyAnim.setAnimName("rub-dick");
+						_rubHandAnim.setAnimName("rub-dick");
+					}
+				} else {
+					_pokeWindow._dick.animation.play("self-ass", true);
+				}
+			}
+			if (_assTightness > 3) {
+				_assTightness = 3;
+				updateAssFingeringAnimation();
+			}
 		}
 	}
 	
 	function selfRubBalls():Void 
 	{
-		if (_heartBank.getForeplayPercent() >= 1.0) {
-			// not aroused; won't rub his own balls
-			return;
-		}
-		selfRub(_pokeWindow._balls);
-		_pokeWindow._arms1.animation.play("self-balls", true);
-		_pokeWindow._balls.animation.play("self-balls", true);
+		if (!PlayerData.sfw)
+			{
+				if (_heartBank.getForeplayPercent() >= 1.0) {
+					// not aroused; won't rub his own balls
+					return;
+				}
+				selfRub(_pokeWindow._balls);
+				_pokeWindow._arms1.animation.play("self-balls", true);
+				_pokeWindow._balls.animation.play("self-balls", true);
+			}
 	}
 	
 	function selfRubDick():Void 
 	{
-		if (_heartBank.getForeplayPercent() >= 1.0) {
-			// not aroused; won't jerk himself off
-			return;
-		}
-		selfRub(_pokeWindow._dick);
-		_pokeWindow._arms1.animation.play("self-dick", true);
-		_pokeWindow._dick.animation.play("self-dick", true);
-		
-		if (!_male && fancyRubbing(_pokeWindow._ass)) {
-			// player is rubbing our ass, causing the vagina-squish animation -- terminate the animation
-			_rubBodyAnim2 = null;
-		}
-		if (!_male && _vagTightness > 3) {
-			_vagTightness = 3;
-			updateVagFingeringAnimation();
-		}
+		if (!PlayerData.sfw)
+			{
+				if (_heartBank.getForeplayPercent() >= 1.0) {
+					// not aroused; won't jerk himself off
+					return;
+				}
+				selfRub(_pokeWindow._dick);
+				_pokeWindow._arms1.animation.play("self-dick", true);
+				_pokeWindow._dick.animation.play("self-dick", true);
+				
+				if (!_male && fancyRubbing(_pokeWindow._ass)) {
+					// player is rubbing our ass, causing the vagina-squish animation -- terminate the animation
+					_rubBodyAnim2 = null;
+				}
+				if (!_male && _vagTightness > 3) {
+					_vagTightness = 3;
+					updateVagFingeringAnimation();
+				}
+			}
 	}
 	
 	function stopTouchingSelf():Void 
@@ -1858,6 +2050,8 @@ class GrovyleSexyState extends SexyState<GrovyleWindow>
 		super.destroy();
 		
 		ballOpacityTween = FlxTweenUtil.destroy(ballOpacityTween);
+		headPolyArray = null;
+		shouldersPolyArray = null;
 		assPolyArray = null;
 		vagPolyArray = null;
 		tailAssPolyArray = null;

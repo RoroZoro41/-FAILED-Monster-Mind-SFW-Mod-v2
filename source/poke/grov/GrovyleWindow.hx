@@ -413,22 +413,40 @@ class GrovyleWindow extends PokeWindow
 	override public function reinitializeHandSprites()
 	{
 		super.reinitializeHandSprites();
-		CursorUtils.initializeHandBouncySprite(_interact, AssetPaths.grovyle_interact__png);
-		if (PlayerData.grovMale)
+		
+		if (!PlayerData.sfw) 
 		{
-			_interact.animation.add("rub-dick", [0, 1, 2, 3]);
-			_interact.animation.add("jack-off", [8, 9, 10, 11, 12]);
-			_interact.animation.add("rub-balls", [4, 5, 6, 7]);
+			trace ("sfw Grovyle stuff ",PlayerData.sfw);
+			CursorUtils.initializeHandBouncySprite(_interact, AssetPaths.grovyle_interact_sfw__png);
+
+			_interact.animation.add("shoulders", [0, 1]);
 		}
+		
 		else
 		{
-			_interact.animation.add("rub-dick", [32, 33, 34, 35, 36]);
-			_interact.animation.add("jack-off", [40, 41, 42, 43, 44, 45]);
+			trace ("Not sfw Grovyle stuff",PlayerData.sfw);
+			
+			CursorUtils.initializeHandBouncySprite(_interact, AssetPaths.grovyle_interact__png);			
+			
+			if (PlayerData.grovMale)
+			{
+				_interact.animation.add("rub-dick", [0, 1, 2, 3]);
+				_interact.animation.add("jack-off", [8, 9, 10, 11, 12]);
+				_interact.animation.add("rub-balls", [4, 5, 6, 7]);
+			}
+			else
+			{
+				_interact.animation.add("rub-dick", [32, 33, 34, 35, 36]);
+				_interact.animation.add("jack-off", [40, 41, 42, 43, 44, 45]);
+			}
+			_interact.animation.add("finger-ass", [16, 17, 18, 19, 20]);
+			_interact.animation.add("rub-left-foot", [26, 27, 28, 29, 30]);
+			_interact.animation.add("rub-right-foot", [25, 24, 23, 22, 21]);
+			_interact.visible = false;
 		}
-		_interact.animation.add("finger-ass", [16, 17, 18, 19, 20]);
-		_interact.animation.add("rub-left-foot", [26, 27, 28, 29, 30]);
-		_interact.animation.add("rub-right-foot", [25, 24, 23, 22, 21]);
-		_interact.visible = false;
+		
+		
+
 
 		_vibe.reinitializeHandSprites();
 	}
