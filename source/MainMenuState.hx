@@ -714,7 +714,12 @@ class MainMenuState extends FlxTransitionableState
 			if (fiveCode == "MONEY")
 			{
 				FlxSoundKludge.play(AssetPaths.cash_get_0037__mp3, 0.7);
-				PlayerData.cash += 10000;
+				PlayerData.cash += 100000;
+			}
+			if (fiveCode == "CASH")
+			{
+				FlxSoundKludge.play(AssetPaths.cash_get_0037__mp3, 0.7);
+				PlayerData.cash += 100000;
 			}
 			if (fiveCode == "HORN0")
 			{
