@@ -282,7 +282,9 @@ class SexyState<T:PokeWindow> extends FlxTransitionableState
 
 	override public function create():Void
 	{
-//		FlxG.watch.add(_rubHandAnim._flxSprite.animation,"name");
+
+		// FlxG.watch.add(FlxG.mouse,"x");
+		// FlxG.watch.add(FlxG.mouse,"y");
 		if (PlayerData.cursorSmellTimeRemaining > 0)
 		{
 			doCursorSmellPenalty();
@@ -633,6 +635,13 @@ class SexyState<T:PokeWindow> extends FlxTransitionableState
 		LevelIntroDialog.rotateSexyChat(this, badThings);
 	}
 
+	/**
+		 * default is just the finger pointing, it's the one that's used when your are doing nothing
+		 * 
+		 * rub left/right is the one where you scratch slightly, pointing left/right
+		 * 
+		 * rub center is the big scratches
+		 */
 	public function reinitializeHandSprites()
 	{
 		// initialize cursor
@@ -780,9 +789,17 @@ class SexyState<T:PokeWindow> extends FlxTransitionableState
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
+		
+		// if (_clickedSpot != null)
+		// 	trace (_clickedSpot);
+		// trace(interactOn);
+		// if( GrovyleSexyState.desiredRub != null )
+		// 	trace (GrovyleSexyState.desiredRub); MUST MAKE DESIRED RUB PUBLIC STATIC TO WORK
+		
 		PlayerData.updateTimePlayed();
 		if (FlxG.mouse.justPressed && !displayingToyWindow())
 		{
+			// trace("SEXY UPDATE: FlxG.mouse.justPressed && !displayingToyWindow()");
 			PlayerData.updateCursorVisible();
 		}
 		_stateTimer += elapsed;
@@ -833,6 +850,10 @@ class SexyState<T:PokeWindow> extends FlxTransitionableState
 		emitHearts(elapsed);
 
 		var _handAnim = _activePokeWindow._interact.visible ? _activePokeWindow._interact.animation.name : _handSprite.animation.name;
+		// if ( _activePokeWindow._interact.visible)
+		// 	trace("SEXY UPDATE: _handAnim = _activePokeWindow._interact.animation.name");
+		// else
+		// 	trace("SEXY UPDATE: _handAnim = _handSprite.animation.name");
 		if (_prevHandAnim != _handAnim)
 		{
 			if (_handAnim == "default")
@@ -1609,6 +1630,9 @@ class SexyState<T:PokeWindow> extends FlxTransitionableState
 
 	function interactOn(spr:BouncySprite, handAnimName:String, ?bodyAnimName:String):Void
 	{
+		// trace ("spr: " + spr);
+		// trace ("handAnim: " + handAnimName);
+		// trace ("bodyAnim: " + bodyAnimName);
 		_fancyRub = true;
 		_rubBodyAnim = new FancyAnim(spr, bodyAnimName != null ? bodyAnimName : handAnimName);
 		_rubHandAnim = new FancyAnim(_pokeWindow._interact, handAnimName);
@@ -1664,7 +1688,7 @@ class SexyState<T:PokeWindow> extends FlxTransitionableState
 
 	public function precum(amount:Float):Void
 	{
-		if (PlayerData.pokemonLibido == 1)
+		if (PlayerData.pokemonLibido == 1 || PlayerData.sfw)
 		{
 			// don't emit precum at pokemon libido level 1
 			return;
