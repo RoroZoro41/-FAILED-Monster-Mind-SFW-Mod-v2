@@ -260,6 +260,20 @@ class GrimerDialog
 					tree[1] = ["#grim06#Is that it? Unless you wanted to, well... I mean... ..."];
 					tree[2] = ["#grim04#...Well, you take it easy <name>~"];
 				}
+
+
+				// HALLOWEEN GRIMER :D 
+				// else
+				// {
+					// tree[0] = ["#grim02#Merry Christmas!"];
+					// tree[1] = ["#grim06#Um..."];
+					// tree[2] = ["#grim07#No wait..."];
+					// tree[3] = ["#grim03#Happy Halloween!"];
+					// tree[4] = ["#grim01#I ate so much white dye and laundry detergent for this, I hope you like this uh... 'costume' of mine."];
+					// tree[5] = ["#grim04#Either way I hope you have a nice day."];
+					// tree[6] = ["#grim03#Goodbye my friend!"];
+
+				// }
 			}
 		}
 		else
