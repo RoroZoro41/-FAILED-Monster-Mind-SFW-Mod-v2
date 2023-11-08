@@ -85,12 +85,12 @@ class ShopState extends FlxTransitionableState
 		// ItemDatabase.refillShop();
 		// FlxG.switchState(new ShopState());
 
-		var i:Int= 0;
-		while (i<6)
-		{
-			trace (ItemDatabase._itemTypes[i].name);
-			i++;
-		}
+		// var i:Int= 0;
+		// while (i<6)
+		// {
+		// 	trace (ItemDatabase._itemTypes[i].name);
+		// 	i++;
+		// }
 		Main.overrideFlxGDefaults();
 		PlayerData.profIndex = -1; // clear profIndex, to avoid hasMet() goofups
 		Critter.initialize(Critter.LOAD_ALL); // load all critters, so player can view them in shop
