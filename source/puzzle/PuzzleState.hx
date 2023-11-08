@@ -837,16 +837,16 @@ class PuzzleState extends LevelState
 		if (Msg == "%game-nsfw%")
 		{
 			PlayerData.sfw = false;
-			PlayerData.supersfw = "nsfw";
+			// PlayerData.supersfw = "nsfw";
 		}
 		if (Msg == "%game-sfw%")
 		{
 			PlayerData.sfw = true;
-			PlayerData.supersfw = "sfw";
+			// PlayerData.supersfw = "sfw";
 		}
 		if (Msg == "%game-supersfw%")
 		{
-			PlayerData.supersfw = "supersfw";
+			// PlayerData.supersfw = "supersfw";
 		}
 		if (Msg == "%prompt-password%")
 		{
